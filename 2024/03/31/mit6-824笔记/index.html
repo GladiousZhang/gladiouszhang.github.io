@@ -46,6 +46,17 @@
 <p>如果要将一个切片的所有元素追加到另一个切片中，可以使用 <code>...</code> 操作符。这个操作符告诉编译器将切片展开为一个个的元素。如果不使用 <code>...</code>，则会尝试将整个切片作为一个元素添加到目标切片中。</p>
 <p>与真实的<code>MapReduce</code>不同，这里的<code>mrsequential.go</code>将所有的中间数据都存储在一个切片中，而不是被切分成N*M个。</p>
 <p>对key进行排序。</p>
+<p>对于每一个中间输出的键值对，检查有多少个key相同，把相同的key数量统计为j，并将这j个相同key的键值对的value存入一个字符串切片，将这个相同的key和字符串切片传入自定义的reduce方法中，最后键值对结果保存到mr-out-0中。</p>
+<p>具体的<code>loadPlugin</code>函数（即加载map和reduce方法的函数），用Lookup来寻找文件中的方法，返回该方法的引用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mapf := xmapf.(func(string, string) []mr.KeyValue)</span><br></pre></td></tr></table></figure>
+
+<p>这行代码通过类型断言将 <code>xmapf</code> 变量转换成具体的函数类型 <code>func(string, string) []mr.KeyValue</code>。这意味着程序预期找到的 <code>&quot;Map&quot;</code> 函数应该接受两个 <code>string</code> 类型的参数，并返回一个 <code>mr.KeyValue</code> 类型的切片。</p>
+<blockquote>
+<p>Lookup返回一个空接口类型 <code>interface&#123;&#125;</code> 。可以理解空接口类型就像java中的object，所有类都继承他，但是具体是啥需要自行解释（断言），是一种多态的体现。如果断言错误就会出现恐慌（panic）。</p>
+</blockquote>
+<h2 id="阅读wc-go"><a href="#阅读wc-go" class="headerlink" title="阅读wc.go"></a>阅读<code>wc.go</code></h2><p>实现了map和reduce方法。map读入文件名和以字符串形式传入的文件内容，实际上并没有用到文件名。</p>
+<p>在map方法中，首先创建了一个判断分隔符的函数，将其作为回调函数来分割文件内容，返回一个个索引和单词组成的切片。遍历切片，将所有的单词用“单词: 1”的键值对存储在切片中。返回切片。</p>
+<p>reduce方法直接返回了values的长度。</p>
 
     </div>
 
