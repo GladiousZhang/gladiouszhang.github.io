@@ -33,7 +33,20 @@
         <hr>
     </div>
     <div class="post-content">
-        
+        <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>环境：Ubuntu 20.04</p>
+<p>配置go语言环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install golang</span><br></pre></td></tr></table></figure>
+
+<p>在vscode里面安装go的插件</p>
+<h1 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h1><p><code>.so</code>文件是go里面的插件。在本lab中<code>mrsequential.go</code>是主程序。每次运行主程序的时候选择一个插件，即具体的map-reduce过程。</p>
+<h2 id="阅读mrsequential-go"><a href="#阅读mrsequential-go" class="headerlink" title="阅读mrsequential.go"></a>阅读<code>mrsequential.go</code></h2><p><code>os.Args</code> 是一个字符串切片，包含了程序运行时的所有命令行参数，包括程序名本身。程序需要至少两个参数：xxx.so 插件文件和至少一个输入文件。</p>
+<p>如果合法，则加载插件中的map和reduce方法。</p>
+<p>创建一个中间输出的键值对切片。</p>
+<p>对于所有输入的文件，将其分别打开并全部读入，调用插件中的map函数，生成中间键值对，并将键值对的内容全部加入先前创建的中间输出切片。</p>
+<p>如果要将一个切片的所有元素追加到另一个切片中，可以使用 <code>...</code> 操作符。这个操作符告诉编译器将切片展开为一个个的元素。如果不使用 <code>...</code>，则会尝试将整个切片作为一个元素添加到目标切片中。</p>
+<p>与真实的<code>MapReduce</code>不同，这里的<code>mrsequential.go</code>将所有的中间数据都存储在一个切片中，而不是被切分成N*M个。</p>
+<p>对key进行排序。</p>
+
     </div>
 
     
