@@ -40,6 +40,40 @@
 <h1 id="Map-包含HashMap-LinkedHashMap-Hashtable-Priorities"><a href="#Map-包含HashMap-LinkedHashMap-Hashtable-Priorities" class="headerlink" title="Map(包含HashMap, LinkedHashMap, Hashtable, Priorities)"></a>Map(包含HashMap, LinkedHashMap, Hashtable, Priorities)</h1><p>HashMap在加入相同键时会发生替换，而替换时并不会改变modCount，modCount是一个用于记录HashMap结构修改次数（改变HashMap中映射数量或者修改内部结构）的变量。HashMap是线程不安全的。</p>
 <p>Hashtable底层维护一个table数组，数组存储Hashtable$Entry对象，形成链表。初始化table大小11，threshold为大小乘以0.75(向下取整)。扩容机制:左移一位(乘以二)加一。Hashtable的效率比HashMap低。HashTable的键值都不能为空，是线程安全的</p>
 <p>properties可以读取xx.properties文件，获取文件中的配置(举例:数据库)</p>
+<h1 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a>如何选择</h1><ul>
+<li>插入单列元素：Collection(List、Set)<ul>
+<li>允许重复：List<ul>
+<li>不用线程安全，效率高：<ul>
+<li>具有大量增删操作：LinkedList</li>
+<li>具有大量改查操作：ArrayList</li>
+</ul>
+</li>
+<li>线程安全，效率低：Vector</li>
+</ul>
+</li>
+<li>不允许重复：Set<ul>
+<li>无序：HashSet（底层使用HashMap）</li>
+<li>排序：TreeSet</li>
+<li>按插入顺序：LinkedHashSet（底层使用LinkedHashMap）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>插入双列元素：Map<ul>
+<li>无需线程安全：<ul>
+<li>无序：HashMap</li>
+<li>排序：TreeMap</li>
+<li>按插入顺序：LinkedHashMap</li>
+</ul>
+</li>
+<li>线程安全：<ul>
+<li>读取文件：Properties</li>
+<li>其他：Hashtable</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
