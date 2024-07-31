@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="List(包含ArrayList, Vector, LinkedList)ArrayList底层使用数组实现数据存储ArrayList基本等同与Vector，但是Vector线程安全（因此ArrayList更快）ArrayList源码分析：维护一个Object类型的数组elementData，如果使用无参构造器，初始化数组大小为0，第一次添加扩容为10，再次扩容是每次扩容1.5倍。如果使用指定">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gladiouszhang.github.io/2024/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5a2mSkFWQeeahOengOeQtA==,size_15,color_FFFFFF,t_70,g_se,x_16-1713407102148-3.png">
+<meta property="og:image" content="http://gladiouszhang.github.io/2024/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5a2mSkFWQeeahOengOeQtA==,size_15,color_FFFFFF,t_70,g_se,x_16-1713407102148-3.png">
 <meta property="article:published_time" content="2024-04-18T11:47:16.000Z">
 <meta property="article:modified_time" content="2024-07-31T11:48:57.541Z">
 <meta property="article:author" content="张舒俞">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gladiouszhang.github.io/2024/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5a2mSkFWQeeahOengOeQtA==,size_15,color_FFFFFF,t_70,g_se,x_16-1713407102148-3.png">
+<meta name="twitter:image" content="http://gladiouszhang.github.io/2024/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5a2mSkFWQeeahOengOeQtA==,size_15,color_FFFFFF,t_70,g_se,x_16-1713407102148-3.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://gladiouszhang.github.io/2024/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/index.html">
   
@@ -387,7 +387,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <img src="/2024/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5a2mSkFWQeeahOengOeQtA==,size_15,color_FFFFFF,t_70,g_se,x_16-1713407102148-3.png" class title="集合框架图">
+        <img src="/2024/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/04/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94List-Set-Map/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5a2mSkFWQeeahOengOeQtA==,size_15,color_FFFFFF,t_70,g_se,x_16-1713407102148-3.png" class title="集合框架图">
 
 <h1 id="List-包含ArrayList-Vector-LinkedList"><a href="#List-包含ArrayList-Vector-LinkedList" class="headerlink" title="List(包含ArrayList, Vector, LinkedList)"></a>List(包含ArrayList, Vector, LinkedList)</h1><p>ArrayList底层使用数组实现数据存储<br>ArrayList基本等同与Vector，但是Vector线程安全（因此ArrayList更快）<br>ArrayList源码分析：<br>维护一个Object类型的数组elementData，如果使用无参构造器，初始化数组大小为0，第一次添加扩容为10，再次扩容是每次扩容1.5倍。如果使用指定大小的构造器，则直接初始化为指定大小，每次扩容1.5倍。elementData用transient修饰，表示该属性不会被序列化。<br>Vector底层也是elementData数组，多线程操作时使用Vector。无参构造时默认长度为10，满了以后每次增加2倍，如果指定大小，满后则直接扩容两倍（其实可以设置每次增长量，如果没有设置，就默认翻倍）<br>LinkedList底层实现了双向链表和双端队列，没有实现同步，线程不安全。增删较多用LinkedList，改查较多用ArrayList</p>
 <h1 id="Set-包含HashSet-LinkedHashSet"><a href="#Set-包含HashSet-LinkedHashSet" class="headerlink" title="Set(包含HashSet, LinkedHashSet)"></a>Set(包含HashSet, LinkedHashSet)</h1><p>hashset底层是hashmap，hashmap底层是数组+链表+红黑树，hashmap初始化长度为16，数据到一定量(JAVA8中链表长度≥8，table大小≥64)后变成红黑树。如果链表到了8，table没到64，那么table扩容为2倍。此外，table中所有<strong>节点的数量</strong>到threshold(0.75乘以table长度，初始是16*0.75&#x3D;12)时进行扩容，扩容也是扩为2倍。扩容的同时，原有的元素会被重新放置（因为数组大小改变）。</p>
