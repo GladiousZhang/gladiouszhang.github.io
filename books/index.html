@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   
+  <meta name="referrer" content="never">
+  
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="renderer" content="webkit">
@@ -132,16 +134,6 @@
             <i class="icon icon-project"></i>
             
             <span class="menu-title">项目</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books">
-            
-            <i class="icon icon-book-fill"></i>
-            
-            <span class="menu-title">书单</span>
           </a>
         </li>
         
@@ -323,7 +315,7 @@
   <article class="article article-links article-type-list" itemscope="">
   <header class="article-header">
     <h1 itemprop="title">书单</h1>
-    <p class="text-muted">个人收藏的书单推荐给大家 <a href="https://www.douban.com/people//" target="_blank">[我的豆瓣]</a></p>
+    <p class="text-muted">个人收藏的书单推荐给大家 <a href="https://www.douban.com/people/234978131/" target="_blank">[我的豆瓣]</a></p>
     <nav role="navigation" id="nav-main" class="okayNav">
       <ul id="tabs">
         <li><a id="reading-tab" href="javascript:show('reading')" rel="external">在读<span id="reading-total"></span></a></li>
@@ -464,14 +456,14 @@ function show(id) {
   function loadDoubanCollections() {
     var _this = this;
     // https://api.douban.com/v2/book/user/:name/collections?start=0&count=100
-    var url = "https://api.douban.com/v2/book/user//collections"
+    var url = "https://api.douban.com/v2/book/user/234978131/collections"
     $.ajax({
       url: url,
       type: 'GET',
       data: {
         start:0, // 从哪一条记录开始
         count:100, // 获取豆瓣书单数据条数
-        apikey:'' // 豆瓣apikey
+        apikey:'0df993c66c0c636e29ecbb5344252a4a 0b2bdeda43b5688921839c8ecb20399b# 豆瓣apikey' // 豆瓣apikey
       },
       dataType: 'JSONP', //here
       success: function(data) {
