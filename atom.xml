@@ -6,7 +6,7 @@
   <link href="http://gladiouszhang.github.io/atom.xml" rel="self"/>
   
   <link href="http://gladiouszhang.github.io/"/>
-  <updated>2024-08-02T15:56:39.827Z</updated>
+  <updated>2024-08-14T12:28:28.532Z</updated>
   <id>http://gladiouszhang.github.io/</id>
   
   <author>
@@ -17,13 +17,70 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>边缘计算论文阅读</title>
+    <link href="http://gladiouszhang.github.io/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    <id>http://gladiouszhang.github.io/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</id>
+    <published>2024-08-13T17:48:59.000Z</published>
+    <updated>2024-08-14T12:28:28.532Z</updated>
+    
+    <content type="html"><![CDATA[<h1><span id="energy-consumption-and-qos-aware-co-offloading-for-vehicular-edge-computing">Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing</span><a href="#energy-consumption-and-qos-aware-co-offloading-for-vehicular-edge-computing" class="header-anchor">#</a></h1><h2><span id="lun-wen-bei-jing">论文背景</span><a href="#lun-wen-bei-jing" class="header-anchor">#</a></h2><p>该论文探究在满足QoS前提下，尽可能降低能量开销的边缘计算。因为如果只追求低时延，可能会存在资源被浪费（例如大量任务被卸载到边缘端，过度分配资源，也就是增加了能量开销），只需要满足QoS就行，在这个前提下，尽可能的降低能量开销，是本文的核心任务。</p><h2><span id="lun-wen-si-lu">论文思路</span><a href="#lun-wen-si-lu" class="header-anchor">#</a></h2><p>论文的目的是求出卸载率$\lambda_n$（卸载多少）和RES的计算资源分配情况（往哪卸载）。在本文中，首先进行建模</p><p><img src="/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240814022118539.png" alt="image-20240814022118539"></p><p>然后对这个见好的模型进行求解。求解的过程中使用贝叶斯优化算法。先确定几个采样点，然后基于采集函数，在采集函数的最大值点设立新的采集点，以此类推，来拟合函数，找到近似的最大值点。</p><p><img src="/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240814022410081.png" alt="image-20240814022410081"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;energy-consumption-and-qos-aware-co-offloading-for-vehicular-edge-computing&quot;&gt;Energy Consumption and QoS-Aware Co-Offloading fo</summary>
+      
+    
+    
+    
+    
+    <category term="学习笔记" scheme="http://gladiouszhang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="分布式系统" scheme="http://gladiouszhang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="边缘计算" scheme="http://gladiouszhang.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>k8s实现pod内部的webshell</title>
+    <link href="http://gladiouszhang.github.io/2024/08/13/k8s%E5%AE%9E%E7%8E%B0pod%E5%86%85%E9%83%A8%E7%9A%84webshell/"/>
+    <id>http://gladiouszhang.github.io/2024/08/13/k8s%E5%AE%9E%E7%8E%B0pod%E5%86%85%E9%83%A8%E7%9A%84webshell/</id>
+    <published>2024-08-13T07:58:27.000Z</published>
+    <updated>2024-08-13T16:32:57.865Z</updated>
+    
+    <content type="html"><![CDATA[<div class="toc"><!-- toc --><ul><li><a href="#bei-jing-jie-shao">背景介绍</a></li><li><a href="#dai-ma-jie-shao">代码介绍</a><ul><li><a href="#handleconnections"><code>handleConnections</code></a></li></ul></li></ul><!-- tocstop --></div><h1><span id="bei-jing-jie-shao">背景介绍</span><a href="#bei-jing-jie-shao" class="header-anchor">#</a></h1><p>这是实习的时候，公司让我开发的一个功能，主要希望实现的是前端与k8s中的pod的webshell功能，并且包含tab代码补全的功能。基于<a href="https://github.com/GanonYou/k8s-webshell-gin%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9D%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E3%80%82%E4%BD%86%E6%98%AF%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%9A%E6%BA%90%E4%BB%A3%E7%A0%81%E6%98%AF%E8%87%AA%E5%B7%B1%E6%9A%B4%E9%9C%B2%E5%87%BAws%E6%8E%A5%E5%8F%A3%EF%BC%8C%E7%AD%89%E5%BE%85%E5%89%8D%E7%AB%AF%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%8C%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81%E6%98%AF%E9%9B%86%E7%BE%A4%E5%85%88%E5%92%8C%E5%90%8E%E7%AB%AF%E5%BB%BA%E7%AB%8Bws%EF%BC%8C%E7%84%B6%E5%90%8E%E7%AD%89%E5%BE%85%E5%89%8D%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%90%8E%E7%AB%AF%EF%BC%8C%E7%84%B6%E5%90%8E%E5%89%8D%E7%AB%AF%E5%85%88%E6%8A%8A%E6%B6%88%E6%81%AF%E4%BC%A0%E5%88%B0%E5%90%8E%E7%AB%AF%EF%BC%8C%E5%90%8E%E7%AB%AF%E7%BB%8F%E8%BF%87%E9%89%B4%E6%9D%83%E5%86%8D%E8%BD%AC%E5%8F%91%E7%BB%99%E9%9B%86%E7%BE%A4%E3%80%82">https://github.com/GanonYou/k8s-webshell-gin的代码来实现的。但是实现流程不一样：源代码是自己暴露出ws接口，等待前端连接），我的代码是集群先和后端建立ws，然后等待前端连接后端，然后前端先把消息传到后端，后端经过鉴权再转发给集群。</a></p><p>在本文档里，大致解释一下集群上的webshell（相当于是后端）的相关代码。</p><h1><span id="dai-ma-jie-shao">代码介绍</span><a href="#dai-ma-jie-shao" class="header-anchor">#</a></h1><h2><span id="handleconnections"><code>handleConnections</code></span><a href="#handleconnections" class="header-anchor">#</a></h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sshReq = ClientSet.CoreV1().RESTClient().Post().</span><br><span class="line">Resource(<span class="string">&quot;pods&quot;</span>).</span><br><span class="line">Name(pod).</span><br><span class="line">Namespace(namespace).</span><br><span class="line">SubResource(<span class="string">&quot;exec&quot;</span>).</span><br><span class="line">VersionedParams(&amp;v1.PodExecOptions&#123;</span><br><span class="line">Container: container,</span><br><span class="line">Command:   []<span class="type">string</span>&#123;<span class="string">&quot;bash&quot;</span>&#125;,</span><br><span class="line">Stdin:     <span class="literal">true</span>,</span><br><span class="line">Stdout:    <span class="literal">true</span>,</span><br><span class="line">Stderr:    <span class="literal">true</span>,</span><br><span class="line">TTY:       <span class="literal">true</span>,</span><br><span class="line">&#125;, scheme.ParameterCodec)</span><br></pre></td></tr></table></figure><p>以上只是用于创建一个请求，还未发送。</p><p><code>ClientSet</code>是一个指向 <code>kubernetes.Clientset</code> 类型的实例的指针，CoreV1提供了对 Kubernetes Core API 组，例如 Pods、Nodes、Services 等资源的访问，<code>RESTClient()</code>返回一个 <code>rest.Interface</code> 对象，允许直接使用 REST API 请求而不通过高层次的抽象。这个对象提供了更底层的 API 操作。最后，<code>Post()</code>用于构造一个 HTTP POST 请求。这个请求会用来与 Kubernetes API 交互，通常用于创建或更新资源。</p><p><code>SubResource(&quot;exec&quot;)</code> 表示我们要操作的是 Pod 的 exec 子资源，这通常用于执行命令。即，我们希望在指定的 Pod 内执行某个命令。</p><p><code>VersionedParams()</code>用于设置请求的参数，并且按照 API 版本对这些参数进行编码。</p><ul><li><code>v1.PodExecOptions</code>中：<ul><li><strong><code>Container</code></strong>: 要执行命令的容器名。</li><li><strong><code>Command</code></strong>: 要在容器中执行的命令数组。这里是 <code>[]string&#123;&quot;bash&quot;&#125;</code>，表示在容器中启动一个 Bash shell。</li><li><strong><code>Stdin</code>, <code>Stdout</code>, <code>Stderr</code></strong>: 这些布尔值表示是否需要连接标准输入、标准输出和标准错误。</li><li><strong><code>TTY</code></strong>: 布尔值，表示是否需要终端</li></ul></li></ul><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建到容器的连接</span></span><br><span class="line"><span class="keyword">if</span> executor, err = remotecommand.NewSPDYExecutor(restConf, <span class="string">&quot;POST&quot;</span>, sshReq.URL()); err != <span class="literal">nil</span> &#123;</span><br><span class="line"><span class="keyword">goto</span> END</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>初始化一个 <code>remotecommand.Executor</code> 对象，以便能够通过 Kubernetes API 执行命令。创建 <code>executor</code> 的过程涉及配置 API 连接、指定 HTTP 方法（<code>POST</code>）以及构造执行请求的 URL。</p><p><strong><code>sshReq.URL()</code></strong>:</p><ul><li><code>sshReq</code> 是之前构建的 <code>*rest.Request</code> 对象，包含了 Kubernetes API 的请求信息。</li><li><code>sshReq.URL()</code> 返回一个 <code>*url.URL</code> 对象，表示请求的完整 URL。这个 URL 指向 Kubernetes API 的 exec 子资源，用于执行命令。</li><li>例如，这个 URL 可能类似于 <code>https://kubernetes/api/v1/namespaces/default/pods/my-pod/exec?stdin=true&amp;stdout=true&amp;stderr=true</code>。</li></ul><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">handler = &amp;streamHandler&#123;wsConn: wsConn&#125;</span><br><span class="line">ctx = context.Background()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> err = executor.StreamWithContext(ctx, remotecommand.StreamOptions&#123;</span><br><span class="line">Stdin:  handler,</span><br><span class="line">Stdout: handler,</span><br><span class="line">Stderr: handler,</span><br><span class="line"><span class="comment">// TerminalSizeQueue: handler,</span></span><br><span class="line">Tty: <span class="literal">true</span>,</span><br><span class="line">&#125;); err != <span class="literal">nil</span> &#123;</span><br><span class="line"><span class="keyword">goto</span> END</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>将websocket直接连接到容器内的Stdin等。其实我修改后可以不用streamHandler，直接给我们的websocket加上io.read和write的接口就行，但是现在还没改。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;toc&quot;&gt;
+
+&lt;!-- toc --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#bei-jing-jie-shao&quot;&gt;背景介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#dai-ma-jie-shao&quot;&gt;代码介绍&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href</summary>
+      
+    
+    
+    
+    
+    <category term="分布式系统" scheme="http://gladiouszhang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="实习项目" scheme="http://gladiouszhang.github.io/tags/%E5%AE%9E%E4%B9%A0%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>边缘计算综述</title>
     <link href="http://gladiouszhang.github.io/2024/08/02/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BB%BC%E8%BF%B0/"/>
     <id>http://gladiouszhang.github.io/2024/08/02/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BB%BC%E8%BF%B0/</id>
     <published>2024-08-02T14:39:15.000Z</published>
-    <updated>2024-08-02T15:56:39.827Z</updated>
+    <updated>2024-08-12T04:32:54.380Z</updated>
     
-    <content type="html"><![CDATA[<div class="toc"><!-- toc --><ul><li><a href="#yan-jiu-re-dian">研究热点</a><ul><li><a href="#guan-jian-ji-zhu">关键技术</a><ul><li><a href="#ji-suan-xie-zai">计算卸载</a></li></ul></li><li><a href="#yi-dong-guan-li">移动管理</a></li></ul></li></ul><!-- tocstop --></div><blockquote><p>K. Cao, Y. Liu, G. Meng和Q. Sun, 《An Overview on Edge Computing Research》, <em>IEEE Access</em>, 卷 8, 页 85714–85728, 2020, doi: <a href="https://doi.org/10.1109/ACCESS.2020.2991734">10.1109&#x2F;ACCESS.2020.2991734</a>.</p></blockquote><h2><span id="yan-jiu-re-dian">研究热点</span><a href="#yan-jiu-re-dian" class="header-anchor">#</a></h2><h3><span id="guan-jian-ji-zhu">关键技术</span><a href="#guan-jian-ji-zhu" class="header-anchor">#</a></h3><h4><span id="ji-suan-xie-zai">计算卸载</span><a href="#ji-suan-xie-zai" class="header-anchor">#</a></h4><p>资源受限设备将资源密集型计算从移动设备上部分或全部地移植到资源富集的临近设备：</p><ul><li>卸载决策</li></ul><p>如何卸载计算任务，卸载多少，卸载些啥。</p><p>分为三个部分：编码阶段决定要卸载什么，系统阶段监控变量（带宽、数据大小等），决策引擎决定是否卸载</p><p>决策结果分为三种情况：本地执行（不卸载）、部分卸载、全部卸载。</p><p>决策的目标可以被分为（分别满足）：减小延迟、降低能量开销、平衡能量开销和延迟</p><ul><li>资源分配</li></ul><p>往哪卸载。比如有些部分不能拆分，或者拆分后有联系的，就必须放在同样的MEC(Mobile Edge Computing)服务器。</p><p>通常分配节点被分为单点分配和多点分配。</p><h3><span id="yi-dong-guan-li">移动管理</span><a href="#yi-dong-guan-li" class="header-anchor">#</a></h3><p>一个边缘计算节点只服务于其周围的人。</p><p>主要问题是资源发现和资源切换。</p><ul><li>资源发现</li></ul><p>用户在移动中快速发现周围的可用资源，并选择最合适的资源。</p><ul><li>资源切换</li></ul>]]></content>
+    <content type="html"><![CDATA[<div class="toc"><!-- toc --><ul><li><a href="#yan-jiu-re-dian">研究热点</a><ul><li><a href="#guan-jian-ji-zhu">关键技术</a><ul><li><a href="#ji-suan-xie-zai">计算卸载</a></li><li><a href="#yi-dong-guan-li">移动管理</a></li><li><a href="#liu-liang-xie-zai">流量卸载</a></li><li><a href="#huan-cun-jia-su">缓存加速</a></li><li><a href="#wang-luo-kong-zhi">网络控制</a></li></ul></li><li><a href="#shu-ju-an-quan-he-yin-si-bao-hu">数据安全和隐私保护</a><ul><li><a href="#si-ge-tiao-zhan">四个挑战</a></li><li><a href="#yan-jiu-ti-xi">研究体系</a></li></ul></li></ul></li></ul><!-- tocstop --></div><blockquote><p>K. Cao, Y. Liu, G. Meng和Q. Sun, 《An Overview on Edge Computing Research》, <em>IEEE Access</em>, 卷 8, 页 85714–85728, 2020, doi: <a href="https://doi.org/10.1109/ACCESS.2020.2991734">10.1109&#x2F;ACCESS.2020.2991734</a>.</p></blockquote><h2><span id="yan-jiu-re-dian">研究热点</span><a href="#yan-jiu-re-dian" class="header-anchor">#</a></h2><h3><span id="guan-jian-ji-zhu">关键技术</span><a href="#guan-jian-ji-zhu" class="header-anchor">#</a></h3><h4><span id="ji-suan-xie-zai">计算卸载</span><a href="#ji-suan-xie-zai" class="header-anchor">#</a></h4><p>资源受限设备将资源密集型计算从移动设备上部分或全部地移植到资源富集的临近设备：</p><ul><li>卸载决策</li></ul><p>如何卸载计算任务，卸载多少，卸载些啥。</p><p>分为三个部分：编码阶段决定要卸载什么，系统阶段监控变量（带宽、数据大小等），决策引擎决定是否卸载</p><p>决策结果分为三种情况：本地执行（不卸载）、部分卸载、全部卸载。</p><p>决策的目标可以被分为（分别满足）：减小延迟、降低能量开销、平衡能量开销和延迟</p><ul><li>资源分配</li></ul><p>往哪卸载。比如有些部分不能拆分，或者拆分后有联系的，就必须放在同样的MEC(Mobile Edge Computing)服务器。</p><p>通常分配节点被分为单点分配和多点分配。</p><h4><span id="yi-dong-guan-li">移动管理</span><a href="#yi-dong-guan-li" class="header-anchor">#</a></h4><p>一个边缘计算节点只服务于其周围的人。</p><p>主要问题是资源发现和资源切换。</p><ul><li>资源发现</li></ul><p>用户在移动中快速发现周围的可用资源，并选择最合适的资源。</p><ul><li>资源切换</li></ul><p>当用户移动时，移动应用所使用的计算资源可能会在多个设备之间进行切换，同时会改变服务程序的工作站点来保证服务连续性。</p><h4><span id="liu-liang-xie-zai">流量卸载</span><a href="#liu-liang-xie-zai" class="header-anchor">#</a></h4><p>将满足特定卸载规则的流量卸载到移动边缘网络(即一个局部特定的网络,可以是内部网,也可以是因特网)，以节省回程带宽，减少延迟，并促进其他MEC服务的扩展。</p><blockquote><p>假设你在一个繁忙的购物中心使用手机，正在观看一个高清的实时视频。传统情况下，所有的数据请求都需要通过蜂窝网络的核心网传输，然后通过互联网访问视频内容服务器。由于购物中心的人流量大，蜂窝网络的核心网可能会承载大量的流量，导致网络拥塞、延迟增加。</p><p>为了优化这个场景，网络运营商部署了一个MEC（移动边缘计算）节点，它包含视频内容的本地缓存，并支持流量卸载。当你在购物中心观看视频时，视频流量会被卸载到这个MEC节点。也就是说，视频数据直接从购物中心附近的MEC节点获取，而不是经过蜂窝网络的核心网。这不仅减少了核心网的负担，还显著降低了延迟，提高了视频流的质量。</p></blockquote><p>和计算卸载的区别是，计算卸载是把本地任务卸载到边缘端服务器，流量卸载是将流量负担较大的线路转移。计算卸载重点在于“<strong>任务执行</strong>”的转移，流量卸载重点在于“<strong>数据内容传输</strong>”的转移。</p><h4><span id="huan-cun-jia-su">缓存加速</span><a href="#huan-cun-jia-su" class="header-anchor">#</a></h4><p>内容缓存到移动网络边缘后，用户可以就近获取内容，从而避免了内容的重复传输，缓解了回程网络和核心网的压力。</p><blockquote><p><strong>缓存加速</strong>本质上是一种特定的流量卸载策略，其中的重点是对内容进行本地化存储，以减少传输需求。</p><p><strong>流量卸载</strong>的范围更广，它不仅包括缓存加速，还可能包括其他形式的流量转移或重新路由，目的是减轻核心网络的整体负担。</p></blockquote><h4><span id="wang-luo-kong-zhi">网络控制</span><a href="#wang-luo-kong-zhi" class="header-anchor">#</a></h4><p>这一块论文没咋讲，gpt如是说：</p><blockquote><p>网络控制是指在网络基础设施中管理和调度数据流、资源分配以及通信行为的过程和机制。它涉及如何控制网络中的流量、优化性能、确保安全性和稳定性，并响应不同的网络需求。网络控制在整个网络中扮演着关键角色，特别是在大型、复杂的网络环境中，比如在边缘网络和云计算环境中。</p></blockquote><h3><span id="shu-ju-an-quan-he-yin-si-bao-hu">数据安全和隐私保护</span><a href="#shu-ju-an-quan-he-yin-si-bao-hu" class="header-anchor">#</a></h3><p>边缘计算的分布式结构增加了攻击向量的维度。边缘计算客户端越智能，越容易受到恶意软件的感染和安全漏洞的攻击。网络边缘高度动态的环境也使得网络更加脆弱。</p><h4><span id="si-ge-tiao-zhan">四个挑战</span><a href="#si-ge-tiao-zhan" class="header-anchor">#</a></h4><ul><li>轻量级的数据加密和在多个授权团体基础上的细粒度数据分享：</li></ul><p>设计针对多个授权中心的数据加密方法，考虑复杂度。</p><ul><li>分布式计算环境下的多源异构数据传播控制与安全管理：</li></ul><p>用户或数据拥有者希望能够利用有效的信息发布控制和访问控制机制，实现数据的分发、搜索、访问以及对数据授权范围的控制。</p><ul><li>边缘计算大规模互联服务与资源受限终端之间的安全挑战</li><li>面向物联网的多样化服务和边缘计算模式对高效隐私保护的新要求</li></ul><h4><span id="yan-jiu-ti-xi">研究体系</span><a href="#yan-jiu-ti-xi" class="header-anchor">#</a></h4><ul><li><p>数据安全</p><p>数据的加密及对其的安全操作。思路是将其他计算范式（如云计算、雾计算等）安全解决方案移植过来，并将计算架构并行化，最终实现一个轻量级的、分布式的数据安全防护系统。</p><ul><li>数据加密和安全数据分享</li></ul></li><li><p>身份认证</p></li><li><p>隐私保护</p></li><li><p>访问控制</p></li></ul>]]></content>
     
     
       
