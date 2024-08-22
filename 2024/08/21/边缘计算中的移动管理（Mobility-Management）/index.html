@@ -22,16 +22,17 @@
   
   
   <title>边缘计算中的移动管理（Mobility Management） | Gladious&#39; Blog</title>
-  <meta name="description" content="资源发现 GPT给出的一些算法 1. 基于目录的资源发现（Directory-Based Resource Discovery） 2. 基于代理的资源发现（Agent-Based Resource Discovery） 3. 基于P2P的资源发现（Peer-to-Peer Resource Discovery） 4. 基于广播的资源发现（Broadcast-Based Resource">
+  <meta name="description" content="资源发现 一些算法 1. 基于目录的资源发现（Directory-Based Resource Discovery） 2. 基于代理的资源发现（Agent-Based Resource Discovery） 3. 基于P2P的资源发现（Peer-to-Peer Resource Discovery） 4. 基于广播的资源发现（Broadcast-Based Resource Discov">
 <meta property="og:type" content="article">
 <meta property="og:title" content="边缘计算中的移动管理（Mobility Management）">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/08/21/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88Mobility-Management%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="资源发现 GPT给出的一些算法 1. 基于目录的资源发现（Directory-Based Resource Discovery） 2. 基于代理的资源发现（Agent-Based Resource Discovery） 3. 基于P2P的资源发现（Peer-to-Peer Resource Discovery） 4. 基于广播的资源发现（Broadcast-Based Resource">
+<meta property="og:description" content="资源发现 一些算法 1. 基于目录的资源发现（Directory-Based Resource Discovery） 2. 基于代理的资源发现（Agent-Based Resource Discovery） 3. 基于P2P的资源发现（Peer-to-Peer Resource Discovery） 4. 基于广播的资源发现（Broadcast-Based Resource Discov">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gladiouszhang.github.io/2024/08/21/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88Mobility-Management%EF%BC%89/457e80d23580c0ab8e4beb10140d9ec.png">
+<meta property="og:image" content="http://gladiouszhang.github.io/2024/08/21/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88Mobility-Management%EF%BC%89/a7199fbb7f2767e16e35572d17ad13f.png">
 <meta property="article:published_time" content="2024-08-20T17:03:28.000Z">
-<meta property="article:modified_time" content="2024-08-21T16:18:11.254Z">
+<meta property="article:modified_time" content="2024-08-22T18:23:19.971Z">
 <meta property="article:author" content="张舒俞">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="分布式系统">
@@ -362,10 +363,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/08/21/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88Mobility-Management%EF%BC%89/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.9k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4.3k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15(分)</span>
 	
 
       </div>
@@ -378,7 +379,7 @@
 
 <ul>
 <li><a href="#zi-yuan-fa-xian">资源发现</a><ul>
-<li><a href="#gpt-gei-chu-de-yi-xie-suan-fa">GPT给出的一些算法</a><ul>
+<li><a href="#yi-xie-suan-fa">一些算法</a><ul>
 <li><a href="#1-ji-yu-mu-lu-de-zi-yuan-fa-xian-directory-based-resource-discovery">1. <strong>基于目录的资源发现（Directory-Based Resource Discovery）</strong></a></li>
 <li><a href="#2-ji-yu-dai-li-de-zi-yuan-fa-xian-agent-based-resource-discovery">2. <strong>基于代理的资源发现（Agent-Based Resource Discovery）</strong></a></li>
 <li><a href="#3-ji-yu-p2p-de-zi-yuan-fa-xian-peer-to-peer-resource-discovery">3. <strong>基于P2P的资源发现（Peer-to-Peer Resource Discovery）</strong></a></li>
@@ -389,6 +390,16 @@
 </ul>
 </li>
 <li><a href="#wen-xian-zong-shu">文献综述</a><ul>
+<li><a href="#bu-tong-lei-xing-de-fen-bu-shi-xi-tong">不同类型的分布式系统</a><ul>
+<li><a href="#wang-ge-ji-suan-huan-jing-xi-shu">网格计算环境（稀疏）</a></li>
+<li><a href="#p2p-ji-suan-xi-tong-dian-dui-dian">P2P计算系统（点对点）</a></li>
+<li><a href="#ji-qun-ji-suan-ji-zhong">集群计算（集中）</a></li>
+</ul>
+</li>
+<li><a href="#zhu-yao-wen-ti">主要问题</a></li>
+<li><a href="#zhu-yao-de-fang-fa">主要的方法</a></li>
+</ul>
+</li>
 <li><a href="#yi-xie-xiang-guan-de-lun-wen">一些相关的论文</a><ul>
 <li><a href="#yi-chong-zai-bian-yuan-wang-luo-zhong-shi-yong-yuan-shu-ju-fu-zhi-jin-xing-zi-yuan-fa-xian-de-qu-zhong-xin-hua-fang-fa">一种在边缘网络中使用元数据复制进行资源发现的去中心化方法</a><ul>
 <li><a href="#wen-ti-bei-jing">问题背景</a></li>
@@ -400,10 +411,8 @@
 </li>
 </ul>
 </li>
-</ul>
-</li>
 <li><a href="#zi-yuan-qie-huan">资源切换</a><ul>
-<li><a href="#gpt-gei-chu-de-yi-xie-suan-fa-1">GPT给出的一些算法</a><ul>
+<li><a href="#yi-xie-suan-fa-1">一些算法</a><ul>
 <li><a href="#1-ji-yu-xin-hao-qiang-du-de-qie-huan-signal-strength-based-handoff">1. <strong>基于信号强度的切换（Signal Strength-Based Handoff）</strong></a></li>
 <li><a href="#2-ji-yu-wei-zhi-yu-ce-de-qie-huan-location-prediction-based-handoff">2. <strong>基于位置预测的切换（Location Prediction-Based Handoff）</strong></a></li>
 <li><a href="#3-ji-yu-fu-zai-jun-heng-de-qie-huan-load-balancing-based-handoff">3. <strong>基于负载均衡的切换（Load Balancing-Based Handoff）</strong></a></li>
@@ -420,8 +429,9 @@
 
 </div>
 
+<p>[TOC]</p>
 <h1><span id="zi-yuan-fa-xian">资源发现</span><a href="#zi-yuan-fa-xian" class="header-anchor">#</a></h1><p>资源发现是指在边缘计算环境中，移动设备需要及时找到可用的计算资源（如边缘服务器或云服务器）来执行任务。这包括识别最接近且最适合的边缘节点，以及在动态网络环境中快速发现可用资源。这一过程涉及多个技术，如网络感知、位置感知和服务发现协议等。</p>
-<h2><span id="gpt-gei-chu-de-yi-xie-suan-fa">GPT给出的一些算法</span><a href="#gpt-gei-chu-de-yi-xie-suan-fa" class="header-anchor">#</a></h2><h3><span id="1-ji-yu-mu-lu-de-zi-yuan-fa-xian-directory-based-resource-discovery">1. <strong>基于目录的资源发现（Directory-Based Resource Discovery）</strong></span><a href="#1-ji-yu-mu-lu-de-zi-yuan-fa-xian-directory-based-resource-discovery" class="header-anchor">#</a></h3><ul>
+<h2><span id="yi-xie-suan-fa">一些算法</span><a href="#yi-xie-suan-fa" class="header-anchor">#</a></h2><h3><span id="1-ji-yu-mu-lu-de-zi-yuan-fa-xian-directory-based-resource-discovery">1. <strong>基于目录的资源发现（Directory-Based Resource Discovery）</strong></span><a href="#1-ji-yu-mu-lu-de-zi-yuan-fa-xian-directory-based-resource-discovery" class="header-anchor">#</a></h3><ul>
 <li>方法设计：<ul>
 <li><strong>目录服务：</strong> 中央目录服务器或分布式目录服务用于维护所有边缘节点及其可用资源的索引。</li>
 <li><strong>查询机制：</strong> 移动设备通过查询目录服务获取可用资源的列表。目录服务会根据资源的负载、网络延迟等条件返回最优资源。</li>
@@ -484,7 +494,58 @@
 </ul>
 </li>
 </ul>
-<h2><span id="wen-xian-zong-shu">文献综述</span><a href="#wen-xian-zong-shu" class="header-anchor">#</a></h2><h3><span id="yi-xie-xiang-guan-de-lun-wen">一些相关的论文</span><a href="#yi-xie-xiang-guan-de-lun-wen" class="header-anchor">#</a></h3><h4><span id="yi-chong-zai-bian-yuan-wang-luo-zhong-shi-yong-yuan-shu-ju-fu-zhi-jin-xing-zi-yuan-fa-xian-de-qu-zhong-xin-hua-fang-fa">一种在边缘网络中使用元数据复制进行资源发现的去中心化方法</span><a href="#yi-chong-zai-bian-yuan-wang-luo-zhong-shi-yong-yuan-shu-ju-fu-zhi-jin-xing-zi-yuan-fa-xian-de-qu-zhong-xin-hua-fang-fa" class="header-anchor">#</a></h4><blockquote>
+<h2><span id="wen-xian-zong-shu">文献综述</span><a href="#wen-xian-zong-shu" class="header-anchor">#</a></h2><blockquote>
+<p>A. R. Khan, S. Imtiaz and A. H. Farooqi, “A Survey of the Resource Discovery Techniques in the Distributed Computing Systems,” 2022 International Conference on IT and Industrial Technologies (ICIT), Chiniot, Pakistan, 2022, pp. 1-6, doi: 10.1109&#x2F;ICIT56493.2022.9989068. keywords: {Computer architecture;Distributed computing;distributed computing;resource discovery;net-work structures},</p>
+<p>分布式计算系统中的资源发现技术综述</p>
+</blockquote>
+<h3><span id="bu-tong-lei-xing-de-fen-bu-shi-xi-tong">不同类型的分布式系统</span><a href="#bu-tong-lei-xing-de-fen-bu-shi-xi-tong" class="header-anchor">#</a></h3><h4><span id="wang-ge-ji-suan-huan-jing-xi-shu">网格计算环境（稀疏）</span><a href="#wang-ge-ji-suan-huan-jing-xi-shu" class="header-anchor">#</a></h4><p>包含多个可用资源，这些资源通常位于偏远位置，这些资源在地理上作为一个单元工作。目标是为手头的工作发现最有效的资源。</p>
+<blockquote>
+<p>Javad Zarrin, Rui L Aguiar and João Paulo Barraca, “Resource discovery for distributed computing systems: A comprehensive survey”, <em>Journal of parallel and distributed computing</em>, vol. 113, pp. 127-166, 2018.</p>
+</blockquote>
+<h4><span id="p2p-ji-suan-xi-tong-dian-dui-dian">P2P计算系统（点对点）</span><a href="#p2p-ji-suan-xi-tong-dian-dui-dian" class="header-anchor">#</a></h4><p>旨在通过允许对等方之间的资源共享来增强分布式环境的可扩展性。</p>
+<blockquote>
+<p>S Vimal and S Srivatsa, “A new cluster p2p file sharing system based on ipfs and block-chain technology”, <em>Journal of Ambient Intelligence and Humanized Computing</em>, pp. 1-7, 2019.</p>
+</blockquote>
+<h4><span id="ji-qun-ji-suan-ji-zhong">集群计算（集中）</span><a href="#ji-qun-ji-suan-ji-zhong" class="header-anchor">#</a></h4><p>主要考虑调度问题，而不是资源发现。</p>
+<blockquote>
+<p>Huang Wenzhun, Wang Haoxiang, Zhang Yucheng and Zhang Shanwen, “A novel cluster computing technique based on signal clustering and analytic hierarchy model using hadoop”, <em>Cluster Computing</em>, vol. 22, pp. 13077-13084, 2019.</p>
+</blockquote>
+<h3><span id="zhu-yao-wen-ti">主要问题</span><a href="#zhu-yao-wen-ti" class="header-anchor">#</a></h3><ul>
+<li>可扩展性：随着计算资源的增长 ，发现算法必须保持其性能。</li>
+<li>效率：最小化用户请求发现适当资源时的响应时间。</li>
+<li>异构性：满足不同设备的需求。</li>
+<li>可靠性：定期维护已发现的资源，以消除资源不一致。</li>
+</ul>
+<h3><span id="zhu-yao-de-fang-fa">主要的方法</span><a href="#zhu-yao-de-fang-fa" class="header-anchor">#</a></h3><ol>
+<li><p>手动方法</p>
+<p>手动方法依赖于用户手动输入资源请求并选择合适的资源。该方法通常通过模块化的方式处理请求，先接收用户的资源请求，然后按资源与请求的匹配度排序，最后根据访问成本对资源进行分组。虽然这种方法简单直接，但容易出现服务质量问题，因为优化的资源列表是在实时计算的</p>
+<blockquote>
+<p>Massimiliano Assante, Leonardo Candela, Donatella Castelli, Roberto Cirillo, Gianpaolo Coro, Luca Frosini, Lucio Lelii, Francesco Man-giacrapa, Valentina Marioli, Pasquale Pagano et al., “The gcube system: delivering virtual research environments as-a-service”, <em>Future Generation Computer Systems</em>, vol. 95, pp. 445-453, 2019.</p>
+</blockquote>
+</li>
+<li><p>基于树的方法</p>
+<p>基于树的方法使用决策树或其他树形结构来组织和管理资源。这些方法通过定期更新节点的属性值，并按优化的顺序存储资源信息，从而快速找到符合用户条件的资源。树结构的优势在于其查找效率（如O(log n)），但在数据不平衡的情况下可能导致查找效率降低</p>
+<blockquote>
+<p>Mohammad Samadi Gharajeh, “A knowledge and intelligent-based strategy for resource discovery on iaas cloud systems”, <em>Int. J. Grid Util. Comput.</em>, vol. 12, no. 2, pp. 205-221, 2021.</p>
+</blockquote>
+</li>
+<li><p>语义方法</p>
+<p>语义方法利用语义网技术，通过构建领域特定的本体（Ontology）来实现资源发现。这些方法通过存储和管理节点的语义信息，来帮助找到相关领域的资源。然而，由于依赖领域知识，这些方法在可扩展性方面存在局限性</p>
+<blockquote>
+<p>Aolong Zhou, Kaijun Ren, Xiaoyong Li, Wen Zhang, Xiaoli Ren and Kefeng Deng, “Semantic-based discovery method for high-performance computing resources in cyber-physical systems”, <em>Microprocessors and Microsystems</em>, vol. 80, pp. 103328, 2021.</p>
+</blockquote>
+</li>
+<li><p>基于对象的方法</p>
+<p>基于对象的方法采用面向对象的方式来组织节点和资源信息。资源以对象的形式存储，并根据对象之间的关系进行管理。这种方法在管理大规模节点时具有优势，但由于维护每个对象的元信息的复杂性，可能会导致系统不稳定。</p>
+</li>
+<li><p>边缘计算方法</p>
+<p>边缘计算方法适用于物联网（IoT）等分布式网络环境，重点在于在边缘设备上发现和管理资源。这种方法可以结合其他方法（如基于树或语义的方法）来优化资源发现，特别适合在性能和服务质量要求较高的场景中应用。</p>
+</li>
+</ol>
+<blockquote>
+<p>Gyeongmin Lee, Bongjun Kim, Seungbin Song, Seonyeong Heo and Hanjun Kim, “Comflex: Composable and flexible resource management for the iot”, <em>IEEE Internet of Things Journal</em>, vol. 8, no. 22, pp. 16406-16417, 2020.</p>
+</blockquote>
+<h2><span id="yi-xie-xiang-guan-de-lun-wen">一些相关的论文</span><a href="#yi-xie-xiang-guan-de-lun-wen" class="header-anchor">#</a></h2><h4><span id="yi-chong-zai-bian-yuan-wang-luo-zhong-shi-yong-yuan-shu-ju-fu-zhi-jin-xing-zi-yuan-fa-xian-de-qu-zhong-xin-hua-fang-fa">一种在边缘网络中使用元数据复制进行资源发现的去中心化方法</span><a href="#yi-chong-zai-bian-yuan-wang-luo-zhong-shi-yong-yuan-shu-ju-fu-zhi-jin-xing-zi-yuan-fa-xian-de-qu-zhong-xin-hua-fang-fa" class="header-anchor">#</a></h4><blockquote>
 <p>I. Murturi and S. Dustdar, “A Decentralized Approach for Resource Discovery using Metadata Replication in Edge Networks,” in IEEE Transactions on Services Computing, vol. 15, no. 5, pp. 2526-2537, 1 Sept.-Oct. 2022, doi: 10.1109&#x2F;TSC.2021.3082305.</p>
 </blockquote>
 <h5><span id="wen-ti-bei-jing">问题背景</span><a href="#wen-ti-bei-jing" class="header-anchor">#</a></h5><ul>
@@ -493,7 +554,7 @@
 </ul>
 <h5><span id="si-lu">思路</span><a href="#si-lu" class="header-anchor">#</a></h5><ul>
 <li>应指定<strong>边缘网络</strong>以去中心化和自动的方式处理发现资源的复杂性（架构上）<ul>
-<li>以P2P的方式连接边缘设备。一组边缘设备组成一个<em>集群</em>（cluster）;而多个相连的集群组成一个边缘网络，分别<em>是一个边缘邻域</em>（edge neighborhood）。还存在相应的系统协调器，用于组织发现资源的过程。建立在 Kademlia 协议之上，作为边缘设备之间的通信协议。协调器是动态放置的，并在提供各种服务的最合适的边缘设备上运行，动态评估。</li>
+<li>以P2P的方式连接边缘设备。一组边缘设备组成一个<em>集群</em>（cluster）;而多个相连的集群组成一个边缘网络，分别<em>是一个边缘邻域</em>（edge neighborhood）。还存在相应的系统协调器，用于组织发现资源的过程。建立在 Kademlia 协议之上，作为边缘设备之间的通信协议。Kademlia 是用于去中心化 P2P 计算机网络的分布式哈希表 （DHT）。当边缘设备更新其本地 DHT 时，这些更改会传播到所有其他设备，从而允许再次查询和操作它们。同样，有关当前集群协调员和全局协调员的信息也存储在 DHT 中。协调器是动态放置的，并在提供各种服务的最合适的边缘设备上运行，动态评估。</li>
 </ul>
 </li>
 <li>发现边缘段的可用资源（发现过程）<ul>
@@ -507,10 +568,14 @@
 <li>通过提供有关功能及其属性的某些核心信息来描述资源。这种类型的描述称为资源的元数据，在边缘设备之间复制并以分布式的方式存储。</li>
 <li>根据每个边缘设备的资源偏好处理隐私方面，确保并非所有资源都在整个系统中公布</li>
 </ul>
+<p>邻居集群是通过使用系统调用（即 <em>traceroute 命令</em>）来找到的，该命令估计与其他集群协调器的接近程度（即，使用跃点计数和延迟）。</p>
 <h5><span id="chang-jing">场景</span><a href="#chang-jing" class="header-anchor">#</a></h5><p>城市自然灾害，无人机配备多种计算能力和传感器。考虑三层云基础设施：云、雾、边缘。雾设备提供计算和长期存储功能。</p>
 <p><img src="/2024/08/21/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88Mobility-Management%EF%BC%89/457e80d23580c0ab8e4beb10140d9ec.png" alt="457e80d23580c0ab8e4beb10140d9ec"></p>
+<p>每个簇都有一个协调器设备（即带有绿色圆圈）和一个全局协调器设备（即带有红色和绿色圆圈）。我们假设集群协调器充当<em>超级对等体</em> [35] 。每个集群协调器都跟踪同一集群中的其他协调器和设备（即 IP 地址、端口）。同样，同一集群中的边缘设备相互存储信息，并始终了解其集群协调器和全局协调器。集群协调器可能对设备子集承担各种职责（即，监视、发现资源等）。全局协调器负责监控协调器，在集群之间交换资源描述，并在边缘云基础设施中编排边缘应用程序（即控制弹性、迁移任务等）。</p>
+<p><img src="/2024/08/21/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88Mobility-Management%EF%BC%89/a7199fbb7f2767e16e35572d17ad13f.png" alt="a7199fbb7f2767e16e35572d17ad13f"></p>
+<p>在本文中，我们主要关注三个方面：i）在边缘邻域中组织边缘设备，ii）确定最适合放置全局和集群协调器的设备，以及iii）在异构和动态的边缘邻域上实现自动资源发现。</p>
 <h1><span id="zi-yuan-qie-huan">资源切换</span><a href="#zi-yuan-qie-huan" class="header-anchor">#</a></h1><p>资源切换是指当移动设备在不同的网络环境或物理位置间移动时，需要无缝地切换正在使用的边缘资源。例如，当设备从一个边缘节点移动到另一个节点的覆盖范围内时，需要确保计算任务的迁移不会影响用户体验。这包括数据迁移、会话保持以及计算任务的状态保持等技术。</p>
-<h2><span id="gpt-gei-chu-de-yi-xie-suan-fa">GPT给出的一些算法</span><a href="#gpt-gei-chu-de-yi-xie-suan-fa" class="header-anchor">#</a></h2><h3><span id="1-ji-yu-xin-hao-qiang-du-de-qie-huan-signal-strength-based-handoff">1. <strong>基于信号强度的切换（Signal Strength-Based Handoff）</strong></span><a href="#1-ji-yu-xin-hao-qiang-du-de-qie-huan-signal-strength-based-handoff" class="header-anchor">#</a></h3><ul>
+<h2><span id="yi-xie-suan-fa">一些算法</span><a href="#yi-xie-suan-fa" class="header-anchor">#</a></h2><h3><span id="1-ji-yu-xin-hao-qiang-du-de-qie-huan-signal-strength-based-handoff">1. <strong>基于信号强度的切换（Signal Strength-Based Handoff）</strong></span><a href="#1-ji-yu-xin-hao-qiang-du-de-qie-huan-signal-strength-based-handoff" class="header-anchor">#</a></h3><ul>
 <li>方法设计：<ul>
 <li><strong>信号测量：</strong> 移动设备通过持续测量当前连接节点的信号强度。当信号强度低于阈值时，触发切换。</li>
 <li><strong>切换策略：</strong> 系统会搜索周围其他边缘节点的信号强度，并选择信号最强的节点进行切换。</li>
