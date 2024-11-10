@@ -6,7 +6,7 @@
   <link href="http://gladiouszhang.github.io/atom.xml" rel="self"/>
   
   <link href="http://gladiouszhang.github.io/"/>
-  <updated>2024-11-07T15:55:44.202Z</updated>
+  <updated>2024-11-10T15:10:16.148Z</updated>
   <id>http://gladiouszhang.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/"/>
     <id>http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/</id>
     <published>2024-11-07T14:49:34.000Z</published>
-    <updated>2024-11-07T15:55:44.202Z</updated>
+    <updated>2024-11-10T15:10:16.148Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>map：用来处理键值对来生成一组中间键值对</p><p>reduce：合并同一相同中间键相关联的中间值</p><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>用途举例：</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>map：用来处理键值对来生成一组中间键值对</p><p>reduce：合并同一相同中间键相关联的中间值</p><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>用途举例：倒排索引、web文档的图形化表示等。</p><p>操作简单，但是数据量大，需要多台机器并行计算。</p><p>问题：如何并行化计算、分发数据、处理故障</p><p>使用用户指定的map和reduce操作，用重新执行作为容错的机制</p><h1 id="编程模型"><a href="#编程模型" class="headerlink" title="编程模型"></a>编程模型</h1><p>map函数：由用户编写，输入一个对，然后输出一组中间键值对。MapReduce库会把所有具有相同key的中间键值对组合起来，然后发给Reduce函数处理。</p><p>reduce函数：也是由用户编写。接受中间键 I 和该键的一组值。它将这些值合并在一起以形成可能数量更小的一组值。通常reduce操作只产生0或1个值。中间值通过迭代器提供给用户的 Reduce 函数。这使我们能够处理太大而无法放入内存的值列表。</p><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>统计单词词频：</p><p>map把所有的单词作为key，value分别设为1</p><p>reduce把相同key的value相加，输出结果</p><p>用户编写具体的代码实现填充到mapreduce specification对象中，然后把用户的代码和MapReduce库链接在一起实现。</p><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p><code>map</code> 和 <code>reduce</code> 函数的输入和输出类型在概念上是不同的，但在 C++ 实现中，通过字符串来统一传递数据。</p><p>用户需要在代码中处理字符串和实际数据类型之间的转换。</p>]]></content>
     
     
       
