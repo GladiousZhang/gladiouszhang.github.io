@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png">
 <meta property="article:published_time" content="2024-11-07T14:49:34.000Z">
-<meta property="article:modified_time" content="2024-11-11T15:03:21.355Z">
+<meta property="article:modified_time" content="2024-11-12T15:10:31.974Z">
 <meta property="article:author" content="张舒俞">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="分布式系统">
@@ -361,10 +361,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 844(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.2k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
 	
 
       </div>
@@ -394,6 +394,18 @@
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>MapReduce接口有许多不同的实现。正确的选择取决于环境。这节描述了一个针对Google广泛使用的计算环境的实现:用交换式以太网连接在一起的大型商用PC集群。</p>
 <h3 id="执行概述"><a href="#执行概述" class="headerlink" title="执行概述"></a>执行概述</h3><p>通过将输入数据<strong>自动划分</strong>为一组M个部分，map函数调用分布在多台机器上。输入拆分可以由不同的机器并行处理。通过使用分区函数(例如，hash(key) mod R)将中间密钥空间划分成R个部分，来分布Reduce调用。分区数量(R)和分区函数由用户指定。</p>
 <p><img src="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png" alt="image-20241111230234068"></p>
+<ol>
+<li><p>MapReduce库首先将输入文件分成M段，每段通常16MB-64MB，然后在集群的机器上开启程序的许多副本（图中fork成worker和master）。</p>
+</li>
+<li><p>其中有一个特殊的副本叫master，其他的都是被master分配工作的worker。有M个映射任务和R个归约任务要分配。master挑选空闲的worker来分配一个map任务或者一个reduce任务</p>
+</li>
+<li><p>被分配了map的worker读取相应输入分割的内容。它从输入数据中解析出键&#x2F;值对，并将每一对传递给用户定义的reduce函数。Map函数产生的中间键&#x2F;值对在内存中缓冲。</p>
+</li>
+<li><p>缓存的pair被周期性的写到本地磁盘。由分区函数（前面提到的hash取余）划分成R个区域。这些缓冲对在本地磁盘上的位置被传递回master，主设备负责将这些位置转发给reduce工作器。</p>
+</li>
+<li><p>当mater通知reduce worker这些位置时，它使用rpc从map workers的本地磁盘读取缓冲数据。当reduce worker读取了所有的中间数据后，它会按照中间键对数据进行排序，以便将所有出现的相同键组合在一起。需要进行排序是因为通常许多不同的键映射到同一个reduce任务。如果中间数据量太大，不适合内存，就使用<strong>外部排序（？）</strong>。</p>
+</li>
+</ol>
 
       
     </div>
