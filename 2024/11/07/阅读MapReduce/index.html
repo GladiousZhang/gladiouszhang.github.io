@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png">
 <meta property="article:published_time" content="2024-11-07T14:49:34.000Z">
-<meta property="article:modified_time" content="2024-11-13T15:11:02.908Z">
+<meta property="article:modified_time" content="2024-11-15T15:08:05.427Z">
 <meta property="article:author" content="张舒俞">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="分布式系统">
@@ -361,10 +361,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.4k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
 	
 
       </div>
@@ -461,7 +461,10 @@
 </li>
 </ul>
 </blockquote>
-
+<p>绝大部分情况下map和reduce是确定性的，这样的话程序相当于是并行的。如果map和&#x2F;或ruduce是非确定性的，提供较弱但仍然合理的语义。在存在非确定性运算符的情况下，特定 Reduce 任务 R1 的输出相当于一个非确定性程序顺序执行产生的 R1 输出。但是，另一个 Reduce 任务 R2 的输出可能对应于非确定性程序的不同顺序执行产生的 R2 输出。（就是说执行顺序也许不同）</p>
+<p>在非确定性操作中，多个 <strong>reduce</strong> 任务可能会读取来自 <strong>map</strong> 任务的不同执行结果，因此输出的顺序和内容可能不同，但每个 <strong>reduce</strong> 任务的输出仍然等价于它在顺序执行中可能得到的结果。</p>
+<h2 id="本地性"><a href="#本地性" class="headerlink" title="本地性"></a>本地性</h2><p>因为网络资源稀缺，输入数据用Google File System（GFS）管理，存储在机器的本地磁盘。GFS把每个文件被分为64MB的块，并将每个块存储多个副本（通常是3个副本）存到不同机器。master会考虑输入文件的位置，并尝试将一个 map 任务调度到包含相应输入数据副本的机器上。如果不行，master会尝试将 map 任务调度到一个靠近该任务输入数据副本的机器上（例如，调度到与包含数据副本的机器处于同一网络交换机上的 worker 机器）。因此，大部分数据读取是在本地。</p>
+<h2 id="任务粒度"><a href="#任务粒度" class="headerlink" title="任务粒度"></a>任务粒度</h2>
       
     </div>
     <div class="article-footer">
