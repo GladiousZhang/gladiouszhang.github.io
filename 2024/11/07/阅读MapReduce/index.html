@@ -21,22 +21,18 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>阅读MapReduce | Gladious&#39; Blog</title>
-  <meta name="description" content="摘要map：用来处理键值对来生成一组中间键值对 reduce：合并同一相同中间键相关联的中间值 介绍用途举例：倒排索引、web文档的图形化表示等。 操作简单，但是数据量大，需要多台机器并行计算。 问题：如何并行化计算、分发数据、处理故障 使用用户指定的map和reduce操作，用重新执行作为容错的机制 编程模型map函数：由用户编写，输入一个对，然后输出一组中间键值对。MapReduce库会把所有">
+  <title>Gladious&#39; Blog</title>
+  <meta name="description" content="12345title: 阅读MapReducedate: 2024-11-07 22:49:34tags:   - 分布式系统  - 学习笔记  摘要map：用来处理键值对来生成一组中间键值对 reduce：合并同一相同中间键相关联的中间值 介绍用途举例：倒排索引、web文档的图形化表示等。 操作简单，但是数据量大，需要多台机器并行计算。 问题：如何并行化计算、分发数据、处理故障 使用用户指定的m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读MapReduce">
+<meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="摘要map：用来处理键值对来生成一组中间键值对 reduce：合并同一相同中间键相关联的中间值 介绍用途举例：倒排索引、web文档的图形化表示等。 操作简单，但是数据量大，需要多台机器并行计算。 问题：如何并行化计算、分发数据、处理故障 使用用户指定的map和reduce操作，用重新执行作为容错的机制 编程模型map函数：由用户编写，输入一个对，然后输出一组中间键值对。MapReduce库会把所有">
+<meta property="og:description" content="12345title: 阅读MapReducedate: 2024-11-07 22:49:34tags:   - 分布式系统  - 学习笔记  摘要map：用来处理键值对来生成一组中间键值对 reduce：合并同一相同中间键相关联的中间值 介绍用途举例：倒排索引、web文档的图形化表示等。 操作简单，但是数据量大，需要多台机器并行计算。 问题：如何并行化计算、分发数据、处理故障 使用用户指定的m">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png">
-<meta property="article:published_time" content="2024-11-07T14:49:34.000Z">
-<meta property="article:modified_time" content="2024-11-15T15:08:05.427Z">
+<meta property="article:published_time" content="2024-11-07T14:49:34.290Z">
+<meta property="article:modified_time" content="2024-11-16T11:33:12.531Z">
 <meta property="article:author" content="张舒俞">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="分布式系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/index.html">
   
@@ -203,7 +199,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0%E9%A1%B9%E7%9B%AE/" rel="tag">实习项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%84%E5%BD%B1/" rel="tag">摄影</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag">边缘计算</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0%E9%A1%B9%E7%9B%AE/" rel="tag">实习项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%84%E5%BD%B1/" rel="tag">摄影</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag">边缘计算</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -256,10 +252,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/" class="title">阅读MapReduce</a>
+                <a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/" class="title">(no title)</a>
               </p>
               <p class="item-date">
-                <time datetime="2024-11-07T14:49:34.000Z" itemprop="datePublished">2024-11-07</time>
+                <time datetime="2024-11-07T14:49:34.290Z" itemprop="datePublished">2024-11-07</time>
               </p>
             </div>
           </li>
@@ -326,28 +322,15 @@
     
     <div class="article-header">
       
-        
-  
-    <h1 class="article-title" itemprop="name">
-      阅读MapReduce
-    </h1>
-  
-
-      
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/" class="article-date">
-	  <time datetime="2024-11-07T14:49:34.000Z" itemprop="datePublished">2024-11-07</time>
+	  <time datetime="2024-11-07T14:49:34.290Z" itemprop="datePublished">2024-11-07</time>
 	</a>
 </span>
         
         
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a>
-  </span>
-
 
         
 	<span class="article-read hidden-xs">
@@ -361,17 +344,19 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.4k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4.1k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>map：用来处理键值对来生成一组中间键值对</p>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 阅读MapReduce</span><br><span class="line">date: 2024-11-07 22:49:34</span><br><span class="line">tags: </span><br><span class="line">  - 分布式系统</span><br><span class="line">  - 学习笔记</span><br></pre></td></tr></table></figure>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>map：用来处理键值对来生成一组中间键值对</p>
 <p>reduce：合并同一相同中间键相关联的中间值</p>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>用途举例：倒排索引、web文档的图形化表示等。</p>
 <p>操作简单，但是数据量大，需要多台机器并行计算。</p>
@@ -393,7 +378,6 @@
 <h3 id="分布式排序"><a href="#分布式排序" class="headerlink" title="分布式排序"></a>分布式排序</h3><p>map函数从每一个记录中提取出key，输出&lt;key,record&gt;对，reduce啥也不变。排序取决于后面提到的分区工具和排序属性（稍后来填坑）</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>MapReduce接口有许多不同的实现。正确的选择取决于环境。这节描述了一个针对Google广泛使用的计算环境的实现:用交换式以太网连接在一起的大型商用PC集群。</p>
 <h2 id="执行概述"><a href="#执行概述" class="headerlink" title="执行概述"></a>执行概述</h2><p>通过将输入数据<strong>自动划分</strong>为一组M个部分，map函数调用分布在多台机器上。输入拆分可以由不同的机器并行处理。通过使用分区函数(例如，hash(key) mod R)将中间密钥空间划分成R个部分，来分布Reduce调用。分区数量(R)和分区函数由用户指定。</p>
-<p><img src="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png" alt="image-20241111230234068"></p>
 <ol>
 <li><p>MapReduce库首先将输入文件分成M段，每段通常16MB-64MB，然后在集群的机器上开启程序的许多副本（图中fork成worker和master）。</p>
 </li>
@@ -457,6 +441,7 @@
 <li>由于文件系统的<strong>原子性</strong>，这个重命名操作是不可分割的，意味着此时最终的输出文件 <strong>final_output</strong> 已经确定下来，包含的是 <strong>worker B</strong> 的结果。</li>
 <li>当 <strong>worker A</strong> 尝试重命名它的临时文件 <strong>tempA</strong> 为 <strong>final_output</strong> 时，发现这个名称已经存在，因此它的重命名操作会<strong>失败</strong>。</li>
 <li>通过这种机制，最终的文件系统中<strong>只会保留一次任务的输出</strong>，并且最终的输出文件 <strong>final_output</strong> 中包含的是某一个 <strong>Reduce worker</strong> 成功执行后的数据（在这个例子中是 <strong>worker B</strong> 的数据）。</li>
+<li>因为他们访问的是<strong>同一个全局命名空间</strong>，并且能够查看和操作相同的文件。</li>
 </ul>
 </li>
 </ul>
@@ -464,7 +449,21 @@
 <p>绝大部分情况下map和reduce是确定性的，这样的话程序相当于是并行的。如果map和&#x2F;或ruduce是非确定性的，提供较弱但仍然合理的语义。在存在非确定性运算符的情况下，特定 Reduce 任务 R1 的输出相当于一个非确定性程序顺序执行产生的 R1 输出。但是，另一个 Reduce 任务 R2 的输出可能对应于非确定性程序的不同顺序执行产生的 R2 输出。（就是说执行顺序也许不同）</p>
 <p>在非确定性操作中，多个 <strong>reduce</strong> 任务可能会读取来自 <strong>map</strong> 任务的不同执行结果，因此输出的顺序和内容可能不同，但每个 <strong>reduce</strong> 任务的输出仍然等价于它在顺序执行中可能得到的结果。</p>
 <h2 id="本地性"><a href="#本地性" class="headerlink" title="本地性"></a>本地性</h2><p>因为网络资源稀缺，输入数据用Google File System（GFS）管理，存储在机器的本地磁盘。GFS把每个文件被分为64MB的块，并将每个块存储多个副本（通常是3个副本）存到不同机器。master会考虑输入文件的位置，并尝试将一个 map 任务调度到包含相应输入数据副本的机器上。如果不行，master会尝试将 map 任务调度到一个靠近该任务输入数据副本的机器上（例如，调度到与包含数据副本的机器处于同一网络交换机上的 worker 机器）。因此，大部分数据读取是在本地。</p>
-<h2 id="任务粒度"><a href="#任务粒度" class="headerlink" title="任务粒度"></a>任务粒度</h2>
+<h2 id="任务粒度"><a href="#任务粒度" class="headerlink" title="任务粒度"></a>任务粒度</h2><p>map和reduce分别分为M和R个任务，都远大于worker的数量。每个worker执行多个不同的任务，这些任务是相互独立的。这样可以更好的负载均衡，并且可以加速worker挂了的时候的会复苏的，因为挂掉worker的任务可以快速分配到其他woker上。</p>
+<p>实际上R和M大小有限制，因为master必须做O(M + R)次调度决策，并且需要在内存中保持O(M ∗ R)的状态信息（虽然每一对M和R的状态信息很小，1B左右）。R经常受用户约束（大概是用户指定的意思），所以一般限制M，让每个任务处理的输入数据大约为16 MB到64 MB，R为worker数量的一个小倍数。如果是2000台worker，那么通常设置<strong>M &#x3D; 200,000</strong>和<strong>R &#x3D; 5,000</strong></p>
+<h2 id="备份任务"><a href="#备份任务" class="headerlink" title="备份任务"></a>备份任务</h2><p>mapreduce中常见的延迟原因之一是straggler（拖延者），即一个机器在完成最后几个map或reduce任务时花费异常长的时间。</p>
+<p>可能的原因：硬件问题（例如磁盘读写性能低下）、资源竞争（例如机器上有多个任务同时运行，导致资源不足）、甚至是软件故障（例如处理器缓存被禁用，导致性能急剧下降）</p>
+<p>解决策略：设计了一套备份任务执行机制。当MapReduce操作接近完成时，master会调度剩余的正在进行的任务的备份执行。只要主任务或备份任务中的任何一个完成，任务就会被标记为已完成。</p>
+<h1 id="改良"><a href="#改良" class="headerlink" title="改良"></a>改良</h1><p>感觉就是一些可修改的参数。</p>
+<h2 id="分区函数（Partition）"><a href="#分区函数（Partition）" class="headerlink" title="分区函数（Partition）"></a>分区函数（Partition）</h2><p>分区函数是对mapper产生的中间文件进行划分，分到reducer上面，默认是hash(key) mod R。通常够用了，但是有的用户想自定义，因为其他函数更有意义，比如有时输出键可能是<strong>URL</strong>，而我们希望相同hostname的所有条目都位于同一个输出文件中。例如，使用“hash(Hostname(urlkey)) mod R”作为分区函数，可以确保来自同一主机的所有URL条目都被划分到同一个输出文件。</p>
+<h2 id="顺序保证"><a href="#顺序保证" class="headerlink" title="顺序保证"></a>顺序保证</h2><p>中间键值对会按照键的<strong>递增顺序</strong>进行处理（MapReduce系统会保证在每个Reduce任务中，这些键值对按照<strong>键的递增顺序</strong>被排序），即reducer的输入递增。对于以下情况有意义：</p>
+<ul>
+<li><p>当输出文件格式需要支持按<strong>键</strong>进行高效的<strong>随机访问查找</strong>时。</p>
+</li>
+<li><p>当输出的用户觉得数据按键排序更方便时。</p>
+</li>
+</ul>
+
       
     </div>
     <div class="article-footer">
@@ -473,7 +472,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/" title="阅读MapReduce" target="_blank" rel="external">http://gladiouszhang.github.io/2024/11/07/阅读MapReduce/</a>
+      <a href="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/" title="" target="_blank" rel="external">http://gladiouszhang.github.io/2024/11/07/阅读MapReduce/</a>
     </li>
     
     <li class="post-copyright-license">
