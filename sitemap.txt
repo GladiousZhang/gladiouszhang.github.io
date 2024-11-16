@@ -13,9 +13,9 @@ http://gladiouszhang.github.io/2024/04/13/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%
 http://gladiouszhang.github.io/2024/04/12/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%BC%82%E5%B8%B8/
 http://gladiouszhang.github.io/2024/04/06/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB%EF%BC%8C%E6%B3%A8%E8%A7%A3/
 http://gladiouszhang.github.io/404.html
-http://gladiouszhang.github.io/links/index.html
-http://gladiouszhang.github.io/repository/index.html
 http://gladiouszhang.github.io/books/index.html
+http://gladiouszhang.github.io/repository/index.html
+http://gladiouszhang.github.io/links/index.html
 http://gladiouszhang.github.io/categories/index.html
 http://gladiouszhang.github.io/tags/index.html
 http://gladiouszhang.github.io/
