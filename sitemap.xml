@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gladiouszhang.github.io/2024/03/31/mit6-824%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2024-11-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/</loc>
     
     <lastmod>2024-11-17</lastmod>
@@ -83,15 +92,6 @@
   </url>
   
   <url>
-    <loc>http://gladiouszhang.github.io/2024/03/31/mit6-824%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2024-08-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://gladiouszhang.github.io/2024/04/11/%E6%91%84%E5%BD%B1%E5%88%86%E4%BA%AB/</loc>
     
     <lastmod>2024-07-31</lastmod>
@@ -128,15 +128,6 @@
   </url>
   
   <url>
-    <loc>http://gladiouszhang.github.io/categories/index.html</loc>
-    
-    <lastmod>2024-07-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://gladiouszhang.github.io/books/index.html</loc>
     
     <lastmod>2024-07-30</lastmod>
@@ -155,6 +146,24 @@
   </url>
   
   <url>
+    <loc>http://gladiouszhang.github.io/categories/index.html</loc>
+    
+    <lastmod>2024-07-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gladiouszhang.github.io/repository/index.html</loc>
+    
+    <lastmod>2024-07-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://gladiouszhang.github.io/links/index.html</loc>
     
     <lastmod>2024-07-30</lastmod>
@@ -165,15 +174,6 @@
   
   <url>
     <loc>http://gladiouszhang.github.io/tags/index.html</loc>
-    
-    <lastmod>2024-07-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://gladiouszhang.github.io/repository/index.html</loc>
     
     <lastmod>2024-07-30</lastmod>
     
