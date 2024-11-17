@@ -22,22 +22,22 @@
   
   
   <title>阅读MapReduce | Gladious&#39; Blog</title>
-  <meta name="description" content="全部读了一遍，除了实践以外都做了笔记 摘要map：用来处理键值对来生成一组中间键值对 reduce：合并同一相同中间键相关联的中间值 介绍用途举例：倒排索引、web文档的图形化表示等。 操作简单，但是数据量大，需要多台机器并行计算。 问题：如何并行化计算、分发数据、处理故障 使用用户指定的map和reduce操作，用重新执行作为容错的机制 编程模型map函数：由用户编写，输入一个对，然后输出一">
+  <meta name="description" content="摘要 介绍 编程模型 例子 类型 更多例子 分布式grep（查找某个单词） URL访问频次统计 反向web连接图 每个主机的词向量 倒排索引 分布式排序     实现 执行概述 Master的数据结构 错误容忍 worker失效（failure） master失效 在故障情况下的语义（？）~ 1. 初始分配任务~ 2. 任务执行过程中发生故障~ 3. 新的任务分配给 worker B~ 4.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阅读MapReduce">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="全部读了一遍，除了实践以外都做了笔记 摘要map：用来处理键值对来生成一组中间键值对 reduce：合并同一相同中间键相关联的中间值 介绍用途举例：倒排索引、web文档的图形化表示等。 操作简单，但是数据量大，需要多台机器并行计算。 问题：如何并行化计算、分发数据、处理故障 使用用户指定的map和reduce操作，用重新执行作为容错的机制 编程模型map函数：由用户编写，输入一个对，然后输出一">
+<meta property="og:description" content="摘要 介绍 编程模型 例子 类型 更多例子 分布式grep（查找某个单词） URL访问频次统计 反向web连接图 每个主机的词向量 倒排索引 分布式排序     实现 执行概述 Master的数据结构 错误容忍 worker失效（failure） master失效 在故障情况下的语义（？）~ 1. 初始分配任务~ 2. 任务执行过程中发生故障~ 3. 新的任务分配给 worker B~ 4.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/%5Cimage-20241111230234068.png">
-<meta property="og:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/%5Cimage-20241117161427761.png">
+<meta property="og:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png">
+<meta property="og:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241117161427761.png">
 <meta property="article:published_time" content="2024-11-07T14:49:34.000Z">
-<meta property="article:modified_time" content="2024-11-17T09:09:05.289Z">
+<meta property="article:modified_time" content="2024-11-17T09:11:56.130Z">
 <meta property="article:author" content="张舒俞">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="分布式系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/%5Cimage-20241111230234068.png">
+<meta name="twitter:image" content="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://gladiouszhang.github.io/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/index.html">
   
@@ -362,17 +362,71 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6.7k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6.9k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 23(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 24(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <!--toc-->
+        <!-- toc -->
+
+<ul>
+<li><a href="#--">摘要</a></li>
+<li><a href="#--">介绍</a></li>
+<li><a href="#----">编程模型</a><ul>
+<li><a href="#--">例子</a></li>
+<li><a href="#--">类型</a></li>
+<li><a href="#----">更多例子</a><ul>
+<li><a href="#---grep--------">分布式grep（查找某个单词）</a></li>
+<li><a href="#url------">URL访问频次统计</a></li>
+<li><a href="#--web---">反向web连接图</a></li>
+<li><a href="#--------">每个主机的词向量</a></li>
+<li><a href="#----">倒排索引</a></li>
+<li><a href="#-----">分布式排序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#--">实现</a><ul>
+<li><a href="#----">执行概述</a></li>
+<li><a href="#master-----">Master的数据结构</a></li>
+<li><a href="#----">错误容忍</a><ul>
+<li><a href="#worker---failure-">worker失效（failure）</a></li>
+<li><a href="#master--">master失效</a></li>
+<li><a href="#------------">在故障情况下的语义（？）</a><br>~ <a href="#1-------">1. 初始分配任务</a><br>~ <a href="#2------------">2. 任务执行过程中发生故障</a><br>~ <a href="#3-----------worker-b--">3. 新的任务分配给 <strong>worker B</strong></a><br>~ <a href="#4---worker-a-------">4. <strong>worker A</strong> 恢复运行</a><br>~ <a href="#5------worker-----------">5. 两个 <strong>worker</strong> 竞争写入最终输出</a><br>~ <a href="#6-----------">6. 原子重命名操作的应用</a></li>
+</ul>
+</li>
+<li><a href="#---">本地性</a></li>
+<li><a href="#----">任务粒度</a></li>
+<li><a href="#----">备份任务</a></li>
+</ul>
+</li>
+<li><a href="#--">改良</a><ul>
+<li><a href="#-----partition-">分区函数（Partition）</a></li>
+<li><a href="#----">顺序保证</a></li>
+<li><a href="#----">合并函数</a></li>
+<li><a href="#------">输入输出类型</a></li>
+<li><a href="#---">副作用</a><br>  ~ <a href="#2--------phase-2---commit-phase----">2. <strong>提交阶段（Phase 2 - Commit Phase）</strong>：</a></li>
+<li><a href="#-----">跳过坏记录</a></li>
+<li><a href="#----">本地执行</a></li>
+<li><a href="#----">状态信息</a></li>
+<li><a href="#---">计数器</a></li>
+</ul>
+</li>
+<li><a href="#--">性能</a><ul>
+<li><a href="#----">集群配置</a></li>
+<li><a href="#grep--">Grep操作</a></li>
+<li><a href="#----">排序操作</a></li>
+<li><a href="#-------">备份任务的影响</a></li>
+<li><a href="#-------">机器失败的影响</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
 
 <p>全部读了一遍，除了实践以外都做了笔记</p>
 <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>map：用来处理键值对来生成一组中间键值对</p>
@@ -397,7 +451,7 @@
 <h3 id="分布式排序"><a href="#分布式排序" class="headerlink" title="分布式排序"></a>分布式排序</h3><p>map函数从每一个记录中提取出key，输出&lt;key,record&gt;对，reduce啥也不变。排序取决于后面提到的分区工具和排序属性（稍后来填坑）</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>MapReduce接口有许多不同的实现。正确的选择取决于环境。这节描述了一个针对Google广泛使用的计算环境的实现:用交换式以太网连接在一起的大型商用PC集群。</p>
 <h2 id="执行概述"><a href="#执行概述" class="headerlink" title="执行概述"></a>执行概述</h2><p>通过将输入数据<strong>自动划分</strong>为一组M个部分，map函数调用分布在多台机器上。输入拆分可以由不同的机器并行处理。通过使用分区函数(例如，hash(key) mod R)将中间密钥空间划分成R个部分，来分布Reduce调用。分区数量(R)和分区函数由用户指定。</p>
-<p><img src="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/%5Cimage-20241111230234068.png"></p>
+<p><img src="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241111230234068.png"></p>
 <ol>
 <li><p>MapReduce库首先将输入文件分成M段，每段通常16MB-64MB，然后在集群的机器上开启程序的许多副本（图中fork成worker和master）。</p>
 </li>
@@ -561,7 +615,7 @@ apple
 <h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p>以大数据中寻找符合特定范式的数据和大数据排序两个例子来测量性能。这两个程序代表了MapReduce用户编写的实际程序的一个大子集——一类程序将数据从一种表示变换到另一种表示，另一类程序从大数据集中提取少量有趣的数据。</p>
 <h2 id="集群配置"><a href="#集群配置" class="headerlink" title="集群配置"></a>集群配置</h2><p>1800台机器，其他不想赘述（</p>
 <h2 id="Grep操作"><a href="#Grep操作" class="headerlink" title="Grep操作"></a>Grep操作</h2><p>扫描一个$10^{10}$条的100Byte的记录，从中找一个罕见的三字符的范式，出现了92337次。输入被分成大约 64MB 的块（M &#x3D; 15000），整个输出放在一个文件中（R &#x3D; 1）</p>
-<p><img src="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/%5Cimage-20241117161427761.png" alt="image-20241117161427761"></p>
+<p><img src="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/image-20241117161427761.png" alt="image-20241117161427761"></p>
 <p>Y轴表示输入数据的扫描速率。随着更多的机器被分配到这个MapReduce计算任务，扫描速率逐渐提高，当分配了1764个工作节点时，扫描速率达到超过30 GB&#x2F;s的峰值。</p>
 <p>随着Map任务的完成，速率开始下降，并在计算开始后的约80秒时降为零，表示所有Map任务都已经完成。整个计算过程大约持续了150秒，包括大约1分钟的启动开销。这个启动开销主要是由于程序传播到所有工作节点，以及与GFS（Google文件系统）交互的延迟——需要打开1000个输入文件并获取本地优化所需的信息。</p>
 <h2 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h2><p>数据：$10^{10}$个 100Byte的记录，大约1TB。基于TeraSort基准测试的模型。</p>
