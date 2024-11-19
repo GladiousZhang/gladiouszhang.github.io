@@ -22,15 +22,15 @@
   
   
   <title>mit6.824笔记 | Gladious&#39; Blog</title>
-  <meta name="description" content="环境配置 lab1 阅读mrsequential.go 阅读wc.go 任务 阅读 mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路      环境配置环境：Ubuntu 20.04 配置go语言环境 1apt install golang  在vscode里面安装go的插件 lab1.so文件是go里面的插件">
+  <meta name="description" content="环境配置 lab1 阅读mrsequential.go 阅读wc.go 任务 阅读 mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路 新worker加入 master执行逻辑 worker执行逻辑（等会，先补充完上面的）        环境配置环境：Ubuntu 20.04 配置go语言环境 1apt inst">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mit6.824笔记">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/03/31/mit6-824%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="环境配置 lab1 阅读mrsequential.go 阅读wc.go 任务 阅读 mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路      环境配置环境：Ubuntu 20.04 配置go语言环境 1apt install golang  在vscode里面安装go的插件 lab1.so文件是go里面的插件">
+<meta property="og:description" content="环境配置 lab1 阅读mrsequential.go 阅读wc.go 任务 阅读 mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路 新worker加入 master执行逻辑 worker执行逻辑（等会，先补充完上面的）        环境配置环境：Ubuntu 20.04 配置go语言环境 1apt inst">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-31T08:20:53.000Z">
-<meta property="article:modified_time" content="2024-11-18T14:50:30.021Z">
+<meta property="article:modified_time" content="2024-11-19T15:12:14.191Z">
 <meta property="article:author" content="张舒俞">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="分布式系统">
@@ -359,10 +359,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/03/31/mit6-824%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.7k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.2k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
 	
 
       </div>
@@ -385,7 +385,12 @@
 <li><a href="#-workergo-"><code>worker.go</code></a></li>
 </ul>
 </li>
-<li><a href="#--">思路</a></li>
+<li><a href="#--">思路</a><ul>
+<li><a href="#-worker--">新worker加入</a></li>
+<li><a href="#master----">master执行逻辑</a></li>
+<li><a href="#worker----------------">worker执行逻辑（等会，先补充完上面的）</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -426,13 +431,14 @@
 <h3 id="worker-go"><a href="#worker-go" class="headerlink" title="worker.go"></a><code>worker.go</code></h3><p>在其中定义了键值对的结构体。</p>
 <p>创建了一个将不同键通过对其哈希值取模分配到N个reduce任务的方法。</p>
 <p>最主要的是<code>main/mrworker.go</code>会调用的Worker方法，传入map和reduce方法，主要是在这里写代码。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对于woker来说，可以每次一上线就注册到master当中，调用master的join方法（待编写）</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CallMasterStart</span><span class="params">()</span></span> &#123;</span><br><span class="line">	args := ArgsToMaster&#123;&#125;</span><br><span class="line">	args.id = os.Getuid()</span><br><span class="line">	args.msgType = join</span><br><span class="line">	reply := ArgsFromMaster&#123;&#125;</span><br><span class="line">	ok := call(<span class="string">&quot;Coordinator.join&quot;</span>, &amp;args, &amp;reply)</span><br><span class="line">	<span class="keyword">if</span> ok &#123;</span><br><span class="line">		<span class="comment">// 应该会返回master给返回worker的任务</span></span><br><span class="line">		fmt.Printf(<span class="string">&quot;reply.msg %v\n&quot;</span>, reply.msg)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;call failed!\n&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>按照原论文的习惯，我就称为worker和master了</p>
+<h3 id="新worker加入"><a href="#新worker加入" class="headerlink" title="新worker加入"></a>新worker加入</h3><p>对于woker来说，可以每次一上线就注册到master当中，调用master的join方法（待编写）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *workerTask)</span></span> CallMasterStart() &#123;</span><br><span class="line">	args := ArgsToMaster&#123;&#125;</span><br><span class="line">	args.Id = os.Getuid()</span><br><span class="line">	fmt.Printf(<span class="string">&quot;id %v\n&quot;</span>, args.Id)</span><br><span class="line">	<span class="comment">//args.msgType = join</span></span><br><span class="line">	reply := ArgsFromMaster&#123;&#125;</span><br><span class="line">	ok := call(<span class="string">&quot;Coordinator.WorkerJoin&quot;</span>, &amp;args, &amp;reply)</span><br><span class="line">	<span class="keyword">if</span> ok &#123;</span><br><span class="line">		<span class="comment">// 应该会返回master给返回worker的任务，待详细设计</span></span><br><span class="line">		<span class="comment">//fmt.Printf(&quot;reply.msg %v\n&quot;, reply.Msg)</span></span><br><span class="line">		splits := strings.Split(reply.Msg, <span class="string">&quot;=&quot;</span>)</span><br><span class="line">		w.nReduce, _ = strconv.Atoi(splits[<span class="number">1</span>])</span><br><span class="line">		w.filename = splits[<span class="number">0</span>]</span><br><span class="line">		w.taskType, _ = strconv.Atoi(splits[<span class="number">2</span>])</span><br><span class="line">		<span class="comment">//fmt.Printf(&quot;reply.msg %v, nReduce %v\n&quot;, w.filename, w.nReduce)</span></span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;call failed!\n&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <p>join方法里面最好是能建立一个socket到worker，不知道可不可以，如果不可以的话，master怎么给woker派任务？（用reply的值返回就行，socket开销太大）所以在worker中：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> WorkerJoin(args *ArgsToMaster, reply *ArgsFromMaster) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 由于是并发的，所以需要考虑线程安全</span></span><br><span class="line">	c.mu.Lock()</span><br><span class="line">	c.workerList = <span class="built_in">append</span>(c.workerList, args.id)</span><br><span class="line">	<span class="comment">// 回传一个任务地址回去</span></span><br><span class="line">	<span class="keyword">for</span> _, taskItem := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">		<span class="keyword">if</span> taskItem.taskStatus == ready &#123;</span><br><span class="line">			reply.msg = taskItem.taskAddr + <span class="string">&quot;=&quot;</span> + strconv.Itoa(c.nReducer)</span><br><span class="line">			taskItem.taskStatus = assign</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.mu.Unlock()</span><br><span class="line">	reply.msg = <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> WorkerJoin(args *ArgsToMaster, reply *ArgsFromMaster) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 由于是并发的，所以需要考虑线程安全</span></span><br><span class="line">	c.mu.Lock()</span><br><span class="line">	c.workerList = <span class="built_in">append</span>(c.workerList, args.Id)</span><br><span class="line">	<span class="comment">// 回传一个任务地址回去</span></span><br><span class="line">	<span class="keyword">for</span> i, taskItem := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">		<span class="comment">//fmt.Println(taskItem)</span></span><br><span class="line">		<span class="keyword">if</span> taskItem.taskStatus == ready &#123;</span><br><span class="line">			reply.Msg = taskItem.taskAddr + <span class="string">&quot;=&quot;</span> + strconv.Itoa(c.nReducer) + <span class="string">&quot;=&quot;</span> + strconv.Itoa(<span class="type">int</span>(taskItem.taskType))</span><br><span class="line">			c.taskList[i].taskStatus = assign</span><br><span class="line">			c.taskList[i].taskWorker = args.Id</span><br><span class="line">			<span class="comment">// 如果找到了就要解锁，不然其他线程获取不到锁</span></span><br><span class="line">			c.mu.Unlock()</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.mu.Unlock()</span><br><span class="line">	reply.Msg = <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -446,6 +452,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gob: type mismatch: no fields matched compiling decoder for ArgsToMaster</span><br></pre></td></tr></table></figure>
 
 <p>搜了一下说客户端所传的参数类型和服务端不一致</p>
+<p>原来是因为之前修改了结构体名称后没有重新运行master。。。。。</p>
+<h3 id="master执行逻辑"><a href="#master执行逻辑" class="headerlink" title="master执行逻辑"></a>master执行逻辑</h3><p>按理说master给worker分了任务就已经可以了，但是，master有要求如下：</p>
+<blockquote>
+<p>如果工作者在合理的时间内（在这个实验中，使用十秒）没有完成其任务，协调者应该注意到，并将相同的任务分配给不同的工作者。</p>
+</blockquote>
+<p>所以master应当给每个任务维护一个计时器，只要10s到了任务还没有end，那这个任务就应该把状态改为ready。任务新增计时器的字段，并且每分配一次任务就要初始化一次计时器</p>
+<p>在master的任务列表初始化结束后，开启一个新的携程，专门用于检查是否超时。此后每次任务完成回给master的时候，master都应该检查id是不是和列表中的相同。</p>
+<h3 id="worker执行逻辑（等会，先补充完上面的）"><a href="#worker执行逻辑（等会，先补充完上面的）" class="headerlink" title="worker执行逻辑（等会，先补充完上面的）"></a>worker执行逻辑（等会，先补充完上面的）</h3><p>现在worker知道了任务类型和文件地址，应该使用map或者reduce函数进行操作，并将结果存到文件中。但仍然存在一个问题：我们并不是调完一次map或者reduce任务，worker就挂了，而是持续存在。因此，需要每执行完一个任务，就去找master要任务。</p>
 
       
     </div>
