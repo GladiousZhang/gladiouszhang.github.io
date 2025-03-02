@@ -6,7 +6,7 @@
   <link href="http://gladiouszhang.github.io/atom.xml" rel="self"/>
   
   <link href="http://gladiouszhang.github.io/"/>
-  <updated>2024-11-11T08:59:49.581Z</updated>
+  <updated>2025-03-02T06:56:05.495Z</updated>
   <id>http://gladiouszhang.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CMU-深度学习系统-第二章</title>
+    <link href="http://gladiouszhang.github.io/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"/>
+    <id>http://gladiouszhang.github.io/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/</id>
+    <published>2025-03-02T05:39:06.000Z</published>
+    <updated>2025-03-02T06:56:05.495Z</updated>
+    
+    <content type="html"><![CDATA[<p>这章是用softmax的例子来回顾了ML的知识点。</p><p>softmax回归又叫多类逻辑回归，就是将输入数据进行分类，通过softmax函数得到每个类别的概率。</p><p>而这样的分类问题，是通过实现准备这样一个数据集：包含数据和数据对应的标签。让模型学习数据集和标签的对应关系，这样的过程叫做监督学习。</p><blockquote><p>除了监督学习，还有</p><ul><li><p>无监督学习</p><ul><li>数据没有标签，模型从无标签数据中发现隐藏模式或结构。</li><li>如K-means、层次聚类、主成分分析（PCA）</li></ul></li><li><p>半监督学习（Semi-Supervised Learning）</p><ul><li>结合少量有标签数据和大量无标签数据训练模型。</li><li>适用于标注成本高，但未标注数据丰富（如医学图像分析）。</li></ul></li><li><p>强化学习（Reinforcement Learning, RL）</p><ul><li>模型通过与环境交互，根据<strong>奖励信号</strong>调整策略，目标是最大化长期累积奖励。</li><li>适用于序列决策问题（如机器人控制、游戏AI）。</li><li>Q-learning、深度强化学习（DQN）、策略梯度（PPO）。</li></ul></li><li><p>自监督学习（Self-Supervised Learning）</p><ul><li>通过构造“伪标签”从无标签数据中学习，属于无监督学习的子类。</li><li>NLP中的预训练模型（如BERT通过掩码预测学习上下文）。</li><li>图像中的对比学习（如SimCLR通过图像增强构造正负样本对）。</li></ul></li><li><p>多任务学习（Multi-Task Learning）</p><ul><li>同时学习多个相关任务，共享部分模型参数以提高泛化能力。</li><li>一个模型同时完成文本分类和实体识别。</li></ul></li></ul><p><img src="/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/image-20250302142116461-1740896480006-1.png" alt="image-20250302142116461"></p></blockquote><p>无论是怎么样的机器学习，都一定会包含三个要素</p><ul><li>hypothesis class，也就是模型的结构</li><li>loss函数</li><li>优化方法</li></ul><p>比如k分类问题，输入数字的图像，输出的是每个数字的一种可能性（这里还不能说是概率，因为不满足概率的条件）</p><p>为什么要用矩阵：数学上更严谨，同时有利于并行计算提高效率。</p><p>loss函数是为了对比输出的结果和原本标签之间的差距。一个最简单的loss函数：</p><p><img src="/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/image-20250302142642246.png" alt="image-20250302142642246"></p><p>但是这个函数并不好，因为不可导。</p><p>进一步我们把上面提到的输出的可能性转化为概率，而这一步就是softmax函数：</p><p><img src="/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/image-20250302143248967.png" alt="image-20250302143248967"></p><p>其中 $z_i$就是每一个类别的概率。之所以叫softmax回归应该也是因为这个softmax函数。</p><p>根据这个转化后的概率，可以进一步得到loss的计算公式，也就是softmax loss或者叫做交叉熵损失。</p><blockquote><p>为什么要用负对数？</p><p><img src="/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/image-20250302145224471.png" alt="image-20250302145224471"></p></blockquote><p><img src="/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/image-20250302145252193.png" alt="image-20250302145252193"></p><p>其中$h_y(x)$应该是对应x输入时为y的概率值，k是k分类的k</p><p>目前常用的优化方法是SGD，就是随机梯度下降，因为如果对全体对象进行梯度下降，空间太大了。SGD是进行多轮，每次抽取一定样本来进行更新。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这章是用softmax的例子来回顾了ML的知识点。&lt;/p&gt;
+&lt;p&gt;softmax回归又叫多类逻辑回归，就是将输入数据进行分类，通过softmax函数得到每个类别的概率。&lt;/p&gt;
+&lt;p&gt;而这样的分类问题，是通过实现准备这样一个数据集：包含数据和数据对应的标签。让模型学习数据集</summary>
+      
+    
+    
+    
+    
+    <category term="学习笔记" scheme="http://gladiouszhang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="AI Infa" scheme="http://gladiouszhang.github.io/tags/AI-Infa/"/>
+    
+  </entry>
   
   <entry>
     <title>higher库在元（强化）学习中的使用</title>
