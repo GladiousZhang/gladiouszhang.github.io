@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  
+  <meta name="msvalidate.01" content="9F44BEDCB19BA7FC42CFA175FA23AEEF" />
+  
+  <meta name="google-site-verification" content="2dJwzsgMTepl0cllOC-3mrrpAZIZmiFdT3FxU6XHcOI" />
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>强化学习SAC算法流程及与PPO对比 | Gladious&#39; Blog</title>
+  <meta name="description" content="SAC算法流程  主循环中进行动作选择与环境交互 update函数当中  目标Q值计算（Critic更新） Actor策略更新 目标critic网络软更新   参考代码   和PPO算法进行对比   因为最近论文里面用到了这个算法，所以顺便也总结一下 SAC算法流程 主循环中进行动作选择与环境交互  Actor网络（策略网络$\pi_{\theta}$）根据当前状态$s_t$生成带随机性的动作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强化学习SAC算法流程及与PPO对比">
+<meta property="og:url" content="http://gladiouszhang.github.io/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SAC算法流程  主循环中进行动作选择与环境交互 update函数当中  目标Q值计算（Critic更新） Actor策略更新 目标critic网络软更新   参考代码   和PPO算法进行对比   因为最近论文里面用到了这个算法，所以顺便也总结一下 SAC算法流程 主循环中进行动作选择与环境交互  Actor网络（策略网络$\pi_{\theta}$）根据当前状态$s_t$生成带随机性的动作">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-05T13:53:26.000Z">
+<meta property="article:modified_time" content="2025-03-05T15:06:27.080Z">
+<meta property="article:author" content="张舒俞">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="强化学习">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://gladiouszhang.github.io/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/gladiouszhang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Shuyu Zhang (张舒俞)</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">学生</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shaanxi, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/gladiouszhang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/n/Gladious_Zhang" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI-Infa/" rel="tag">AI Infa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0%E9%A1%B9%E7%9B%AE/" rel="tag">实习项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%84%E5%BD%B1/" rel="tag">摄影</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag">边缘计算</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/AI-Infa/" style="font-size: 13px;">AI Infa</a> <a href="/tags/Java/" style="font-size: 13.6px;">Java</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 13.8px;">分布式系统</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">学习笔记</a> <a href="/tags/%E5%AE%9E%E4%B9%A0%E9%A1%B9%E7%9B%AE/" style="font-size: 13.2px;">实习项目</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">强化学习</a> <a href="/tags/%E6%91%84%E5%BD%B1/" style="font-size: 13px;">摄影</a> <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" style="font-size: 13.4px;">边缘计算</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/" class="title">强化学习SAC算法流程及与PPO对比</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-03-05T13:53:26.000Z" itemprop="datePublished">2025-03-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="title">CMU-深度学习系统-第二章</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-03-02T05:39:06.000Z" itemprop="datePublished">2025-03-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/11/11/higher%E5%BA%93%E5%9C%A8%E5%85%83%EF%BC%88%E5%BC%BA%E5%8C%96%EF%BC%89%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" class="title">higher库在元（强化）学习中的使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-11-11T06:28:49.000Z" itemprop="datePublished">2024-11-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/11/07/%E9%98%85%E8%AF%BBMapReduce/" class="title">阅读MapReduce</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-11-07T14:49:34.000Z" itemprop="datePublished">2024-11-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/08/21/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88Mobility-Management%EF%BC%89/" class="title">边缘计算中的移动管理（Mobility Management）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-08-20T17:03:28.000Z" itemprop="datePublished">2024-08-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-强化学习SAC算法流程及与PPO对比" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      强化学习SAC算法流程及与PPO对比
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/" class="article-date">
+	  <time datetime="2025-03-05T13:53:26.000Z" itemprop="datePublished">2025-03-05</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a>, <a class="article-tag-link-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <!-- toc -->
+<ul>
+<li><a href="#sac----">SAC算法流程</a>
+<ul>
+<li><a href="#---------------">主循环中进行动作选择与环境交互</a></li>
+<li><a href="#update----">update函数当中</a>
+<ul>
+<li><a href="#--q----critic---">目标Q值计算（Critic更新）</a></li>
+<li><a href="#actor----">Actor策略更新</a></li>
+<li><a href="#--critic-----">目标critic网络软更新</a></li>
+</ul>
+</li>
+<li><a href="#----">参考代码</a></li>
+</ul>
+</li>
+<li><a href="#-ppo------">和PPO算法进行对比</a></li>
+</ul>
+<!-- tocstop -->
+<p>因为最近论文里面用到了这个算法，所以顺便也总结一下</p>
+<h1>SAC算法流程</h1>
+<h2 id="主循环中进行动作选择与环境交互">主循环中进行动作选择与环境交互</h2>
+<ul>
+<li>Actor网络（策略网络$\pi_{\theta}$）根据当前状态$s_t$生成带随机性的动作$a_t \sim \pi_{\theta}(\cdot|s_t)$</li>
+<li>执行动作$a_t$，环境返回下一状态$s_{t + 1}$和奖励$r_t$</li>
+</ul>
+<h2 id="update函数当中">update函数当中</h2>
+<h3 id="目标Q值计算（Critic更新）">目标Q值计算（Critic更新）</h3>
+<ul>
+<li>
+<p><strong>双Q网络（Q1, Q2）</strong>：分别计算当前状态-动作对的Q值（$Q_{current}$）。</p>
+</li>
+<li>
+<p><strong>目标Q值（Q_target）</strong>：</p>
+<ul>
+<li>
+<p>下一状态输入Actor（就是策略网络 $\pi_{\theta}$）得到新动作$a’$及对应熵，也就是说 $ \pi_{\theta}(a’|s_{t + 1}) $ 实际上代表的是在下一状态时选择$a’$的概率。</p>
+</li>
+<li>
+<p>用<strong>目标Critic网络</strong>（非训练参数）计算下一动作的Q值，并加熵项：<br>
+$$<br>
+Q^{\text{target}} = r_t + \gamma(1 - \text{done})\left[\min_{j = 1,2}Q_{\phi_{\text{target}<em>j}}(s</em>{t + 1}, a’) - \alpha \log \pi_{\theta}(a’|s_{t + 1})\right]<br>
+$$</p>
+</li>
+<li>
+<p>$a’ \sim \pi_{\theta}(\cdot|s_{t + 1})$ 表示由当前Actor网络根据状态 $s_{t + 1}$ 生成下一个动作。</p>
+</li>
+<li>
+<p>$\min_{j = 1,2}$ 是从两个目标Critic网络 $Q_{\phi_{\text{target}<em>1}}, Q</em>{\phi_{\text{target}_2}}$ 输出的值中取最小值，目的是避免高估Q值。</p>
+</li>
+<li>
+<p>$\alpha$ 是熵调节系数，$-\log \pi_{\theta}(a’|s_{t + 1})$ 表示动作的熵，用于衡量动作的随机性。$\log \pi_{\theta}(a’|s_{t + 1})$ 表示动作$a’$在当前策略下的对数概率（log probability），负号是为了将熵定义为正数。熵越大，表示动作的随机性越强（探索性越高）。其实这里应该暗含了，如果选择这个动作的可能性越小，那么Q_target就越小，也就更不愿意选择这个动作</p>
+<ul>
+<li>
+<blockquote>
+<p>其实我很困惑，为什么不是<br>
+$$<br>
+Q^{\text{target}} = r_t + \gamma(1 - \text{done})\left[\min_{j = 1,2}Q_{\phi_{\text{target}<em>j}}(s</em>{t + 1}, a’) - (-\alpha \log \pi_{\theta}(a’|s_{t + 1}))\right]<br>
+$$</p>
+</blockquote>
+<blockquote>
+<p>因为熵是$-\log \pi_{\theta}(a’|s_{t + 1})$ ，肯定为正数，而原式想表达的是减去熵，但是如果不是像我这样写的话，实际上会加上熵？除非$\alpha$是负数</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>最小化Q_current与Q_target的MSE损失，更新critic参数。</p>
+</li>
+</ul>
+<h3 id="Actor策略更新">Actor策略更新</h3>
+<ul>
+<li>通过当前状态采样动作，计算更新后的critic和未更新的target_critic的Q值（取双Q最小值）并加熵项：<br>
+$\mathcal{L}<em>{\text{actor}} = - \left[\min</em>{j = 1,2}Q_{\phi_j}(s_t, \tilde{a}<em>t) - \alpha \log \pi</em>{\theta}(\tilde{a}_t|s_t)\right], \quad \tilde{a}<em>t \sim \pi</em>{\theta}(\cdot|s_t)$</li>
+<li>使用优化器来最小化loss，因为取的是相反数所以实则是最大化该值，以提升策略性能与探索性。</li>
+<li>通过梯度上升优化 $\theta$，使动作 $\tilde{a}_t$ 同时满足：
+<ul>
+<li>高Q值（Critic认可的动作）</li>
+<li>高熵（鼓励探索，避免策略固化）</li>
+</ul>
+</li>
+</ul>
+<h3 id="目标critic网络软更新">目标critic网络软更新</h3>
+<ul>
+<li>
+<p>目标Critic参数通过Polyak平均缓慢跟踪主Critic</p>
+<ul>
+<li>$\phi_{\text{targ},i} \leftarrow \tau\phi_{i} + (1 - \tau)\phi_{\text{targ},i} \quad (i = 1,2)$</li>
+</ul>
+</li>
+<li>
+<p>其中：</p>
+<ul>
+<li>$\tau \ll 1$（例如 0.005），该参数用于控制更新的幅度。通过这种软更新的方式，将当前网络参数 $\phi_{i}$ 与目标网络参数 $\phi_{\text{targ},i}$ 进行融合，缓慢同步参数，目的是为了稳定训练过程，避免因参数更新过快导致训练不稳定。</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考代码">参考代码</h2>
+<p>虽然这个代码没有考虑熵，以及没考虑两个Q的最小值，并且运行起来没啥结果，但是其他地方我都注释好了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># 状态编码器（极坐标转换 + 特征拼接）</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encode_state</span>(<span class="params">vehicle_pos, vehicle_speed, nodes_info</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    输入:</span></span><br><span class="line"><span class="string">        vehicle_pos: 车辆当前位置 (笛卡尔坐标) [x, y]</span></span><br><span class="line"><span class="string">        vehicle_speed: 车辆速度向量 [vx, vy]</span></span><br><span class="line"><span class="string">        nodes_info: 边缘节点信息列表，每个元素为 [节点x, 节点y, 计算能力, 信任度]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    输出:</span></span><br><span class="line"><span class="string">        state_tensor: 编码后的状态张量 (shape: [1, state_dim])</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 将车辆与节点的相对位置转换为极坐标</span></span><br><span class="line">    polar_features = []</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> nodes_info:</span><br><span class="line">        dx = node[<span class="number">0</span>] - vehicle_pos[<span class="number">0</span>]</span><br><span class="line">        dy = node[<span class="number">1</span>] - vehicle_pos[<span class="number">1</span>]</span><br><span class="line">        r = np.sqrt(dx ** <span class="number">2</span> + dy ** <span class="number">2</span>)  <span class="comment"># 相对距离</span></span><br><span class="line">        theta = np.arctan2(dy, dx)  <span class="comment"># 相对角度（弧度）</span></span><br><span class="line">        polar_features.extend([r, theta])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 速度投影（径向和切向分量）</span></span><br><span class="line">    speed_norm = np.linalg.norm(vehicle_speed)</span><br><span class="line">    <span class="keyword">if</span> speed_norm &gt; <span class="number">0</span>:</span><br><span class="line">        v_r = (vehicle_speed[<span class="number">0</span>] * dx + vehicle_speed[<span class="number">1</span>] * dy) / (r + <span class="number">1e-5</span>)  <span class="comment"># 径向速度</span></span><br><span class="line">        v_theta = (vehicle_speed[<span class="number">0</span>] * dy - vehicle_speed[<span class="number">1</span>] * dx) / (r + <span class="number">1e-5</span>)  <span class="comment"># 切向速度</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        v_r, v_theta = <span class="number">0.0</span>, <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 假设LSTM隐藏状态（简化为随机向量）</span></span><br><span class="line">    lstm_hidden = np.random.randn(<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 拼接所有特征</span></span><br><span class="line">    state = np.concatenate([</span><br><span class="line">        polar_features,</span><br><span class="line">        [v_r, v_theta],</span><br><span class="line">        lstm_hidden,</span><br><span class="line">        [node[<span class="number">2</span>] <span class="keyword">for</span> node <span class="keyword">in</span> nodes_info],  <span class="comment"># 节点计算能力</span></span><br><span class="line">        [node[<span class="number">3</span>] <span class="keyword">for</span> node <span class="keyword">in</span> nodes_info]  <span class="comment"># 节点信任度</span></span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> torch.FloatTensor(state).unsqueeze(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Actor网络（策略网络）</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Actor</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state_dim, action_dim, hidden_dim=<span class="number">256</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.net = nn.Sequential(</span><br><span class="line">            nn.Linear(state_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, action_dim),</span><br><span class="line">            nn.Tanh()  <span class="comment"># 输出范围[-1,1]，需映射到具体动作</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, state</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.net(state)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Critic网络（Q函数）</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Critic</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state_dim, action_dim, hidden_dim=<span class="number">256</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.q_net = nn.Sequential(</span><br><span class="line">            nn.Linear(state_dim + action_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, <span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, state, action</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.q_net(torch.cat([state, action], dim=<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># ST-SAC主类</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ST_SAC</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state_dim, action_dim, lr=<span class="number">3e-4</span>, gamma=<span class="number">0.99</span>, alpha=<span class="number">0.2</span>, tau=<span class="number">0.005</span></span>):</span><br><span class="line">        <span class="comment"># 主网络</span></span><br><span class="line">        <span class="variable language_">self</span>.actor = Actor(state_dim, action_dim)</span><br><span class="line">        <span class="variable language_">self</span>.critic = Critic(state_dim, action_dim)</span><br><span class="line">        <span class="variable language_">self</span>.critic_target = Critic(state_dim, action_dim)  <span class="comment"># 新增目标网络</span></span><br><span class="line">        <span class="variable language_">self</span>.critic_target.load_state_dict(<span class="variable language_">self</span>.critic.state_dict())  <span class="comment"># 同步初始化</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 优化器</span></span><br><span class="line">        <span class="variable language_">self</span>.actor_optim = optim.Adam(<span class="variable language_">self</span>.actor.parameters(), lr=lr)</span><br><span class="line">        <span class="variable language_">self</span>.critic_optim = optim.Adam(<span class="variable language_">self</span>.critic.parameters(), lr=lr)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 超参数</span></span><br><span class="line">        <span class="variable language_">self</span>.gamma = gamma</span><br><span class="line">        <span class="variable language_">self</span>.alpha_base = alpha</span><br><span class="line">        <span class="variable language_">self</span>.tau = tau  <span class="comment"># 目标网络软更新系数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">select_action</span>(<span class="params">self, state, nodes_info, trust_threshold=<span class="number">0.5</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot; 选择动作（含安全掩码） &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">            action = <span class="variable language_">self</span>.actor(state)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成动作掩码（信任度 &gt;= 阈值）</span></span><br><span class="line">        valid_nodes = [i <span class="keyword">for</span> i, node <span class="keyword">in</span> <span class="built_in">enumerate</span>(nodes_info) <span class="keyword">if</span> node[<span class="number">3</span>] &gt;= trust_threshold]</span><br><span class="line">        mask = torch.zeros_like(action)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> valid_nodes:</span><br><span class="line">            mask[:, i] = <span class="number">1.0</span>  <span class="comment"># 假设每个动作维度对应一个节点</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 应用掩码并随机探索</span></span><br><span class="line">        masked_action = action * mask + (<span class="number">1</span> - mask) * torch.randn_like(action)</span><br><span class="line">        <span class="keyword">return</span> masked_action.squeeze(<span class="number">0</span>).numpy()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self, state, action, reward, next_state, done, vehicle_speed</span>):</span><br><span class="line">        <span class="comment"># 动态熵系数</span></span><br><span class="line">        v_r = <span class="built_in">abs</span>(state[<span class="number">0</span>, -<span class="built_in">len</span>(nodes_info) * <span class="number">2</span> + <span class="number">1</span>])</span><br><span class="line">        alpha = <span class="variable language_">self</span>.alpha_base * (<span class="number">1</span> + torch.sigmoid(torch.tensor(v_r)))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># ----------------- 1. Critic 更新 -----------------</span></span><br><span class="line">        <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">            next_action = <span class="variable language_">self</span>.actor(next_state)</span><br><span class="line">            <span class="comment"># 使用目标网络计算目标Q值</span></span><br><span class="line">            target_q = <span class="variable language_">self</span>.critic_target(next_state, next_action)</span><br><span class="line">            <span class="comment"># 当前动作的即时奖励 + 对未来奖励的预测</span></span><br><span class="line">            target_q = reward + (<span class="number">1</span> - done) * <span class="variable language_">self</span>.gamma * target_q</span><br><span class="line"></span><br><span class="line">        current_q = <span class="variable language_">self</span>.critic(state, action)</span><br><span class="line">        <span class="comment"># 目标：让当前Q值逼近目标Q值</span></span><br><span class="line">        critic_loss = nn.MSELoss()(current_q, target_q)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.critic_optim.zero_grad()</span><br><span class="line">        critic_loss.backward()</span><br><span class="line">        <span class="comment"># 更新critic网络，让网络参数往目标Q值的方向更新</span></span><br><span class="line">        <span class="variable language_">self</span>.critic_optim.step()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># ----------------- 2. Actor 更新 -----------------</span></span><br><span class="line">        <span class="comment"># 切断Critic到Actor的梯度传播</span></span><br><span class="line">        pred_action = <span class="variable language_">self</span>.actor(state)</span><br><span class="line">        <span class="comment"># actor网络的参数更新需要依赖critic网络的输出,critic是更新过的，用来给actor提供指导</span></span><br><span class="line">        <span class="comment"># detach()的作用是剥离出一个相同值但不包含梯度的Variable，不参与计算图的构建</span></span><br><span class="line">        q_value = <span class="variable language_">self</span>.critic(state, pred_action).detach()  <span class="comment"># 关键：detach(),detach()后的梯度不会传播到actor</span></span><br><span class="line">        actor_loss = -q_value.mean() + alpha * (pred_action ** <span class="number">2</span>).mean()</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.actor_optim.zero_grad()</span><br><span class="line">        actor_loss.backward()</span><br><span class="line">        <span class="variable language_">self</span>.actor_optim.step()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># ----------------- 3. 目标网络软更新 -----------------</span></span><br><span class="line">        <span class="comment"># 把critic的value更新到target_critic</span></span><br><span class="line">        <span class="keyword">for</span> t_param, param <span class="keyword">in</span> <span class="built_in">zip</span>(<span class="variable language_">self</span>.critic_target.parameters(), <span class="variable language_">self</span>.critic.parameters()):</span><br><span class="line">            t_param.data.copy_(<span class="variable language_">self</span>.tau * param.data + (<span class="number">1</span> - <span class="variable language_">self</span>.tau) * t_param.data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># 示例使用</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 假设场景：1辆车，3个边缘节点</span></span><br><span class="line">    vehicle_pos = [<span class="number">0.0</span>, <span class="number">0.0</span>]</span><br><span class="line">    vehicle_speed = [<span class="number">1.0</span>, <span class="number">0.0</span>]  <span class="comment"># 沿x轴移动</span></span><br><span class="line">    nodes_info = [</span><br><span class="line">        [<span class="number">10.0</span>, <span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">0.8</span>],  <span class="comment"># 节点1：正前方，高信任</span></span><br><span class="line">        [<span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">3.0</span>, <span class="number">0.3</span>],  <span class="comment"># 节点2：左侧，低信任</span></span><br><span class="line">        [-<span class="number">5.0</span>, <span class="number">0.0</span>, <span class="number">4.0</span>, <span class="number">0.6</span>]  <span class="comment"># 节点3：后方，中等信任</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化ST-SAC</span></span><br><span class="line">    state_dim = <span class="built_in">len</span>(encode_state(vehicle_pos, vehicle_speed, nodes_info).squeeze(<span class="number">0</span>))</span><br><span class="line">    action_dim = <span class="built_in">len</span>(nodes_info)  <span class="comment"># 每个动作维度对应一个节点的卸载选择</span></span><br><span class="line">    agent = ST_SAC(state_dim, action_dim)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 示例训练步骤</span></span><br><span class="line">    state = encode_state(vehicle_pos, vehicle_speed, nodes_info)</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="comment"># 用到了actor</span></span><br><span class="line">        action = agent.select_action(state, nodes_info)</span><br><span class="line">        next_vehicle_pos = [vehicle_pos[<span class="number">0</span>] + <span class="number">0.1</span>, vehicle_pos[<span class="number">1</span>]]  <span class="comment"># 模拟移动</span></span><br><span class="line">        next_state = encode_state(next_vehicle_pos, vehicle_speed, nodes_info)</span><br><span class="line">        reward = -np.<span class="built_in">abs</span>(action).mean()  <span class="comment"># 示例奖励：鼓励集中卸载</span></span><br><span class="line">        done = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        agent.update(state, torch.FloatTensor(action).unsqueeze(<span class="number">0</span>),</span><br><span class="line">                     torch.FloatTensor([reward]), next_state, done, vehicle_speed)</span><br><span class="line">        state = next_state</span><br></pre></td></tr></table></figure>
+<h1>和PPO算法进行对比</h1>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://gladiouszhang.github.io/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/" title="强化学习SAC算法流程及与PPO对比" target="_blank" rel="external">http://gladiouszhang.github.io/2025/03/05/强化学习SAC算法流程及与PPO对比/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/gladiouszhang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/gladiouszhang" target="_blank"><span class="text-dark">Shuyu Zhang (张舒俞)</span><small class="ml-1x">学生</small></a></h3>
+        <div>西安电子科技大学硕士在读</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" title="CMU-深度学习系统-第二章"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\$', '\$']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/gladiouszhang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/n/Gladious_Zhang" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2025 张舒俞
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'GNXx14HnrCFqRSxo50bKuXAt-gzGzoHsz',
+    appKey: '68hg4AgzSBf1I5q0GwkpKIyu',
+    placeholder: '欢迎留下您的评论😊',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false,
+    serverURLs: ''
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
