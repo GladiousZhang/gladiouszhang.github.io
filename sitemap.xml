@@ -173,15 +173,6 @@
   </url>
   
   <url>
-    <loc>http://gladiouszhang.github.io/books/index.html</loc>
-    
-    <lastmod>2024-07-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://gladiouszhang.github.io/404.html</loc>
     
     <lastmod>2024-07-30</lastmod>
@@ -191,7 +182,7 @@
   </url>
   
   <url>
-    <loc>http://gladiouszhang.github.io/repository/index.html</loc>
+    <loc>http://gladiouszhang.github.io/books/index.html</loc>
     
     <lastmod>2024-07-30</lastmod>
     
@@ -210,6 +201,15 @@
   
   <url>
     <loc>http://gladiouszhang.github.io/links/index.html</loc>
+    
+    <lastmod>2024-07-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gladiouszhang.github.io/repository/index.html</loc>
     
     <lastmod>2024-07-30</lastmod>
     
@@ -271,14 +271,14 @@
   </url>
   
   <url>
-    <loc>http://gladiouszhang.github.io/tags/%E6%91%84%E5%BD%B1/</loc>
+    <loc>http://gladiouszhang.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2025-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://gladiouszhang.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://gladiouszhang.github.io/tags/%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2025-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
