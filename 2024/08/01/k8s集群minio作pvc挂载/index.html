@@ -22,12 +22,12 @@
   
   
   <title>k8s集群minio作pvc挂载介绍及示例 | Shuyu Zhang&#39;s Blog</title>
-  <meta name="description" content="MinIO介绍 PVC概念（Persistent Volume Claim） MinIO与PVC的结合 配置步骤 创建相关存储服务 1. 创建Persistent Volume (PV) 和 Persistent Volume Claim (PVC) 2. 部署MinIO 3. 应用配置文件   编写上传记录的Go程序 1. 安装MinIO的Go SDK 2. 编写上传记录的Go程序 3. 运">
+  <meta name="description" content="MinIO介绍 PVC概念（Persistent Volume Claim） MinIO与PVC的结合 配置步骤 创建相关存储服务 1. 创建Persistent Volume (PV) 和 Persistent Volume Claim (PVC) 和 Persistent Volume Claim (PVC)) 2. 部署MinIO 3. 应用配置文件   编写上传记录的Go程序 1. 安">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k8s集群minio作pvc挂载介绍及示例">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/08/01/k8s%E9%9B%86%E7%BE%A4minio%E4%BD%9Cpvc%E6%8C%82%E8%BD%BD/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MinIO介绍 PVC概念（Persistent Volume Claim） MinIO与PVC的结合 配置步骤 创建相关存储服务 1. 创建Persistent Volume (PV) 和 Persistent Volume Claim (PVC) 2. 部署MinIO 3. 应用配置文件   编写上传记录的Go程序 1. 安装MinIO的Go SDK 2. 编写上传记录的Go程序 3. 运">
+<meta property="og:description" content="MinIO介绍 PVC概念（Persistent Volume Claim） MinIO与PVC的结合 配置步骤 创建相关存储服务 1. 创建Persistent Volume (PV) 和 Persistent Volume Claim (PVC) 和 Persistent Volume Claim (PVC)) 2. 部署MinIO 3. 应用配置文件   编写上传记录的Go程序 1. 安">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gladiouszhang.github.io/2024/08/01/k8s%E9%9B%86%E7%BE%A4minio%E4%BD%9Cpvc%E6%8C%82%E8%BD%BD/8b14f155277d1a69c943a8c75f64a342.png">
 <meta property="og:image" content="http://gladiouszhang.github.io/2024/08/01/k8s%E9%9B%86%E7%BE%A4minio%E4%BD%9Cpvc%E6%8C%82%E8%BD%BD/image-20240802011313019.png">
@@ -380,27 +380,27 @@
       
         <!-- toc -->
 <ul>
-<li><a href="#minio介绍">MinIO介绍</a></li>
-<li><a href="#pvc概念-persistent-volume-claim">PVC概念（Persistent Volume Claim）</a></li>
-<li><a href="#minio与pvc的结合">MinIO与PVC的结合</a></li>
+<li><a href="#MinIO介绍">MinIO介绍</a></li>
+<li><a href="#PVC概念（Persistent Volume Claim）">PVC概念（Persistent Volume Claim）</a></li>
+<li><a href="#MinIO与PVC的结合">MinIO与PVC的结合</a></li>
 <li><a href="#配置步骤">配置步骤</a><ul>
 <li><a href="#创建相关存储服务">创建相关存储服务</a><ul>
-<li><a href="#1-创建persistent-volume-pv-和-persistent-volume-claim-pvc">1. 创建Persistent Volume (PV) 和 Persistent Volume Claim (PVC)</a></li>
-<li><a href="#2-部署minio">2. 部署MinIO</a></li>
-<li><a href="#3-应用配置文件">3. 应用配置文件</a></li>
+<li><a href="#1- 创建Persistent Volume (PV">1. 创建Persistent Volume (PV) 和 Persistent Volume Claim (PVC)</a> 和 Persistent Volume Claim (PVC))</li>
+<li><a href="#2- 部署MinIO">2. 部署MinIO</a></li>
+<li><a href="#3- 应用配置文件">3. 应用配置文件</a></li>
 </ul>
 </li>
-<li><a href="#编写上传记录的go程序">编写上传记录的Go程序</a><ul>
-<li><a href="#1-安装minio的go-sdk">1. 安装MinIO的Go SDK</a></li>
-<li><a href="#2-编写上传记录的go程序">2. 编写上传记录的Go程序</a></li>
-<li><a href="#3-运行程序">3. 运行程序</a></li>
+<li><a href="#编写上传记录的Go程序">编写上传记录的Go程序</a><ul>
+<li><a href="#1- 安装MinIO的Go SDK">1. 安装MinIO的Go SDK</a></li>
+<li><a href="#2- 编写上传记录的Go程序">2. 编写上传记录的Go程序</a></li>
+<li><a href="#3- 运行程序">3. 运行程序</a></li>
 </ul>
 </li>
-<li><a href="#尝试删-改-查">尝试删、改、查</a><ul>
+<li><a href="#尝试删、改、查">尝试删、改、查</a><ul>
 <li><a href="#上传对象">上传对象</a></li>
 <li><a href="#删除对象">删除对象</a></li>
-<li><a href="#上传-修改-对象">上传（修改）对象</a></li>
-<li><a href="#检索-查-对象">检索（查）对象</a></li>
+<li><a href="#上传（修改）对象">上传（修改）对象</a></li>
+<li><a href="#检索（查）对象">检索（查）对象</a></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +409,7 @@
 <li><a href="#数据安全">数据安全</a><ul>
 <li><a href="#数据加密">数据加密</a></li>
 <li><a href="#访问控制">访问控制</a></li>
-<li><a href="#ssl-tls支持">SSL/TLS支持</a></li>
+<li><a href="#SSL/TLS支持">SSL/TLS支持</a></li>
 <li><a href="#版本控制">版本控制</a></li>
 <li><a href="#锁定措施">锁定措施</a></li>
 <li><a href="#数据完整性检查">数据完整性检查</a></li>
