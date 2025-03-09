@@ -21,23 +21,26 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>边缘计算综述 | Gladious&#39; Blog</title>
-  <meta name="description" content="研究热点 关键技术 计算卸载 移动管理 流量卸载 缓存加速 网络控制   数据安全和隐私保护 四个挑战 研究体系        K. Cao, Y. Liu, G. Meng和Q. Sun, 《An Overview on Edge Computing Research》, IEEE Access, 卷 8, 页 85714–85728, 2020, doi: 10.1109&#x2F;ACCESS.2">
+  <title>CMU-深度学习系统-第三章 | Gladious&#39; Blog</title>
+  <meta name="description" content="这章主要讲了为什么要从线性到非线性的假设层（hypothesis classes），以及介绍了神经网络和反向传播，重点在于计算梯度。 线性函数实际上就是在平面（或者更高维度）上画线（或者更高维的面或什么玩意，反正是直的），用参数拟合，然后正确进行分类。但是有些东西不能用线性来进行分类比如：  因此提出一个想法：把线性分类器作用到更高维度的数据特征上（也就是说把原数据扩展到更高维来提取特征，再经">
 <meta property="og:type" content="article">
-<meta property="og:title" content="边缘计算综述">
-<meta property="og:url" content="http://gladiouszhang.github.io/2024/08/02/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BB%BC%E8%BF%B0/index.html">
+<meta property="og:title" content="CMU-深度学习系统-第三章">
+<meta property="og:url" content="http://gladiouszhang.github.io/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="研究热点 关键技术 计算卸载 移动管理 流量卸载 缓存加速 网络控制   数据安全和隐私保护 四个挑战 研究体系        K. Cao, Y. Liu, G. Meng和Q. Sun, 《An Overview on Edge Computing Research》, IEEE Access, 卷 8, 页 85714–85728, 2020, doi: 10.1109&#x2F;ACCESS.2">
+<meta property="og:description" content="这章主要讲了为什么要从线性到非线性的假设层（hypothesis classes），以及介绍了神经网络和反向传播，重点在于计算梯度。 线性函数实际上就是在平面（或者更高维度）上画线（或者更高维的面或什么玩意，反正是直的），用参数拟合，然后正确进行分类。但是有些东西不能用线性来进行分类比如：  因此提出一个想法：把线性分类器作用到更高维度的数据特征上（也就是说把原数据扩展到更高维来提取特征，再经">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-02T14:39:15.000Z">
-<meta property="article:modified_time" content="2024-08-16T06:56:24.000Z">
+<meta property="og:image" content="http://gladiouszhang.github.io/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/image-20250309134819123.png">
+<meta property="og:image" content="http://gladiouszhang.github.io/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/image-20250309142135454.png">
+<meta property="og:image" content="http://gladiouszhang.github.io/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/image-20250309142504853.png">
+<meta property="article:published_time" content="2025-03-09T05:42:10.000Z">
+<meta property="article:modified_time" content="2025-03-09T06:34:32.309Z">
 <meta property="article:author" content="张舒俞">
+<meta property="article:tag" content="AI Infra">
 <meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="边缘计算">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gladiouszhang.github.io/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/image-20250309134819123.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://gladiouszhang.github.io/2024/08/02/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BB%BC%E8%BF%B0/index.html">
+  <link rel="canonical" href="http://gladiouszhang.github.io/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -48,10 +51,124 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
-<meta name="generator" content="Hexo 7.3.0"></head>
+  
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
@@ -321,14 +438,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-边缘计算综述" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-CMU-深度学习系统-第三章" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      边缘计算综述
+      CMU-深度学习系统-第三章
     </h1>
   
 
@@ -336,15 +453,15 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2024/08/02/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BB%BC%E8%BF%B0/" class="article-date">
-	  <time datetime="2024-08-02T14:39:15.000Z" itemprop="datePublished">2024-08-02</time>
+	<a href="/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="article-date">
+	  <time datetime="2025-03-09T05:42:10.000Z" itemprop="datePublished">2025-03-09</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a>, <a class="article-tag-link-link" href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag">边缘计算</a>
+	<a class="article-tag-link-link" href="/tags/AI-Infra/" rel="tag">AI Infra</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a>
   </span>
 
 
@@ -357,13 +474,13 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/08/02/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BB%BC%E8%BF%B0/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.5k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 396(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
 	
 
       </div>
@@ -371,92 +488,19 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <!-- toc -->
-<ul>
-<li><a href="#研究热点">研究热点</a><ul>
-<li><a href="#关键技术">关键技术</a><ul>
-<li><a href="#计算卸载">计算卸载</a></li>
-<li><a href="#移动管理">移动管理</a></li>
-<li><a href="#流量卸载">流量卸载</a></li>
-<li><a href="#缓存加速">缓存加速</a></li>
-<li><a href="#网络控制">网络控制</a></li>
-</ul>
-</li>
-<li><a href="#数据安全和隐私保护">数据安全和隐私保护</a><ul>
-<li><a href="#四个挑战">四个挑战</a></li>
-<li><a href="#研究体系">研究体系</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 <!-- tocstop -->
-<blockquote>
-<p>K. Cao, Y. Liu, G. Meng和Q. Sun, 《An Overview on Edge Computing Research》, <em>IEEE Access</em>, 卷 8, 页 85714–85728, 2020, doi: <a target="_blank" rel="noopener" href="https://doi.org/10.1109/ACCESS.2020.2991734">10.1109/ACCESS.2020.2991734</a>.</p>
-</blockquote>
-<h2 id="研究热点"><a href="#研究热点" class="headerlink" title="研究热点"></a>研究热点</h2><h3 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h3><h4 id="计算卸载"><a href="#计算卸载" class="headerlink" title="计算卸载"></a>计算卸载</h4><p>资源受限设备将资源密集型计算从移动设备上部分或全部地移植到资源富集的临近设备：</p>
-<ul>
-<li>卸载决策</li>
-</ul>
-<p>如何卸载计算任务，卸载多少，卸载些啥。</p>
-<p>分为三个部分：编码阶段决定要卸载什么，系统阶段监控变量（带宽、数据大小等），决策引擎决定是否卸载</p>
-<p>决策结果分为三种情况：本地执行（不卸载）、部分卸载、全部卸载。</p>
-<p>决策的目标可以被分为（分别满足）：减小延迟、降低能量开销、平衡能量开销和延迟</p>
-<ul>
-<li>资源分配</li>
-</ul>
-<p>往哪卸载。比如有些部分不能拆分，或者拆分后有联系的，就必须放在同样的MEC(Mobile Edge Computing)服务器。</p>
-<p>通常分配节点被分为单点分配和多点分配。</p>
-<h4 id="移动管理"><a href="#移动管理" class="headerlink" title="移动管理"></a>移动管理</h4><p>一个边缘计算节点只服务于其周围的人。</p>
-<p>主要问题是资源发现和资源切换。</p>
-<ul>
-<li>资源发现</li>
-</ul>
-<p>用户在移动中快速发现周围的可用资源，并选择最合适的资源。</p>
-<ul>
-<li>资源切换</li>
-</ul>
-<p>当用户移动时，移动应用所使用的计算资源可能会在多个设备之间进行切换，同时会改变服务程序的工作站点来保证服务连续性。</p>
-<h4 id="流量卸载"><a href="#流量卸载" class="headerlink" title="流量卸载"></a>流量卸载</h4><p>将满足特定卸载规则的流量卸载到移动边缘网络(即一个局部特定的网络,可以是内部网,也可以是因特网)，以节省回程带宽，减少延迟，并促进其他MEC服务的扩展。</p>
-<blockquote>
-<p>假设你在一个繁忙的购物中心使用手机，正在观看一个高清的实时视频。传统情况下，所有的数据请求都需要通过蜂窝网络的核心网传输，然后通过互联网访问视频内容服务器。由于购物中心的人流量大，蜂窝网络的核心网可能会承载大量的流量，导致网络拥塞、延迟增加。</p>
-<p>为了优化这个场景，网络运营商部署了一个MEC（移动边缘计算）节点，它包含视频内容的本地缓存，并支持流量卸载。当你在购物中心观看视频时，视频流量会被卸载到这个MEC节点。也就是说，视频数据直接从购物中心附近的MEC节点获取，而不是经过蜂窝网络的核心网。这不仅减少了核心网的负担，还显著降低了延迟，提高了视频流的质量。</p>
-</blockquote>
-<p>和计算卸载的区别是，计算卸载是把本地任务卸载到边缘端服务器，流量卸载是将流量负担较大的线路转移。计算卸载重点在于“<strong>任务执行</strong>”的转移，流量卸载重点在于“<strong>数据内容传输</strong>”的转移。</p>
-<h4 id="缓存加速"><a href="#缓存加速" class="headerlink" title="缓存加速"></a>缓存加速</h4><p>内容缓存到移动网络边缘后，用户可以就近获取内容，从而避免了内容的重复传输，缓解了回程网络和核心网的压力。</p>
-<blockquote>
-<p><strong>缓存加速</strong>本质上是一种特定的流量卸载策略，其中的重点是对内容进行本地化存储，以减少传输需求。</p>
-<p><strong>流量卸载</strong>的范围更广，它不仅包括缓存加速，还可能包括其他形式的流量转移或重新路由，目的是减轻核心网络的整体负担。</p>
-</blockquote>
-<h4 id="网络控制"><a href="#网络控制" class="headerlink" title="网络控制"></a>网络控制</h4><p>这一块论文没咋讲，gpt如是说：</p>
-<blockquote>
-<p>网络控制是指在网络基础设施中管理和调度数据流、资源分配以及通信行为的过程和机制。它涉及如何控制网络中的流量、优化性能、确保安全性和稳定性，并响应不同的网络需求。网络控制在整个网络中扮演着关键角色，特别是在大型、复杂的网络环境中，比如在边缘网络和云计算环境中。</p>
-</blockquote>
-<h3 id="数据安全和隐私保护"><a href="#数据安全和隐私保护" class="headerlink" title="数据安全和隐私保护"></a>数据安全和隐私保护</h3><p>边缘计算的分布式结构增加了攻击向量的维度。边缘计算客户端越智能，越容易受到恶意软件的感染和安全漏洞的攻击。网络边缘高度动态的环境也使得网络更加脆弱。</p>
-<h4 id="四个挑战"><a href="#四个挑战" class="headerlink" title="四个挑战"></a>四个挑战</h4><ul>
-<li>轻量级的数据加密和在多个授权团体基础上的细粒度数据分享：</li>
-</ul>
-<p>设计针对多个授权中心的数据加密方法，考虑复杂度。</p>
-<ul>
-<li>分布式计算环境下的多源异构数据传播控制与安全管理：</li>
-</ul>
-<p>用户或数据拥有者希望能够利用有效的信息发布控制和访问控制机制，实现数据的分发、搜索、访问以及对数据授权范围的控制。</p>
-<ul>
-<li>边缘计算大规模互联服务与资源受限终端之间的安全挑战</li>
-<li>面向物联网的多样化服务和边缘计算模式对高效隐私保护的新要求</li>
-</ul>
-<h4 id="研究体系"><a href="#研究体系" class="headerlink" title="研究体系"></a>研究体系</h4><ul>
-<li><p>数据安全</p>
-<p>数据的加密及对其的安全操作。思路是将其他计算范式（如云计算、雾计算等）安全解决方案移植过来，并将计算架构并行化，最终实现一个轻量级的、分布式的数据安全防护系统。</p>
-<ul>
-<li>数据加密和安全数据分享</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>身份认证</li>
-<li>隐私保护</li>
-<li>访问控制</li>
-</ul>
+<p>这章主要讲了为什么要从线性到非线性的假设层（hypothesis classes），以及介绍了神经网络和反向传播，重点在于计算梯度。</p>
+<p>线性函数实际上就是在平面（或者更高维度）上画线（或者更高维的面或什么玩意，反正是直的），用参数拟合，然后正确进行分类。但是有些东西不能用线性来进行分类比如：</p>
+<p><img src="/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/image-20250309134819123.png" alt="image-20250309134819123"></p>
+<p>因此提出一个想法：把线性分类器作用到更高维度的数据特征上（也就是说把原数据扩展到更高维来提取特征，再经过线性层），即：</p>
+<p><img src="/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/image-20250309142135454.png" alt="image-20250309142135454"></p>
+<p>如何得到函数<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.348ex" height="2.034ex" role="img" focusable="false" viewbox="0 -694 596 899"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D719" d="M409 688Q413 694 421 694H429H442Q448 688 448 686Q448 679 418 563Q411 535 404 504T392 458L388 442Q388 441 397 441T429 435T477 418Q521 397 550 357T579 260T548 151T471 65T374 11T279 -10H275L251 -105Q245 -128 238 -160Q230 -192 227 -198T215 -205H209Q189 -205 189 -198Q189 -193 211 -103L234 -11Q234 -10 226 -10Q221 -10 206 -8T161 6T107 36T62 89T43 171Q43 231 76 284T157 370T254 422T342 441Q347 441 348 445L378 567Q409 686 409 688ZM122 150Q122 116 134 91T167 53T203 35T237 27H244L337 404Q333 404 326 403T297 395T255 379T211 350T170 304Q152 276 137 237Q122 191 122 150ZM500 282Q500 320 484 347T444 385T405 400T381 404H378L332 217L284 29Q284 27 285 27Q293 27 317 33T357 47Q400 66 431 100T475 170T494 234T500 282Z"/></g></g></g></svg></mjx-container>：传统的方法是手动提取特征，现在的方法就是自己学习。</p>
+<p>但是如果<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.348ex" height="2.034ex" role="img" focusable="false" viewbox="0 -694 596 899"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D719" d="M409 688Q413 694 421 694H429H442Q448 688 448 686Q448 679 418 563Q411 535 404 504T392 458L388 442Q388 441 397 441T429 435T477 418Q521 397 550 357T579 260T548 151T471 65T374 11T279 -10H275L251 -105Q245 -128 238 -160Q230 -192 227 -198T215 -205H209Q189 -205 189 -198Q189 -193 211 -103L234 -11Q234 -10 226 -10Q221 -10 206 -8T161 6T107 36T62 89T43 171Q43 231 76 284T157 370T254 422T342 441Q347 441 348 445L378 567Q409 686 409 688ZM122 150Q122 116 134 91T167 53T203 35T237 27H244L337 404Q333 404 326 403T297 395T255 379T211 350T170 304Q152 276 137 237Q122 191 122 150ZM500 282Q500 320 484 347T444 385T405 400T381 404H378L332 217L284 29Q284 27 285 27Q293 27 317 33T357 47Q400 66 431 100T475 170T494 234T500 282Z"/></g></g></g></svg></mjx-container>依然是个线性函数的话，实际上最后的结果和原来的线性分类器没区别，因为</p>
+<p><img src="/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/image-20250309142504853.png" alt="image-20250309142504853"></p>
+<p>因此需要激活函数这样一个非线性的函数</p>
+<p>神经网络就是由多个这样的层组成的hypothesis classes，只要使用神经网络作为hypothesis classes的ML，就可以被称为DL。L层的神经网络又叫多层感知器（MLP，Multi-layer perception）</p>
+<p>一个两层的神经网络就可以近似任何一个函数。至于为什么越深的网络有时候就越好，而不是加维度，zico说更让人信服的说法是经验主义。。。</p>
+<p>如何计算梯度：前向传播+反向传播，“反向传播”只是链式法则 + 中间结果的智能缓存</p>
 
       
     </div>
@@ -466,7 +510,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://gladiouszhang.github.io/2024/08/02/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BB%BC%E8%BF%B0/" title="边缘计算综述" target="_blank" rel="external">http://gladiouszhang.github.io/2024/08/02/边缘计算综述/</a>
+      <a href="http://gladiouszhang.github.io/2025/03/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%89%E7%AB%A0/" title="CMU-深度学习系统-第三章" target="_blank" rel="external">http://gladiouszhang.github.io/2025/03/09/CMU-深度学习系统-第三章/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -512,13 +556,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2024/08/13/k8s%E5%AE%9E%E7%8E%B0pod%E5%86%85%E9%83%A8%E7%9A%84webshell/" title="k8s实现pod内部的webshell"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2024/08/01/k8s%E9%9B%86%E7%BE%A4minio%E4%BD%9Cpvc%E6%8C%82%E8%BD%BD/" title="k8s集群minio作pvc挂载介绍及示例"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/" title="强化学习SAC算法流程及与PPO对比"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -584,6 +624,19 @@
 
 
 
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],      // 行内公式：$...$
+        displayMath: [['$$', '$$']]    // 行间公式：$$...$$
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']  // 避免与代码块冲突
+      }
+    };
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 
 </main>
 
