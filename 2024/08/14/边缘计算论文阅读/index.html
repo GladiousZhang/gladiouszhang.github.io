@@ -22,12 +22,12 @@
   
   
   <title>边缘计算论文阅读 | Shuyu Zhang&#39;s Blog</title>
-  <meta name="description" content="Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing 论文背景 论文思路 实验部分   Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Inte">
+  <meta name="description" content="Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing  论文背景 论文思路 实验部分   Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Int">
 <meta property="og:type" content="article">
 <meta property="og:title" content="边缘计算论文阅读">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing 论文背景 论文思路 实验部分   Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Inte">
+<meta property="og:description" content="Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing  论文背景 论文思路 实验部分   Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Int">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gladiouszhang.github.io/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240814022118539.png">
 <meta property="og:image" content="http://gladiouszhang.github.io/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240814022410081.png">
@@ -59,7 +59,9 @@
   
   
   
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -440,7 +442,11 @@ mjx-container[display="true"] + br {
   
   
 <main class="main" role="main">
-  <div class="content">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+
+<div class="content">
   <article id="post-边缘计算论文阅读" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
@@ -492,24 +498,30 @@ mjx-container[display="true"] + br {
       
         <!-- toc -->
 <ul>
-<li><a href="#Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing">Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing</a><ul>
-<li><a href="#论文背景">论文背景</a></li>
-<li><a href="#论文思路">论文思路</a></li>
-<li><a href="#实验部分">实验部分</a></li>
+<li><a href="#energy-consumption-and-qos-aware-co-offloading-for-vehicular-edge-computing">Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing</a>
+<ul>
+<li><a href="#----">论文背景</a></li>
+<li><a href="#----">论文思路</a></li>
+<li><a href="#----">实验部分</a></li>
 </ul>
 </li>
-<li><a href="#Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Internet-of-Things (EdgeIoT">Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Internet-of-Things (EdgeIoT)</a>)<ul>
-<li><a href="#论文背景">论文背景</a></li>
-<li><a href="#论文思路">论文思路</a><ul>
-<li><a href="#具体模型">具体模型</a></li>
+<li><a href="#deep-graph-based-reinforcement-learning-for-joint-cruise-control-and-task-offloading-for-aerial-edge-internet-of-things--edgeiot-">Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Internet-of-Things (EdgeIoT)</a>
+<ul>
+<li><a href="#----">论文背景</a></li>
+<li><a href="#----">论文思路</a>
+<ul>
+<li><a href="#----">具体模型</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
-<h1 id="Energy-Consumption-and-QoS-Aware-Co-Offloading-for-Vehicular-Edge-Computing"><a href="#Energy-Consumption-and-QoS-Aware-Co-Offloading-for-Vehicular-Edge-Computing" class="headerlink" title="Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing"></a>Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing</h1><h2 id="论文背景"><a href="#论文背景" class="headerlink" title="论文背景"></a>论文背景</h2><p>该论文探究在满足QoS前提下，尽可能降低能量开销的边缘计算。因为如果只追求低时延，可能会存在资源被浪费（例如大量任务被卸载到边缘端，过度分配资源，也就是增加了能量开销），只需要满足QoS就行，在这个前提下，尽可能的降低能量开销，是本文的核心任务。</p>
-<h2 id="论文思路"><a href="#论文思路" class="headerlink" title="论文思路"></a>论文思路</h2><p>论文的目的是求出卸载率<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.467ex" height="1.927ex" role="img" focusable="false" viewbox="0 -694 1090.3 851.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D706" d="M166 673Q166 685 183 694H202Q292 691 316 644Q322 629 373 486T474 207T524 67Q531 47 537 34T546 15T551 6T555 2T556 -2T550 -11H482Q457 3 450 18T399 152L354 277L340 262Q327 246 293 207T236 141Q211 112 174 69Q123 9 111 -1T83 -12Q47 -12 47 20Q47 37 61 52T199 187Q229 216 266 252T321 306L338 322Q338 323 288 462T234 612Q214 657 183 657Q166 657 166 673Z"/></g><g data-mml-node="mi" transform="translate(616,-150) scale(0.707)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g></g></g></g></svg></mjx-container>（卸载多少）和RES的计算资源分配情况（往哪卸载）。在本文中，首先进行建模</p>
+<h1>Energy Consumption and QoS-Aware Co-Offloading for Vehicular Edge Computing</h1>
+<h2 id="论文背景">论文背景</h2>
+<p>该论文探究在满足QoS前提下，尽可能降低能量开销的边缘计算。因为如果只追求低时延，可能会存在资源被浪费（例如大量任务被卸载到边缘端，过度分配资源，也就是增加了能量开销），只需要满足QoS就行，在这个前提下，尽可能的降低能量开销，是本文的核心任务。</p>
+<h2 id="论文思路">论文思路</h2>
+<p>论文的目的是求出卸载率<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.467ex" height="1.927ex" role="img" focusable="false" viewbox="0 -694 1090.3 851.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D706" d="M166 673Q166 685 183 694H202Q292 691 316 644Q322 629 373 486T474 207T524 67Q531 47 537 34T546 15T551 6T555 2T556 -2T550 -11H482Q457 3 450 18T399 152L354 277L340 262Q327 246 293 207T236 141Q211 112 174 69Q123 9 111 -1T83 -12Q47 -12 47 20Q47 37 61 52T199 187Q229 216 266 252T321 306L338 322Q338 323 288 462T234 612Q214 657 183 657Q166 657 166 673Z"/></g><g data-mml-node="mi" transform="translate(616,-150) scale(0.707)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g></g></g></g></svg></mjx-container>（卸载多少）和RES的计算资源分配情况（往哪卸载）。在本文中，首先进行建模</p>
 <p><img src="/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240814022118539.png" alt="image-20240814022118539"></p>
 <p>然后对这个建好的模型进行求解。求解的过程中使用贝叶斯优化算法。先确定几个采样点，然后基于采集函数，在采集函数的最大值点设立新的采集点，以此类推，来拟合函数，找到近似的最大值点。</p>
 <p><img src="/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240814022410081.png" alt="image-20240814022410081"></p>
@@ -521,18 +533,22 @@ mjx-container[display="true"] + br {
 <p>随着高维搜索空间的增长，BO变得缓慢。提出一种调优机制来收紧采样过程中的搜索空间：</p>
 <p><img src="/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240815022316105.png" alt="image-20240815022316105"></p>
 <p>在保持任务卸载比例不变的情况下，调整资源分配以满足任务的QoS约束。只要调整后的QoS仍然满足，调整是可以接受的。满足的适当减少资源，不满足的适当增加资源。</p>
-<h2 id="实验部分"><a href="#实验部分" class="headerlink" title="实验部分"></a>实验部分</h2><p>我感觉就是假设了一些参数，然后对这些参数进行数值分析。</p>
+<h2 id="实验部分">实验部分</h2>
+<p>我感觉就是假设了一些参数，然后对这些参数进行数值分析。</p>
 <p>实验时选择一些已有算法进行对比（<strong>怎么选择？</strong>）</p>
 <p>对比两个方面：</p>
 <ul>
 <li>对比不同计算卸载模型的时延和能耗（分配得更合理）</li>
 <li>对比采用算法的收敛速度（使用的方法更快）</li>
 </ul>
-<h1 id="Deep-Graph-based-Reinforcement-Learning-for-Joint-Cruise-Control-and-Task-Offloading-for-Aerial-Edge-Internet-of-Things-EdgeIoT"><a href="#Deep-Graph-based-Reinforcement-Learning-for-Joint-Cruise-Control-and-Task-Offloading-for-Aerial-Edge-Internet-of-Things-EdgeIoT" class="headerlink" title="Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Internet-of-Things (EdgeIoT)"></a>Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Internet-of-Things (EdgeIoT)</h1><h2 id="论文背景-1"><a href="#论文背景-1" class="headerlink" title="论文背景"></a>论文背景</h2><p>背景：无人机作为移动边缘服务器，处理地面物联网设备的任务。</p>
+<h1>Deep Graph-based Reinforcement Learning for Joint Cruise Control and Task Offloading for Aerial Edge Internet-of-Things (EdgeIoT)</h1>
+<h2 id="论文背景-2">论文背景</h2>
+<p>背景：无人机作为移动边缘服务器，处理地面物联网设备的任务。</p>
 <p>存在的问题：当无人机调度一个物联网设备卸载其计算任务时，在其他未被选中的设备上缓存的任务可能会过期而不得不取消。</p>
 <p>提出一种优化方案，在物联网设备的计算能力和电池预算以及无人机的速度限制下，最大化卸载到无人机的任务。</p>
 <p>求解这个方案的问题：优化包含较大的解空间，而无人机的瞬时网络状态是未知的。</p>
-<h2 id="论文思路-1"><a href="#论文思路-1" class="headerlink" title="论文思路"></a>论文思路</h2><p>在物联网设备的计算能力和电池预算以及无人机的速度限制下，以卸载到无人机的计算任务数量最大化为目标，建立优化模型。<strong>所以优化目标其实是无人机的速度、方向和物联网设备上的任务调度情况。</strong></p>
+<h2 id="论文思路-2">论文思路</h2>
+<p>在物联网设备的计算能力和电池预算以及无人机的速度限制下，以卸载到无人机的计算任务数量最大化为目标，建立优化模型。<strong>所以优化目标其实是无人机的速度、方向和物联网设备上的任务调度情况。</strong></p>
 <p>提出了一种新的基于深度图的强化学习框架。开发了一种优势演员-评论家( A2C )结构，用于训练无人机在物联网设备的飞行速度、航向和卸载时间表方面的实时连续动作。</p>
 <blockquote>
 <p>假设你有一群朋友，每个人之间都有各种关系，比如谁是好朋友，谁经常一起出去玩，谁在社交媒体上互相关注等。你可以把每个人看作一个“节点”，而这些朋友之间的关系可以看作是“边”。如果我们把这群朋友及其关系画出来，你就得到了一个“图”。</p>
@@ -540,7 +556,8 @@ mjx-container[display="true"] + br {
 <p>想象一个游戏中的AI角色（演员），它负责在游戏世界中移动、攻击敌人、或收集资源。每次它做出一个动作（如移动到特定位置），评论家（Critic）会评估这个动作的结果，给出这个动作相对于当前状态下的其他可能动作的好坏程度（优势）。如果角色选择了一个带来高分数的动作，评论家会告诉演员“这个选择很好”，演员就会增加在类似情况下选择这个动作的概率。反之，如果动作结果不好，评论家会告诉演员“这不是一个好选择”，演员就会减少选择该动作的概率。通过这种方式，AI角色逐渐学会在不同的游戏状态下做出最佳的决策。</p>
 </blockquote>
 <p>本文提出的GNN - A2C中开发了一个长短期记忆( long short-term memory，LSTM )模型，基于GNN中提取的特征来预测物联网设备上的时变无人机地面信道和任务生成。</p>
-<h3 id="具体模型"><a href="#具体模型" class="headerlink" title="具体模型"></a>具体模型</h3><p>暂存一下符号的意思</p>
+<h3 id="具体模型">具体模型</h3>
+<p>暂存一下符号的意思</p>
 <p><img src="/2024/08/14/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/image-20240816023628673.png" alt="image-20240816023628673"></p>
 
       
@@ -669,19 +686,23 @@ mjx-container[display="true"] + br {
 
 
 
-<!-- KaTeX CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
 
-<!-- KaTeX JS -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgqcOT" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.querySelector('.article-entry'), {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\$', right: '\$', display: false},
+        {left: '\$$', right: '\$$', display: true}
+      ],
+      throwOnError: false
+    });
+  });
+  </script>
 
-<!-- KaTeX auto-render extension -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-
-<style>
-.katex { font-size: 1.1em; }
-</style>
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">

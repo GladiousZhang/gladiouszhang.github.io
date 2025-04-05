@@ -22,12 +22,12 @@
   
   
   <title>mit6.824笔记 | Shuyu Zhang&#39;s Blog</title>
-  <meta name="description" content="环境配置 lab1 阅读mrsequential.go 阅读wc.go 任务 阅读 mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路 新worker加入 master执行逻辑 worker执行逻辑       环境配置环境：Ubuntu 20.04 配置go语言环境 1apt install golang 在vs">
+  <meta name="description" content="环境配置 lab1  阅读mrsequential.go 阅读wc.go 任务 阅读  mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路  新worker加入 master执行逻辑 worker执行逻辑       环境配置 环境：Ubuntu 20.04 配置go语言环境 1apt install golang">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mit6.824笔记">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/03/31/mit6-824%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="环境配置 lab1 阅读mrsequential.go 阅读wc.go 任务 阅读 mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路 新worker加入 master执行逻辑 worker执行逻辑       环境配置环境：Ubuntu 20.04 配置go语言环境 1apt install golang 在vs">
+<meta property="og:description" content="环境配置 lab1  阅读mrsequential.go 阅读wc.go 任务 阅读  mrcoordinator.go mrworker.go coordinator.go rpc.go worker.go   思路  新worker加入 master执行逻辑 worker执行逻辑       环境配置 环境：Ubuntu 20.04 配置go语言环境 1apt install golang">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-31T08:20:53.000Z">
 <meta property="article:modified_time" content="2024-12-13T02:01:51.162Z">
@@ -50,7 +50,9 @@
   
   
   
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
@@ -319,7 +321,11 @@
   
   
 <main class="main" role="main">
-  <div class="content">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+
+<div class="content">
   <article id="post-mit6-824笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
@@ -371,36 +377,42 @@
       
         <!-- toc -->
 <ul>
-<li><a href="#环境配置">环境配置</a></li>
-<li><a href="#lab1">lab1</a><ul>
-<li><a href="#阅读`mrsequential-go`">阅读<code>mrsequential.go</code></a></li>
-<li><a href="#阅读`wc-go`">阅读<code>wc.go</code></a></li>
-<li><a href="#任务">任务</a></li>
-<li><a href="#阅读">阅读</a><ul>
-<li><a href="#`mrcoordinator-go`"><code>mrcoordinator.go</code></a></li>
-<li><a href="#`mrworker-go`"><code>mrworker.go</code></a></li>
-<li><a href="#`coordinator-go`"><code>coordinator.go</code></a></li>
-<li><a href="#`rpc-go`"><code>rpc.go</code></a></li>
-<li><a href="#`worker-go`"><code>worker.go</code></a></li>
+<li><a href="#----">环境配置</a></li>
+<li><a href="#lab1">lab1</a>
+<ul>
+<li><a href="#---mrsequentialgo-">阅读<code>mrsequential.go</code></a></li>
+<li><a href="#---wcgo-">阅读<code>wc.go</code></a></li>
+<li><a href="#--">任务</a></li>
+<li><a href="#--">阅读</a>
+<ul>
+<li><a href="#-mrcoordinatorgo-"><code>mrcoordinator.go</code></a></li>
+<li><a href="#-mrworkergo-"><code>mrworker.go</code></a></li>
+<li><a href="#-coordinatorgo-"><code>coordinator.go</code></a></li>
+<li><a href="#-rpcgo-"><code>rpc.go</code></a></li>
+<li><a href="#-workergo-"><code>worker.go</code></a></li>
 </ul>
 </li>
-<li><a href="#思路">思路</a><ul>
-<li><a href="#新worker加入">新worker加入</a></li>
-<li><a href="#master执行逻辑">master执行逻辑</a></li>
-<li><a href="#worker执行逻辑">worker执行逻辑</a></li>
+<li><a href="#--">思路</a>
+<ul>
+<li><a href="#-worker--">新worker加入</a></li>
+<li><a href="#master----">master执行逻辑</a></li>
+<li><a href="#worker----">worker执行逻辑</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
-<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>环境：Ubuntu 20.04</p>
+<h1>环境配置</h1>
+<p>环境：Ubuntu 20.04</p>
 <p>配置go语言环境</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install golang</span><br></pre></td></tr></table></figure>
 <p>在vscode里面安装go的插件</p>
-<h1 id="lab1"><a href="#lab1" class="headerlink" title="lab1"></a>lab1</h1><p><code>.so</code>文件是go里面的插件。在本lab中<code>mrsequential.go</code>是主程序。每次运行主程序的时候选择一个插件，即具体的map-reduce过程。</p>
-<p>go build -buildmode=plugin ../mrapps/wc.go是吧wc.go编译成插件（动态链接库）</p>
-<h2 id="阅读mrsequential-go"><a href="#阅读mrsequential-go" class="headerlink" title="阅读mrsequential.go"></a>阅读<code>mrsequential.go</code></h2><p><code>os.Args</code> 是一个字符串切片，包含了程序运行时的所有命令行参数，包括程序名本身。程序需要至少两个参数：xxx.so 插件文件和至少一个输入文件。</p>
+<h1>lab1</h1>
+<p><code>.so</code>文件是go里面的插件。在本lab中<code>mrsequential.go</code>是主程序。每次运行主程序的时候选择一个插件，即具体的map-reduce过程。</p>
+<p>go build -buildmode=plugin …/mrapps/wc.go是吧wc.go编译成插件（动态链接库）</p>
+<h2 id="阅读mrsequential-go">阅读<code>mrsequential.go</code></h2>
+<p><code>os.Args</code> 是一个字符串切片，包含了程序运行时的所有命令行参数，包括程序名本身。程序需要至少两个参数：<a target="_blank" rel="noopener" href="http://xxx.so">xxx.so</a> 插件文件和至少一个输入文件。</p>
 <p>如果合法，则加载插件中的map和reduce方法。</p>
 <p>创建一个中间输出的键值对切片。</p>
 <p>对于所有输入的文件，将其分别打开并全部读入，调用插件中的map函数，生成中间键值对，并将键值对的内容全部加入先前创建的中间输出切片。</p>
@@ -414,23 +426,34 @@
 <blockquote>
 <p>Lookup返回一个空接口类型 <code>interface&#123;&#125;</code> 。可以理解空接口类型就像java中的object，所有类都继承他，但是具体是啥需要自行解释（断言），是一种多态的体现。如果断言错误就会出现恐慌（panic）。</p>
 </blockquote>
-<h2 id="阅读wc-go"><a href="#阅读wc-go" class="headerlink" title="阅读wc.go"></a>阅读<code>wc.go</code></h2><p>实现了map和reduce方法。map读入文件名和以字符串形式传入的文件内容，实际上并没有用到文件名。</p>
+<h2 id="阅读wc-go">阅读<code>wc.go</code></h2>
+<p>实现了map和reduce方法。map读入文件名和以字符串形式传入的文件内容，实际上并没有用到文件名。</p>
 <p>在map方法中，首先创建了一个判断分隔符的函数，将其作为回调函数来分割文件内容，返回一个个索引和单词组成的切片。遍历切片，将所有的单词用“单词: 1”的键值对存储在切片中。返回切片。</p>
 <p>reduce方法直接返回了values的长度。</p>
-<h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>实现一个分布式 MapReduce，它由两个程序（<code>coordinator</code>和<code>worker</code>）组成。只有一个协调程序和一个或多个并行执行的工作程序。在真实系统中，<code>worker</code>会运行在多台不同的机器上，但在本lab中，你将在一台机器上运行所有<code>worker</code>。<code>worker</code>将通过 RPC 与协调程序对话。每个 <code>worker</code> 进程将循环向<code>coordinator</code>请求任务，从一个或多个文件中读取任务输入，执行任务，将任务输出写入一个或多个文件，然后再次向<code>coordinator</code>请求新任务。<code>coordinator</code>应该注意到，如果某个 <code>worker</code> 在合理的时间内（本lab使用 10 秒）没有完成任务，就会将相同的任务交给不同的 <code>worker</code> 。</p>
+<h2 id="任务">任务</h2>
+<p>实现一个分布式 MapReduce，它由两个程序（<code>coordinator</code>和<code>worker</code>）组成。只有一个协调程序和一个或多个并行执行的工作程序。在真实系统中，<code>worker</code>会运行在多台不同的机器上，但在本lab中，你将在一台机器上运行所有<code>worker</code>。<code>worker</code>将通过 RPC 与协调程序对话。每个 <code>worker</code> 进程将循环向<code>coordinator</code>请求任务，从一个或多个文件中读取任务输入，执行任务，将任务输出写入一个或多个文件，然后再次向<code>coordinator</code>请求新任务。<code>coordinator</code>应该注意到，如果某个 <code>worker</code> 在合理的时间内（本lab使用 10 秒）没有完成任务，就会将相同的任务交给不同的 <code>worker</code> 。</p>
 <p>提供的代码位于<code>main/mrcoordinator.go</code> 和<code>main/mrworker.go</code>，最后实现的代码放在 <code>mr/coordinator.go</code>, <code>mr/worker.go</code>和 <code>mr/rpc.go</code>。</p>
-<h2 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h2><p>首先阅读一下源码。其中<code>main/mrcoordinator.go</code> 和<code>main/mrworker.go</code>是不能修改的，<code>mrcoordinator.go</code>用于调用自己编写的 <code>mr/coordinator.go</code>，<code>mrworker.go</code>用于开启一个worker进程，具体实现在<code>mr/rpc.go</code>。</p>
-<h3 id="mrcoordinator-go"><a href="#mrcoordinator-go" class="headerlink" title="mrcoordinator.go"></a><code>mrcoordinator.go</code></h3><p>调用了<code>mr/coordinator.go</code>，将所有文件名称传入<code>MakeCoordinator</code>方法，同时传入10，代表10个reduce任务。当<code>Done</code>返回true的时候结束。</p>
-<h3 id="mrworker-go"><a href="#mrworker-go" class="headerlink" title="mrworker.go"></a><code>mrworker.go</code></h3><p>加载插件，生成map和reduce方法，传给自己创建的worker。</p>
-<h3 id="coordinator-go"><a href="#coordinator-go" class="headerlink" title="coordinator.go"></a><code>coordinator.go</code></h3><p>创建了一个<code>Coordinator</code>类，主要包含<code>server</code>，<code>Done</code>方法。<code>server</code>方法用于开启一个接受RPC请求的线程。<code>Done</code>方法用于判断工作是否结束。<code>MakeCoordinator</code>函数被<code>mrcoordinator.go</code>调用，返回一个<code>Coordinator&#123;&#125;</code>的实例。</p>
-<h3 id="rpc-go"><a href="#rpc-go" class="headerlink" title="rpc.go"></a><code>rpc.go</code></h3><p>RPC相关的一些定义，自定义时需要首字母大写。包含一个<code>coordinatorSock()</code>函数，用于在<code>/var/tmp/</code>目录下创建一个套接字文件，名为<code>5840-mr-UserId</code>。这个函数并不直接创建，而是返回这样一个路径下命名的字符串。</p>
-<h3 id="worker-go"><a href="#worker-go" class="headerlink" title="worker.go"></a><code>worker.go</code></h3><p>在其中定义了键值对的结构体。</p>
+<h2 id="阅读">阅读</h2>
+<p>首先阅读一下源码。其中<code>main/mrcoordinator.go</code> 和<code>main/mrworker.go</code>是不能修改的，<code>mrcoordinator.go</code>用于调用自己编写的 <code>mr/coordinator.go</code>，<code>mrworker.go</code>用于开启一个worker进程，具体实现在<code>mr/rpc.go</code>。</p>
+<h3 id="mrcoordinator-go"><code>mrcoordinator.go</code></h3>
+<p>调用了<code>mr/coordinator.go</code>，将所有文件名称传入<code>MakeCoordinator</code>方法，同时传入10，代表10个reduce任务。当<code>Done</code>返回true的时候结束。</p>
+<h3 id="mrworker-go"><code>mrworker.go</code></h3>
+<p>加载插件，生成map和reduce方法，传给自己创建的worker。</p>
+<h3 id="coordinator-go"><code>coordinator.go</code></h3>
+<p>创建了一个<code>Coordinator</code>类，主要包含<code>server</code>，<code>Done</code>方法。<code>server</code>方法用于开启一个接受RPC请求的线程。<code>Done</code>方法用于判断工作是否结束。<code>MakeCoordinator</code>函数被<code>mrcoordinator.go</code>调用，返回一个<code>Coordinator&#123;&#125;</code>的实例。</p>
+<h3 id="rpc-go"><code>rpc.go</code></h3>
+<p>RPC相关的一些定义，自定义时需要首字母大写。包含一个<code>coordinatorSock() </code>函数，用于在<code>/var/tmp/</code>目录下创建一个套接字文件，名为<code>5840-mr-UserId</code>。这个函数并不直接创建，而是返回这样一个路径下命名的字符串。</p>
+<h3 id="worker-go"><code>worker.go</code></h3>
+<p>在其中定义了键值对的结构体。</p>
 <p>创建了一个将不同键通过对其哈希值取模分配到N个reduce任务的方法。</p>
 <p>最主要的是<code>main/mrworker.go</code>会调用的Worker方法，传入map和reduce方法，主要是在这里写代码。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>按照原论文的习惯，我就称为worker和master了</p>
-<h3 id="新worker加入"><a href="#新worker加入" class="headerlink" title="新worker加入"></a>新worker加入</h3><p>对于woker来说，可以每次一上线就注册到master当中，调用master的join方法（待编写）</p>
+<h2 id="思路">思路</h2>
+<p>按照原论文的习惯，我就称为worker和master了</p>
+<h3 id="新worker加入">新worker加入</h3>
+<p>对于woker来说，可以每次一上线就注册到master当中，调用master的join方法（待编写）</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(w *workerTask)</span></span> CallMasterStart() &#123;</span><br><span class="line">	args := ArgsToMaster&#123;&#125;</span><br><span class="line">	args.Id = os.Getuid()</span><br><span class="line">	fmt.Printf(<span class="string">&quot;id %v\n&quot;</span>, args.Id)</span><br><span class="line">	<span class="comment">//args.msgType = join</span></span><br><span class="line">	reply := ArgsFromMaster&#123;&#125;</span><br><span class="line">	ok := call(<span class="string">&quot;Coordinator.WorkerJoin&quot;</span>, &amp;args, &amp;reply)</span><br><span class="line">	<span class="keyword">if</span> ok &#123;</span><br><span class="line">		<span class="comment">// 应该会返回master给返回worker的任务，待详细设计</span></span><br><span class="line">		<span class="comment">//fmt.Printf(&quot;reply.msg %v\n&quot;, reply.Msg)</span></span><br><span class="line">		splits := strings.Split(reply.Msg, <span class="string">&quot;=&quot;</span>)</span><br><span class="line">		w.nReduce, _ = strconv.Atoi(splits[<span class="number">1</span>])</span><br><span class="line">		w.filename = splits[<span class="number">0</span>]</span><br><span class="line">		w.taskType, _ = strconv.Atoi(splits[<span class="number">2</span>])</span><br><span class="line">		<span class="comment">//fmt.Printf(&quot;reply.msg %v, nReduce %v\n&quot;, w.filename, w.nReduce)</span></span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;call failed!\n&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>join方法里面最好是能建立一个socket到worker，不知道可不可以，如果不可以的话，master怎么给woker派任务？（用reply的值返回就行，socket开销太大）所以在worker中：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> WorkerJoin(args *ArgsToMaster, reply *ArgsFromMaster) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 由于是并发的，所以需要考虑线程安全</span></span><br><span class="line">	c.mu.Lock()</span><br><span class="line">	c.workerList = <span class="built_in">append</span>(c.workerList, args.Id)</span><br><span class="line">	<span class="comment">// 回传一个任务地址回去</span></span><br><span class="line">	<span class="keyword">for</span> i, taskItem := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">		<span class="comment">//fmt.Println(taskItem)</span></span><br><span class="line">		<span class="keyword">if</span> taskItem.taskStatus == ready &#123;</span><br><span class="line">			reply.Msg = taskItem.taskAddr + <span class="string">&quot;=&quot;</span> + strconv.Itoa(c.nReducer) + <span class="string">&quot;=&quot;</span> + strconv.Itoa(<span class="type">int</span>(taskItem.taskType))</span><br><span class="line">			c.taskList[i].taskStatus = assign</span><br><span class="line">			c.taskList[i].taskWorker = args.Id</span><br><span class="line">			<span class="comment">// 如果找到了就要解锁，不然其他线程获取不到锁</span></span><br><span class="line">			c.mu.Unlock()</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.mu.Unlock()</span><br><span class="line">	reply.Msg = <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>join方法里面最好是能建立一个socket到worker，不知道可不可以，如果不可以的话，master怎么给woker派任务？（用reply的值返回就行，socket开销太大）所以在worker中：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> WorkerJoin(args *ArgsToMaster, reply *ArgsFromMaster) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 由于是并发的，所以需要考虑线程安全</span></span><br><span class="line">	c.mu.Lock()</span><br><span class="line">	c.workerList = <span class="built_in">append</span>(c.workerList, args.Id)</span><br><span class="line">	<span class="comment">// 回传一个任务地址回去</span></span><br><span class="line">	<span class="keyword">for</span> i, taskItem := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">		<span class="comment">//fmt.Println(taskItem)</span></span><br><span class="line">		<span class="keyword">if</span> taskItem.taskStatus == ready &#123;</span><br><span class="line">			reply.Msg = taskItem.taskAddr + <span class="string">&quot;=&quot;</span> + strconv.Itoa(c.nReducer) + <span class="string">&quot;=&quot;</span> + strconv.Itoa(<span class="type">int</span>(taskItem.taskType))</span><br><span class="line">			c.taskList[i].taskStatus = assign</span><br><span class="line">			c.taskList[i].taskWorker = args.Id</span><br><span class="line">			<span class="comment">// 如果找到了就要解锁，不然其他线程获取不到锁</span></span><br><span class="line">			c.mu.Unlock()</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.mu.Unlock()</span><br><span class="line">	reply.Msg = <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>master维护一个任务列表，每个任务包含任务类型，文件地址，任务状态，分配到的wokerid</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> task <span class="keyword">struct</span> &#123;</span><br><span class="line">	taskType   TaskType   <span class="comment">//任务类型</span></span><br><span class="line">	taskAddr   <span class="type">string</span>     <span class="comment">//文件地址</span></span><br><span class="line">	taskStatus TaskStatus <span class="comment">//任务状态</span></span><br><span class="line">	taskWorker <span class="type">int</span>        <span class="comment">//分配给的worker编号</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>worker收到reply之后，应该在本地读取任务并运行</p>
@@ -438,22 +461,27 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gob: type mismatch: no fields matched compiling decoder for ArgsToMaster</span><br></pre></td></tr></table></figure>
 <p>搜了一下说客户端所传的参数类型和服务端不一致</p>
 <p>原来是因为之前修改了结构体名称后没有重新运行master。。。。。</p>
-<h3 id="master执行逻辑"><a href="#master执行逻辑" class="headerlink" title="master执行逻辑"></a>master执行逻辑</h3><p>按理说master给worker分了任务就已经可以了，但是，master有要求如下：</p>
+<h3 id="master执行逻辑">master执行逻辑</h3>
+<p>按理说master给worker分了任务就已经可以了，但是，master有要求如下：</p>
 <blockquote>
 <p>如果工作者在合理的时间内（在这个实验中，使用十秒）没有完成其任务，协调者应该注意到，并将相同的任务分配给不同的工作者。</p>
 </blockquote>
 <p>所以master应当给每个任务维护一个计时器，只要10s到了任务还没有end，那这个任务就应该把状态改为ready。任务新增计时器的字段，并且每分配一次任务就要初始化一次计时器</p>
 <p>在master的任务列表初始化结束后，开启一个新的携程，专门用于检查是否超时。此后每次任务完成回给master的时候，master都应该检查id是不是和列表中的相同。</p>
-<p>原本修改的代码：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用来检查有没有任务超时了</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> testTimeOut() &#123;</span><br><span class="line">	<span class="keyword">for</span> !c.Done() &#123;</span><br><span class="line">		<span class="keyword">for</span> i, taskItem := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">			<span class="comment">//fmt.Println(&quot;正在检查：&quot;, c.taskList[i])</span></span><br><span class="line">			<span class="keyword">if</span> c.taskList[i].taskStatus == assign &amp;&amp; time.Since(c.taskList[i].taskStart) &gt;= <span class="number">10</span>*time.Second &#123;</span><br><span class="line">				<span class="comment">//fmt.Println(&quot;已到达&quot;)</span></span><br><span class="line">				fmt.Println(<span class="string">&quot;删除了：&quot;</span>, taskItem.taskAddr, time.Since(taskItem.taskStart), <span class="string">&quot;现在时间：&quot;</span>, time.Now(), <span class="string">&quot;任务开始时间&quot;</span>, c.taskList[i].taskStart)</span><br><span class="line">				c.taskList[i].taskStatus = ready</span><br><span class="line">				c.taskList[i].taskWorker = <span class="number">-1</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>原本修改的代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用来检查有没有任务超时了</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> testTimeOut() &#123;</span><br><span class="line">	<span class="keyword">for</span> !c.Done() &#123;</span><br><span class="line">		<span class="keyword">for</span> i, taskItem := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">			<span class="comment">//fmt.Println(&quot;正在检查：&quot;, c.taskList[i])</span></span><br><span class="line">			<span class="keyword">if</span> c.taskList[i].taskStatus == assign &amp;&amp; time.Since(c.taskList[i].taskStart) &gt;= <span class="number">10</span>*time.Second &#123;</span><br><span class="line">				<span class="comment">//fmt.Println(&quot;已到达&quot;)</span></span><br><span class="line">				fmt.Println(<span class="string">&quot;删除了：&quot;</span>, taskItem.taskAddr, time.Since(taskItem.taskStart), <span class="string">&quot;现在时间：&quot;</span>, time.Now(), <span class="string">&quot;任务开始时间&quot;</span>, c.taskList[i].taskStart)</span><br><span class="line">				c.taskList[i].taskStatus = ready</span><br><span class="line">				c.taskList[i].taskWorker = <span class="number">-1</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是存在一个问题！就是在锁的机制上。简单地说，c里面的数据在多线程中是不安全的，每一个访问和修改都应该要加锁才对。</p>
 <p>因此，在每一个if判断前后，都应该加上一个锁。但是这样是否就存在一个问题：所有的步骤都卡在这个锁上，降低了并行的效率，成为性能瓶颈。虽然在master上，这个锁并不一定会太影响，但是诸如检查任务是否超时的场景会经常请求访问。</p>
-<p>所以我考虑不用之前定义的sync.Mutex，而是用读写锁RWMutex，这样至少可以多个同时读。最后写出来像这样：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用来检查有没有任务超时了</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> testTimeOut() &#123;</span><br><span class="line">	<span class="keyword">for</span> !c.Done() &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">			<span class="comment">//fmt.Println(&quot;正在检查：&quot;, c.taskList[i])</span></span><br><span class="line">			c.mu.RLock()</span><br><span class="line">			<span class="keyword">if</span> c.taskList[i].taskStatus == assign &amp;&amp; time.Since(c.taskList[i].taskStart) &gt;= <span class="number">10</span>*time.Second &#123;</span><br><span class="line">				fmt.Println(<span class="string">&quot;已到达&quot;</span>)</span><br><span class="line">				c.mu.RUnlock()</span><br><span class="line">				c.mu.Lock()</span><br><span class="line">				fmt.Println(<span class="string">&quot;删除了：&quot;</span>, c.taskList[i].taskAddr, time.Since(c.taskList[i].taskStart), <span class="string">&quot;现在时间：&quot;</span>, time.Now(), <span class="string">&quot;任务开始时间&quot;</span>, c.taskList[i].taskStart)</span><br><span class="line">				c.taskList[i].taskStatus = ready</span><br><span class="line">				c.taskList[i].taskWorker = <span class="number">-1</span></span><br><span class="line">				c.mu.Unlock()</span><br><span class="line">				c.mu.RLock() <span class="comment">// 为了和最后的c.mu.RUnlock()配对，不然会出错</span></span><br><span class="line">			&#125;</span><br><span class="line">			c.mu.RUnlock()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以我考虑不用之前定义的sync.Mutex，而是用读写锁RWMutex，这样至少可以多个同时读。最后写出来像这样：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用来检查有没有任务超时了</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> testTimeOut() &#123;</span><br><span class="line">	<span class="keyword">for</span> !c.Done() &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">			<span class="comment">//fmt.Println(&quot;正在检查：&quot;, c.taskList[i])</span></span><br><span class="line">			c.mu.RLock()</span><br><span class="line">			<span class="keyword">if</span> c.taskList[i].taskStatus == assign &amp;&amp; time.Since(c.taskList[i].taskStart) &gt;= <span class="number">10</span>*time.Second &#123;</span><br><span class="line">				fmt.Println(<span class="string">&quot;已到达&quot;</span>)</span><br><span class="line">				c.mu.RUnlock()</span><br><span class="line">				c.mu.Lock()</span><br><span class="line">				fmt.Println(<span class="string">&quot;删除了：&quot;</span>, c.taskList[i].taskAddr, time.Since(c.taskList[i].taskStart), <span class="string">&quot;现在时间：&quot;</span>, time.Now(), <span class="string">&quot;任务开始时间&quot;</span>, c.taskList[i].taskStart)</span><br><span class="line">				c.taskList[i].taskStatus = ready</span><br><span class="line">				c.taskList[i].taskWorker = <span class="number">-1</span></span><br><span class="line">				c.mu.Unlock()</span><br><span class="line">				c.mu.RLock() <span class="comment">// 为了和最后的c.mu.RUnlock()配对，不然会出错</span></span><br><span class="line">			&#125;</span><br><span class="line">			c.mu.RUnlock()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>gpt 给了一版更好的，我也觉得更好看，但是我没有用：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func (c *Coordinator) testTimeOut() &#123;</span><br><span class="line">	for !c.Done() &#123;</span><br><span class="line">		for i := range c.taskList &#123;</span><br><span class="line">			c.mu.RLock()</span><br><span class="line">			task := c.taskList[i] // 获取任务</span><br><span class="line">			taskStatus := task.taskStatus</span><br><span class="line">			taskStart := task.taskStart</span><br><span class="line">			c.mu.RUnlock()</span><br><span class="line"></span><br><span class="line">			if taskStatus == assign &amp;&amp; time.Since(taskStart) &gt;= 10*time.Second &#123;</span><br><span class="line">				// 超时处理逻辑</span><br><span class="line">				c.mu.Lock()</span><br><span class="line">				if c.taskList[i].taskStatus == assign &#123; // 双重检查避免竞态条件</span><br><span class="line">					fmt.Println(&quot;超时任务：&quot;, c.taskList[i].taskAddr, time.Since(taskStart))</span><br><span class="line">					c.taskList[i].taskStatus = ready</span><br><span class="line">					c.taskList[i].taskWorker = -1</span><br><span class="line">				&#125;</span><br><span class="line">				c.mu.Unlock()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>gpt 给了一版更好的，我也觉得更好看，但是我没有用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func (c *Coordinator) testTimeOut() &#123;</span><br><span class="line">	for !c.Done() &#123;</span><br><span class="line">		for i := range c.taskList &#123;</span><br><span class="line">			c.mu.RLock()</span><br><span class="line">			task := c.taskList[i] // 获取任务</span><br><span class="line">			taskStatus := task.taskStatus</span><br><span class="line">			taskStart := task.taskStart</span><br><span class="line">			c.mu.RUnlock()</span><br><span class="line"></span><br><span class="line">			if taskStatus == assign &amp;&amp; time.Since(taskStart) &gt;= 10*time.Second &#123;</span><br><span class="line">				// 超时处理逻辑</span><br><span class="line">				c.mu.Lock()</span><br><span class="line">				if c.taskList[i].taskStatus == assign &#123; // 双重检查避免竞态条件</span><br><span class="line">					fmt.Println(&quot;超时任务：&quot;, c.taskList[i].taskAddr, time.Since(taskStart))</span><br><span class="line">					c.taskList[i].taskStatus = ready</span><br><span class="line">					c.taskList[i].taskWorker = -1</span><br><span class="line">				&#125;</span><br><span class="line">				c.mu.Unlock()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>在Done里面，我们可以简单的把任务队列过一遍，如果所有的任务都已经变成finish，那么done返回true</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main/mrcoordinator.go calls Done() periodically to find out</span></span><br><span class="line"><span class="comment">// if the entire job has finished.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Coordinator)</span></span> Done() <span class="type">bool</span> &#123;</span><br><span class="line">	ret := <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Your code here.</span></span><br><span class="line">	<span class="comment">// 遍历任务队列，如果存在为finish的，就返回false</span></span><br><span class="line">	c.mu.RLock()</span><br><span class="line">	<span class="keyword">for</span> _, task := <span class="keyword">range</span> c.taskList &#123;</span><br><span class="line">		<span class="keyword">if</span> task.taskStatus != finish &#123;</span><br><span class="line">			ret = <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.mu.RUnlock()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="worker执行逻辑"><a href="#worker执行逻辑" class="headerlink" title="worker执行逻辑"></a>worker执行逻辑</h3><p>现在worker知道了任务类型和文件地址，应该使用map或者reduce函数进行操作，并将结果存到文件中。但仍然存在一个问题：我们并不是调完一次map或者reduce任务，worker就挂了，而是持续存在。因此，需要每执行完一个任务，就去找master要任务。</p>
+<h3 id="worker执行逻辑">worker执行逻辑</h3>
+<p>现在worker知道了任务类型和文件地址，应该使用map或者reduce函数进行操作，并将结果存到文件中。但仍然存在一个问题：我们并不是调完一次map或者reduce任务，worker就挂了，而是持续存在。因此，需要每执行完一个任务，就去找master要任务。</p>
 
       
     </div>
@@ -577,19 +605,23 @@
 
 
 
-<!-- KaTeX CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
 
-<!-- KaTeX JS -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgqcOT" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.querySelector('.article-entry'), {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\$', right: '\$', display: false},
+        {left: '\$$', right: '\$$', display: true}
+      ],
+      throwOnError: false
+    });
+  });
+  </script>
 
-<!-- KaTeX auto-render extension -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-
-<style>
-.katex { font-size: 1.1em; }
-</style>
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">

@@ -22,12 +22,12 @@
   
   
   <title>CMU-深度学习系统-第二章 | Shuyu Zhang&#39;s Blog</title>
-  <meta name="description" content="这章是用softmax的例子来回顾了ML的知识点。 softmax回归又叫多类逻辑回归，就是将输入数据进行分类，通过softmax函数得到每个类别的概率。 而这样的分类问题，是通过实现准备这样一个数据集：包含数据和数据对应的标签。让模型学习数据集和标签的对应关系，这样的过程叫做监督学习。  除了监督学习，还有  无监督学习 数据没有标签，模型从无标签数据中发现隐藏模式或结构。 如K-means、层">
+  <meta name="description" content="这章是用softmax的例子来回顾了ML的知识点。 softmax回归又叫多类逻辑回归，就是将输入数据进行分类，通过softmax函数得到每个类别的概率。 而这样的分类问题，是通过实现准备这样一个数据集：包含数据和数据对应的标签。让模型学习数据集和标签的对应关系，这样的过程叫做监督学习。  除了监督学习，还有   无监督学习  数据没有标签，模型从无标签数据中发现隐藏模式或结构。 如K-means">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU-深度学习系统-第二章">
 <meta property="og:url" content="http://gladiouszhang.github.io/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这章是用softmax的例子来回顾了ML的知识点。 softmax回归又叫多类逻辑回归，就是将输入数据进行分类，通过softmax函数得到每个类别的概率。 而这样的分类问题，是通过实现准备这样一个数据集：包含数据和数据对应的标签。让模型学习数据集和标签的对应关系，这样的过程叫做监督学习。  除了监督学习，还有  无监督学习 数据没有标签，模型从无标签数据中发现隐藏模式或结构。 如K-means、层">
+<meta property="og:description" content="这章是用softmax的例子来回顾了ML的知识点。 softmax回归又叫多类逻辑回归，就是将输入数据进行分类，通过softmax函数得到每个类别的概率。 而这样的分类问题，是通过实现准备这样一个数据集：包含数据和数据对应的标签。让模型学习数据集和标签的对应关系，这样的过程叫做监督学习。  除了监督学习，还有   无监督学习  数据没有标签，模型从无标签数据中发现隐藏模式或结构。 如K-means">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gladiouszhang.github.io/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/image-20250302142116461-1740896480006-1.png">
 <meta property="og:image" content="http://gladiouszhang.github.io/2025/03/02/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%8C%E7%AB%A0/image-20250302142642246.png">
@@ -58,7 +58,9 @@
   
   
   
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -439,7 +441,11 @@ mjx-container[display="true"] + br {
   
   
 <main class="main" role="main">
-  <div class="content">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+
+<div class="content">
   <article id="post-CMU-深度学习系统-第二章" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
@@ -495,31 +501,39 @@ mjx-container[display="true"] + br {
 <blockquote>
 <p>除了监督学习，还有</p>
 <ul>
-<li>无监督学习<ul>
+<li>
+<p>无监督学习</p>
+<ul>
 <li>数据没有标签，模型从无标签数据中发现隐藏模式或结构。</li>
 <li>如K-means、层次聚类、主成分分析（PCA）</li>
 </ul>
 </li>
-<li><p>半监督学习（Semi-Supervised Learning）</p>
+<li>
+<p>半监督学习（Semi-Supervised Learning）</p>
 <ul>
 <li>结合少量有标签数据和大量无标签数据训练模型。</li>
 <li>适用于标注成本高，但未标注数据丰富（如医学图像分析）。</li>
 </ul>
 </li>
-<li><p>强化学习（Reinforcement Learning, RL）</p>
+<li>
+<p>强化学习（Reinforcement Learning, RL）</p>
 <ul>
 <li>模型通过与环境交互，根据<strong>奖励信号</strong>调整策略，目标是最大化长期累积奖励。</li>
 <li>适用于序列决策问题（如机器人控制、游戏AI）。</li>
 <li>Q-learning、深度强化学习（DQN）、策略梯度（PPO）。</li>
 </ul>
 </li>
-<li>自监督学习（Self-Supervised Learning）<ul>
+<li>
+<p>自监督学习（Self-Supervised Learning）</p>
+<ul>
 <li>通过构造“伪标签”从无标签数据中学习，属于无监督学习的子类。</li>
 <li>NLP中的预训练模型（如BERT通过掩码预测学习上下文）。</li>
 <li>图像中的对比学习（如SimCLR通过图像增强构造正负样本对）。</li>
 </ul>
 </li>
-<li>多任务学习（Multi-Task Learning）<ul>
+<li>
+<p>多任务学习（Multi-Task Learning）</p>
+<ul>
 <li>同时学习多个相关任务，共享部分模型参数以提高泛化能力。</li>
 <li>一个模型同时完成文本分类和实体识别。</li>
 </ul>
@@ -676,19 +690,23 @@ mjx-container[display="true"] + br {
 
 
 
-<!-- KaTeX CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
 
-<!-- KaTeX JS -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgqcOT" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.querySelector('.article-entry'), {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\$', right: '\$', display: false},
+        {left: '\$$', right: '\$$', display: true}
+      ],
+      throwOnError: false
+    });
+  });
+  </script>
 
-<!-- KaTeX auto-render extension -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-
-<style>
-.katex { font-size: 1.1em; }
-</style>
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
