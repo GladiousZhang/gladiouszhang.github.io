@@ -22,12 +22,12 @@
   
   
   <title>higher库在元（强化）学习中的使用 | Shuyu Zhang&#39;s Blog</title>
-  <meta name="description" content="higher.innerloop_ctx是higher库的上下文管理器，用于创建内部循环（inner loop）的上下文，内部循环通常用于元学习场景，其中在模型参数更新的内部循环中进行一些额外的操作。 12higher.innerloop_ctx(model, opt, device&#x3D;None, copy_initial_weights&#x3D;True, override&#x3D;None, track_h">
+  <meta name="description" content="higher.innerloop_ctx是higher库的上下文管理器，用于创建内部循环（inner loop）的上下文，内部循环通常用于元学习场景，其中在模型参数更新的内部循环中进行一些额外的操作。 12higher.innerloop_ctx(model, opt, device&#x3D;None, copy_initial_weights&#x3D;True, override&#x3D;None, track_hi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="higher库在元（强化）学习中的使用">
 <meta property="og:url" content="http://gladiouszhang.github.io/2024/11/11/higher%E5%BA%93%E5%9C%A8%E5%85%83%EF%BC%88%E5%BC%BA%E5%8C%96%EF%BC%89%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="higher.innerloop_ctx是higher库的上下文管理器，用于创建内部循环（inner loop）的上下文，内部循环通常用于元学习场景，其中在模型参数更新的内部循环中进行一些额外的操作。 12higher.innerloop_ctx(model, opt, device&#x3D;None, copy_initial_weights&#x3D;True, override&#x3D;None, track_h">
+<meta property="og:description" content="higher.innerloop_ctx是higher库的上下文管理器，用于创建内部循环（inner loop）的上下文，内部循环通常用于元学习场景，其中在模型参数更新的内部循环中进行一些额外的操作。 12higher.innerloop_ctx(model, opt, device&#x3D;None, copy_initial_weights&#x3D;True, override&#x3D;None, track_hi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-11T06:28:49.000Z">
 <meta property="article:modified_time" content="2024-11-11T08:59:49.581Z">
@@ -368,33 +368,17 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p><code>higher.innerloop_ctx</code>是<code>higher</code>库的上下文管理器，用于创建内部循环（inner
-loop）的上下文，内部循环通常用于元学习场景，其中在模型参数更新的内部循环中进行一些额外的操作。</p>
+        <p><code>higher.innerloop_ctx</code>是<code>higher</code>库的上下文管理器，用于创建内部循环（inner loop）的上下文，内部循环通常用于元学习场景，其中在模型参数更新的内部循环中进行一些额外的操作。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">higher.innerloop_ctx(model, opt, device=<span class="literal">None</span>, copy_initial_weights=<span class="literal">True</span>, override=<span class="literal">None</span>, track_higher_grads=<span class="literal">True</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>第一个参数model是需要进行<strong>内部循环</strong>的模型，通常是你的元模型。这个内部循环只是作为临时更新，结束内部循环后更新元模型真正的参数。</p></li>
 <li><p>第二个参数opt是优化器，这是你用来更新模型参数的优化器</p></li>
-<li><p>第三个参数copy_initial_weights是一个布尔值，<code>copy_initial_weights=True</code>
-的作用是在进入内部循环上下文时，<strong>仅仅在一开始</strong>将
-<code>model</code> 的参数拷贝一份到 <code>fmodel</code>
-中。而在上下文期间的内部循环中，<code>fmodel</code>
-的参数会持续累积更新，而不会在每次循环前被重新初始化；当
-<code>copy_initial_weights=False</code>
-时，<code>higher.innerloop_ctx</code> 不会在创建 <code>fmodel</code>
-时复制 <code>model</code> 的参数。相反，<code>fmodel</code> 将直接引用
-<code>model</code> 的参数。这意味着在内部循环中对 <code>fmodel</code>
-的任何更新都会直接影响到 <code>model</code> 的参数。</p></li>
-<li><p>第四个参数override是一个字典，例如override={‘lr’:lr_tensor,
-“momentum’:
-momentum_tensor}，用于指定在内部循环期间覆盖元模型优化器（即第二个参数opt）的参数，即给内外进行一个隔离。</p></li>
-<li><p>第五个参数track_higher_grads是一个布尔值，用于跟踪更高阶的梯度，如果是True，则内部循环中计算的梯度将被跟踪以支持高阶的梯度计算，这对于实现元学习算法（例如
-MAML）是必要的，因为 MAML
-需要计算“关于初始参数的梯度的梯度”。如果设置为False，则不会跟踪高阶梯度。</p>
+<li><p>第三个参数copy_initial_weights是一个布尔值，<code>copy_initial_weights=True</code> 的作用是在进入内部循环上下文时，<strong>仅仅在一开始</strong>将 <code>model</code> 的参数拷贝一份到 <code>fmodel</code> 中。而在上下文期间的内部循环中，<code>fmodel</code> 的参数会持续累积更新，而不会在每次循环前被重新初始化；当 <code>copy_initial_weights=False</code> 时，<code>higher.innerloop_ctx</code> 不会在创建 <code>fmodel</code> 时复制 <code>model</code> 的参数。相反，<code>fmodel</code> 将直接引用 <code>model</code> 的参数。这意味着在内部循环中对 <code>fmodel</code> 的任何更新都会直接影响到 <code>model</code> 的参数。</p></li>
+<li><p>第四个参数override是一个字典，例如override={‘lr’:lr_tensor, “momentum’: momentum_tensor}，用于指定在内部循环期间覆盖元模型优化器（即第二个参数opt）的参数，即给内外进行一个隔离。</p></li>
+<li><p>第五个参数track_higher_grads是一个布尔值，用于跟踪更高阶的梯度，如果是True，则内部循环中计算的梯度将被跟踪以支持高阶的梯度计算，这对于实现元学习算法（例如 MAML）是必要的，因为 MAML 需要计算“关于初始参数的梯度的梯度”。如果设置为False，则不会跟踪高阶梯度。</p>
 <ul>
 <li><blockquote>
-<p>在 MAML
-中，我们的目标是找到一组初始参数，使模型能在不同任务的内部循环中快速适应。为了实现这一点，MAML
-的外部循环需要对内部循环的更新进行微分，计算出高阶梯度。这使得元模型能够逐步优化其初始参数，以便在未来任务上更快地适应。</p>
+<p>在 MAML 中，我们的目标是找到一组初始参数，使模型能在不同任务的内部循环中快速适应。为了实现这一点，MAML 的外部循环需要对内部循环的更新进行微分，计算出高阶梯度。这使得元模型能够逐步优化其初始参数，以便在未来任务上更快地适应。</p>
 </blockquote></li>
 </ul></li>
 </ul>

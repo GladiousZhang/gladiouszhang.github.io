@@ -374,7 +374,7 @@
 <li><a href="#背景介绍">背景介绍</a></li>
 <li><a href="#代码介绍">代码介绍</a>
 <ul>
-<li><a href="#%60handleconnections%60"><code>handleConnections</code></a></li>
+<li><a href="#handleconnections"><code>handleConnections</code></a></li>
 </ul></li>
 </ul>
 <!-- tocstop -->
@@ -385,44 +385,25 @@
 <h2 id="handleconnections"><code>handleConnections</code></h2>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sshReq = ClientSet.CoreV1().RESTClient().Post().</span><br><span class="line">		Resource(<span class="string">&quot;pods&quot;</span>).</span><br><span class="line">		Name(pod).</span><br><span class="line">		Namespace(namespace).</span><br><span class="line">		SubResource(<span class="string">&quot;exec&quot;</span>).</span><br><span class="line">		VersionedParams(&amp;v1.PodExecOptions&#123;</span><br><span class="line">			Container: container,</span><br><span class="line">			Command:   []<span class="type">string</span>&#123;<span class="string">&quot;bash&quot;</span>&#125;,</span><br><span class="line">			Stdin:     <span class="literal">true</span>,</span><br><span class="line">			Stdout:    <span class="literal">true</span>,</span><br><span class="line">			Stderr:    <span class="literal">true</span>,</span><br><span class="line">			TTY:       <span class="literal">true</span>,</span><br><span class="line">		&#125;, scheme.ParameterCodec)</span><br></pre></td></tr></table></figure>
 <p>以上只是用于创建一个请求，还未发送。</p>
-<p><code>ClientSet</code>是一个指向 <code>kubernetes.Clientset</code>
-类型的实例的指针，CoreV1提供了对 Kubernetes Core API 组，例如
-Pods、Nodes、Services 等资源的访问，<code>RESTClient()</code>返回一个
-<code>rest.Interface</code> 对象，允许直接使用 REST API
-请求而不通过高层次的抽象。这个对象提供了更底层的 API
-操作。最后，<code>Post()</code>用于构造一个 HTTP POST
-请求。这个请求会用来与 Kubernetes API 交互，通常用于创建或更新资源。</p>
-<p><code>SubResource("exec")</code> 表示我们要操作的是 Pod 的 exec
-子资源，这通常用于执行命令。即，我们希望在指定的 Pod
-内执行某个命令。</p>
-<p><code>VersionedParams()</code>用于设置请求的参数，并且按照 API
-版本对这些参数进行编码。</p>
+<p><code>ClientSet</code>是一个指向 <code>kubernetes.Clientset</code> 类型的实例的指针，CoreV1提供了对 Kubernetes Core API 组，例如 Pods、Nodes、Services 等资源的访问，<code>RESTClient()</code>返回一个 <code>rest.Interface</code> 对象，允许直接使用 REST API 请求而不通过高层次的抽象。这个对象提供了更底层的 API 操作。最后，<code>Post()</code>用于构造一个 HTTP POST 请求。这个请求会用来与 Kubernetes API 交互，通常用于创建或更新资源。</p>
+<p><code>SubResource("exec")</code> 表示我们要操作的是 Pod 的 exec 子资源，这通常用于执行命令。即，我们希望在指定的 Pod 内执行某个命令。</p>
+<p><code>VersionedParams()</code>用于设置请求的参数，并且按照 API 版本对这些参数进行编码。</p>
 <ul>
 <li><code>v1.PodExecOptions</code>中：
 <ul>
 <li><strong><code>Container</code></strong>: 要执行命令的容器名。</li>
-<li><strong><code>Command</code></strong>:
-要在容器中执行的命令数组。这里是
-<code>[]string&#123;"bash"&#125;</code>，表示在容器中启动一个 Bash shell。</li>
-<li><strong><code>Stdin</code>, <code>Stdout</code>,
-<code>Stderr</code></strong>:
-这些布尔值表示是否需要连接标准输入、标准输出和标准错误。</li>
+<li><strong><code>Command</code></strong>: 要在容器中执行的命令数组。这里是 <code>[]string&#123;"bash"&#125;</code>，表示在容器中启动一个 Bash shell。</li>
+<li><strong><code>Stdin</code>, <code>Stdout</code>, <code>Stderr</code></strong>: 这些布尔值表示是否需要连接标准输入、标准输出和标准错误。</li>
 <li><strong><code>TTY</code></strong>: 布尔值，表示是否需要终端</li>
 </ul></li>
 </ul>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建到容器的连接</span></span><br><span class="line">	<span class="keyword">if</span> executor, err = remotecommand.NewSPDYExecutor(restConf, <span class="string">&quot;POST&quot;</span>, sshReq.URL()); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">goto</span> END</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>初始化一个 <code>remotecommand.Executor</code> 对象，以便能够通过
-Kubernetes API 执行命令。创建 <code>executor</code> 的过程涉及配置 API
-连接、指定 HTTP 方法（<code>POST</code>）以及构造执行请求的 URL。</p>
+<p>初始化一个 <code>remotecommand.Executor</code> 对象，以便能够通过 Kubernetes API 执行命令。创建 <code>executor</code> 的过程涉及配置 API 连接、指定 HTTP 方法（<code>POST</code>）以及构造执行请求的 URL。</p>
 <p><strong><code>sshReq.URL()</code></strong>:</p>
 <ul>
-<li><code>sshReq</code> 是之前构建的 <code>*rest.Request</code>
-对象，包含了 Kubernetes API 的请求信息。</li>
-<li><code>sshReq.URL()</code> 返回一个 <code>*url.URL</code>
-对象，表示请求的完整 URL。这个 URL 指向 Kubernetes API 的 exec
-子资源，用于执行命令。</li>
-<li>例如，这个 URL 可能类似于
-<code>https://kubernetes/api/v1/namespaces/default/pods/my-pod/exec?stdin=true&amp;stdout=true&amp;stderr=true</code>。</li>
+<li><code>sshReq</code> 是之前构建的 <code>*rest.Request</code> 对象，包含了 Kubernetes API 的请求信息。</li>
+<li><code>sshReq.URL()</code> 返回一个 <code>*url.URL</code> 对象，表示请求的完整 URL。这个 URL 指向 Kubernetes API 的 exec 子资源，用于执行命令。</li>
+<li>例如，这个 URL 可能类似于 <code>https://kubernetes/api/v1/namespaces/default/pods/my-pod/exec?stdin=true&amp;stdout=true&amp;stderr=true</code>。</li>
 </ul>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">handler = &amp;streamHandler&#123;wsConn: wsConn&#125;</span><br><span class="line">ctx = context.Background()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> err = executor.StreamWithContext(ctx, remotecommand.StreamOptions&#123;</span><br><span class="line">	Stdin:  handler,</span><br><span class="line">	Stdout: handler,</span><br><span class="line">	Stderr: handler,</span><br><span class="line">	<span class="comment">// TerminalSizeQueue: handler,</span></span><br><span class="line">	Tty: <span class="literal">true</span>,</span><br><span class="line">&#125;); err != <span class="literal">nil</span> &#123;</span><br><span class="line">	<span class="keyword">goto</span> END</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>将websocket直接连接到容器内的Stdin等。其实我修改后可以不用streamHandler，直接给我们的websocket加上io.read和write的接口就行，但是现在还没改。</p>
