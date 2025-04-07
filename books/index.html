@@ -29,8 +29,8 @@
 <meta property="og:url" content="http://gladiouszhang.github.io/books/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-07T15:47:40.278Z">
-<meta property="article:modified_time" content="2024-07-30T17:49:16.000Z">
+<meta property="article:published_time" content="2025-04-06T08:51:32.282Z">
+<meta property="article:modified_time" content="2025-04-06T08:51:32.282Z">
 <meta property="article:author" content="张舒俞">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
@@ -138,6 +138,16 @@
             <i class="icon icon-project"></i>
             
             <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
           </a>
         </li>
         
@@ -319,12 +329,13 @@
   <article class="article article-links article-type-list" itemscope="">
   <header class="article-header">
     <h1 itemprop="title">书单</h1>
-    <p class="text-muted">个人收藏的书单推荐给大家 <a href="https://www.douban.com/people/234978131/" target="_blank">[我的豆瓣]</a></p>
+    <p class="text-muted">微信读书中有笔记的书目 </p>
     <nav role="navigation" id="nav-main" class="okayNav">
       <ul id="tabs">
-        <li><a id="reading-tab" href="javascript:show('reading')" rel="external">在读<span id="reading-total"></span></a></li>
-        <li><a id="wish-tab" href="javascript:show('wish')" rel="external">想读<span id="wish-total"></span></a></li>
-        <li><a id="read-tab" href="javascript:show('read')" rel="external">已读<span id="read-total"></span></a></li>
+        <li><a id="reading-tab" href="javascript:show('reading')" rel="external">书目<span id="reading-total"></span></a></li>
+        <!-- <li><a id="reading-tab" href="javascript:show('reading')" rel="external">在读<span id="reading-total"></span></a></li> -->
+        <!-- <li><a id="wish-tab" href="javascript:show('wish')" rel="external">想读<span id="wish-total"></span></a></li>
+        <li><a id="read-tab" href="javascript:show('read')" rel="external">已读<span id="read-total"></span></a></li> -->
       </ul>
     </nav>
   </header>
@@ -336,19 +347,18 @@
       <div id="collections">
         <div id="reading" class="row hide">
         </div>
-        <div class="clearfix"></div>
-        <div id="wish" class="row hide">
-        </div>
-        <div class="clearfix"></div>
-        <div id="read" class="row hide">
-        </div>
-        <div class="clearfix"></div>
       </div>
     </div>
   </div>
 </article>
 
   
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
 
 
 
@@ -428,157 +438,105 @@ function show(id) {
 };
 
 (function() {
-  var read = [];
-  var wish = [];
-  var reading = [];
+  var books=[];
 
-  // XHR 获取豆瓣书单数据，数据格式json
-  // function loadDoubanCollections() {
-  //   var xhr = new XMLHttpRequest();
-  //   // https://api.douban.com/v2/book/user/:name/collections
-  //   xhr.open('GET', 'http://7b1fa0.com1.z0.glb.clouddn.com/douban-20170429-1.json', true);
-
-  //   xhr.onload = function() {
-  //     // console.log(this);
-  //     if (this.status >= 200 && this.status < 300) {
-  //       var res = JSON.parse(this.response);
-  //       searchData = res;
-  //       onLoadDouban(searchData);
-  //     } else {
-  //       console.error(this.statusText);
-  //     }
-  //   };
-
-  //   xhr.onerror = function() {
-  //     console.error(this.statusText);
-  //   };
-
-  //   xhr.send();
-  // }
-  
-  // Ajax 获取豆瓣书单数据，数据格式json
-  function loadDoubanCollections() {
-    var _this = this;
-    // https://api.douban.com/v2/book/user/:name/collections?start=0&count=100
-    var url = "https://api.douban.com/v2/book/user/234978131/collections"
-    $.ajax({
-      url: url,
-      type: 'GET',
-      data: {
-        start:0, // 从哪一条记录开始
-        count:100, // 获取豆瓣书单数据条数
-        apikey:'0b2bdeda43b5688921839c8ecb20399b# 豆瓣apikey' // 豆瓣apikey
-      },
-      dataType: 'JSONP', //here
-      success: function(data) {
-        // console.log(data);
-        onLoadDouban(data);
-      }
+  function loadLocalBooks() {
+  $.getJSON('/data/books.json')
+    .done(function(data) {
+      renderBooks(data); // ✅ 明确传递data
+    })
+    .fail(() => {
+      document.getElementById('loading').textContent = '加载失败，请刷新重试';
     });
-  }
+}
 
-  function onLoadDouban(data) {
-    if (data['count'] > 0) {
-      for (var i = 0; i < data['collections'].length; ++i) {
-        resolveBook(data['collections'][i]);
-      }
+function renderBooks(books) {
+    console.log(books);  // Debug: check if books are loaded correctly
+    document.getElementById('reading-total').innerHTML = '(' + books.length + ')';  // Update total book count
+    var html = '';
+    for (var i = 0; i < books.length; ++i) {
+      html += renderBook(books[i]);  // Render each book
     }
-    render();
-  }
-
-  function resolveBook(book) {
-    if (book['status'] == 'read') {
-      read.push(book);
-    }
-    if (book['status'] == 'wish') {
-      wish.push(book);
-    }
-    if (book['status'] == 'reading') {
-      reading.push(book);
-    }
-  }
-
-  function render() {
-    renderList(read, 'read');
-    renderList(wish, 'wish');
-    renderList(reading, 'reading');
-
-    document.getElementById('reading-total').innerHTML = '(' + reading.length + ')';
-    document.getElementById('read-total').innerHTML = '(' + read.length + ')';
-    document.getElementById('wish-total').innerHTML = '(' + wish.length + ')';
-
-    show('reading');
-    document.getElementById('loading').classList.add('hide');
-  }
-
-  function renderList(list, id) {
-    for (var i = 0; i < list.length; ++i) {
-      var h = renderBook(list[i]);
-      if (i > 0 && i % 4 == 3) {
-        h += '<div class="clearfix"></div>';
-      }
-      document.getElementById(id).innerHTML = document.getElementById(id).innerHTML + h;
-    }
+    document.getElementById('reading').innerHTML = html;  // Insert books into the DOM
+    show('reading');  // Show the 'reading' section
+    document.getElementById('loading').classList.add('hide');  // Hide the loading message
   }
 
   function renderBook(book) {
-    var html = '<div class="col-sm-6 col-md-6"><div class="panel panel-default hover-grow"><div class="panel-body">'
-      + '<div class="media media-middle book book-' + book['status'] + '" itemscope itemtype="http://schema.org/Book">' 
-      + '<div class="media-left"><a class="media-middle" target="_blank" href="' + book.book.alt + '" rel="external nofollow noopener noreferrer"><img class="media-object" src="' + book.book.image + '" itemprop="image"/></a></div><div class="media-body">' 
-      + '<h3 class="media-heading" itemprop="name"><a target="_blank" href="' + book.book.alt + '" rel="external nofollow noopener noreferrer">' + book.book.title + '</a></h3>' 
-      + '<p class="meta text-nowrap-1x"><small itemprop="author">' + book.book.author[0] + '</small> / <small itemprop="datePublished">' + book.book.pubdate + '</small> / <small itemprop="ratingValue">' + book.book.rating.average + '分</small></p>' 
-      + '<p class="meta text-nowrap-1x">' + book.updated.substring(0, 10) + resolveRating(book.rating) + resolveTags(book.tags) + '</p>' 
-      + '<div class="comments text-muted text-nowrap-3x" itemprop="comment">' + (book.comment ? book.comment : '') + '</div>' 
-      + '</div>' + '</div>' + '</div>' + '</div>' + '</div>';
-    return html;
+    console.log(book);  // Debug: check each book object
+    var bookInfo = book.read_info.bookInfo;  // Get book details
+    var comment = (book.bookmark_list && book.bookmark_list.length > 0)
+      ? book.bookmark_list[0].markText  // Use the first bookmark as a comment
+      : '本书暂无笔记记录';  // Default message if no bookmark is present
+
+    return `
+      <div class="col-sm-6 col-md-6">
+        <div class="panel panel-default hover-grow">
+          <div class="panel-body">
+            <div class="media media-middle book" itemscope itemtype="http://schema.org/Book">
+              <div class="media-left">
+                <a class="media-middle" target="_blank" href="#" rel="external nofollow noopener noreferrer">
+                  <img class="media-object" src="${bookInfo.cover}" itemprop="image"/>
+                </a>
+              </div>
+              <div class="media-body">
+                <h3 class="media-heading" itemprop="name">${bookInfo.title}</h3>
+                <p class="meta text-nowrap-1x">
+                  <small itemprop="author">${bookInfo.author}</small> /
+                </p>
+                <div class="comments text-muted text-nowrap-3x" itemprop="comment">${comment}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
   }
 
-  function resolveRating(rating) {
-    if (rating && rating.value) {
-      return ' / ' + rating.value + '星';
-    }
-    return '';
+  function show(id) {
+    document.getElementById('reading').classList.remove('active');
+    document.getElementById('reading').classList.remove('hide');
+    document.getElementById('reading-tab').classList.add('active');
   }
 
-  function resolveTags(tags) {
-    if (tags && tags.length > 0) {
-      var html = ' / ';
-      for (var i = 0; i < tags.length; ++i) {
-        html += tags[i] + ' ';
-      }
-      return html;
-    }
-    return '';
-  }
-
-  setTimeout(function() {
-    loadDoubanCollections();
-  }, 0)
-})()
+  loadLocalBooks();
+})();
 </script>
 
 
 
 
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'GNXx14HnrCFqRSxo50bKuXAt-gzGzoHsz',
+    appKey: '68hg4AgzSBf1I5q0GwkpKIyu',
+    placeholder: '欢迎留下您的评论😊',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false,
+    serverURLs: ''
+  });
+  </script>
+
+     
 
 
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 </body>
 </html>
