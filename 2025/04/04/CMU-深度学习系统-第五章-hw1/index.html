@@ -30,7 +30,7 @@
 <meta property="og:description" content="实现前向传播  PowerScalar EwiseDive DivScalar MatMul Summation BroadcastTo Reshape Negate Transpose Log Exp EWisePow  实现反向传播  PowerScalar EWiseDiv DivScalar MatMul Summation  假设前向">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-04T14:55:53.000Z">
-<meta property="article:modified_time" content="2025-04-09T03:22:28.339Z">
+<meta property="article:modified_time" content="2025-04-09T12:45:00.916Z">
 <meta property="article:author" content="张舒俞">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
@@ -342,7 +342,7 @@ mjx-container[display="true"] + br {
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">四月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">四月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">三月 2025</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -354,6 +354,21 @@ mjx-container[display="true"] + br {
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2025/04/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%85%AD%E7%AB%A0/" class="title">CMU-深度学习系统-第六章</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-04-09T03:30:01.000Z" itemprop="datePublished">2025-04-09</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -410,21 +425,6 @@ mjx-container[display="true"] + br {
               </p>
               <p class="item-date">
                 <time datetime="2025-03-09T05:42:10.000Z" itemprop="datePublished">2025-03-09</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2025/03/05/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0SAC%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%B8%8EPPO%E5%AF%B9%E6%AF%94/" class="title">强化学习SAC算法流程及与PPO对比</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2025-03-05T13:53:26.000Z" itemprop="datePublished">2025-03-05</time>
               </p>
             </div>
           </li>
@@ -647,7 +647,7 @@ mjx-container[display="true"] + br {
 <h1 id="softmax-loss">Softmax Loss</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax_loss</span>(<span class="params">Z, y_one_hot</span>):</span><br><span class="line">    <span class="string">"""Return softmax loss.  Note that for the purposes of this assignment,</span></span><br><span class="line"><span class="string">    you don't need to worry about "nicely" scaling the numerical properties</span></span><br><span class="line"><span class="string">    of the log-sum-exp computation, but can just compute this directly.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        Z (ndl.Tensor[np.float32]): 2D Tensor of shape</span></span><br><span class="line"><span class="string">            (batch_size, num_classes), containing the logit predictions for</span></span><br><span class="line"><span class="string">            each class.</span></span><br><span class="line"><span class="string">        y (ndl.Tensor[np.int8]): 2D Tensor of shape (batch_size, num_classes)</span></span><br><span class="line"><span class="string">            containing a 1 at the index of the true label of each example and</span></span><br><span class="line"><span class="string">            zeros elsewhere.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        Average softmax loss over the sample. (ndl.Tensor[np.float32])</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment">### BEGIN YOUR SOLUTION</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError()</span></span><br><span class="line">    Z_exp = ndl.exp(Z)</span><br><span class="line">    Z_exp_sum = ndl.summation(Z_exp, axes=<span class="number">1</span>)</span><br><span class="line">    Z_exp_sum_log = ndl.log(Z_exp_sum)</span><br><span class="line">    Z_y = ndl.summation(Z*y_one_hot,axes = <span class="number">1</span>)</span><br><span class="line">    loss = ndl.summation(Z_exp_sum_log - Z_y)/Z.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> loss</span><br><span class="line">    <span class="comment">### END YOUR SOLUTION</span></span><br></pre></td></tr></table></figure>
 <h1 id="用needle来重写sgd">用needle来重写SGD</h1>
-<p>这个函数我改了很久，主要是关于numpy和ndl.tensor之间经常发生一些混用，用的时候一定小心</p>
+<p>这个函数我改了很久，主要是关于numpy和ndl.tensor之间经常发生一些混用，用的时候一定小心。另外不同维度的运算在needle里面要进行现实的广播，这一点也很容易出错。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">nn_epoch</span>(<span class="params">X, y, W1, W2, lr=<span class="number">0.1</span>, batch=<span class="number">100</span></span>):</span><br><span class="line">    <span class="string">"""Run a single epoch of SGD for a two-layer neural network defined by the</span></span><br><span class="line"><span class="string">    weights W1 and W2 (with no bias terms):</span></span><br><span class="line"><span class="string">        logits = ReLU(X * W1) * W1</span></span><br><span class="line"><span class="string">    The function should use the step size lr, and the specified batch size (and</span></span><br><span class="line"><span class="string">    again, without randomizing the order of X).</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        X (np.ndarray[np.float32]): 2D input array of size</span></span><br><span class="line"><span class="string">            (num_examples x input_dim).</span></span><br><span class="line"><span class="string">        y (np.ndarray[np.uint8]): 1D class label array of size (num_examples,)</span></span><br><span class="line"><span class="string">        W1 (ndl.Tensor[np.float32]): 2D array of first layer weights, of shape</span></span><br><span class="line"><span class="string">            (input_dim, hidden_dim)</span></span><br><span class="line"><span class="string">        W2 (ndl.Tensor[np.float32]): 2D array of second layer weights, of shape</span></span><br><span class="line"><span class="string">            (hidden_dim, num_classes)</span></span><br><span class="line"><span class="string">        lr (float): step size (learning rate) for SGD</span></span><br><span class="line"><span class="string">        batch (int): size of SGD mini-batch</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        Tuple: (W1, W2)</span></span><br><span class="line"><span class="string">            W1: ndl.Tensor[np.float32]</span></span><br><span class="line"><span class="string">            W2: ndl.Tensor[np.float32]</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">### BEGIN YOUR SOLUTION</span></span><br><span class="line">    <span class="comment"># raise NotImplementedError()</span></span><br><span class="line">    num_classes = W2.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, X.shape[<span class="number">0</span>], batch):</span><br><span class="line">        end = <span class="built_in">min</span>(i + batch, X.shape[<span class="number">0</span>])</span><br><span class="line">        X_batch = X[i:end, :]</span><br><span class="line">        y_batch = y[i:end]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建one-hot标签</span></span><br><span class="line">        I_y = np.zeros((<span class="built_in">len</span>(y_batch), num_classes), dtype=np.float32)</span><br><span class="line">        I_y[np.arange(<span class="built_in">len</span>(y_batch)), y_batch] = <span class="number">1.0</span></span><br><span class="line">        I_y = ndl.Tensor(I_y)  <span class="comment"># 转换为Tensor</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 前向计算</span></span><br><span class="line">        X_tensor = ndl.Tensor(X_batch)</span><br><span class="line">        Z_1 = ndl.relu(ndl.matmul(X_tensor, W1))</span><br><span class="line">        logits = ndl.matmul(Z_1, W2)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 计算softmax梯度</span></span><br><span class="line">        exp_logits = ndl.exp(logits)</span><br><span class="line">        sum_exp = ndl.summation(exp_logits, axes=<span class="number">1</span>)</span><br><span class="line">        softmax = exp_logits / ndl.broadcast_to(ndl.reshape(sum_exp,(exp_logits.shape[<span class="number">0</span>],<span class="number">1</span>)),exp_logits.shape)</span><br><span class="line">        G_2 = softmax - I_y</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 计算隐藏层梯度</span></span><br><span class="line">        relu_mask = (Z_1.numpy() &gt; <span class="number">0</span>).astype(np.float32)</span><br><span class="line">        G_1 = ndl.Tensor(relu_mask) * ndl.matmul(G_2, W2.transpose())</span><br><span class="line"></span><br><span class="line">        delta_W1 = ndl.matmul(ndl.transpose(X_tensor), G_1) / (end - i)</span><br><span class="line">        delta_W2 = ndl.matmul(ndl.transpose(Z_1), G_2) / (end - i)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 更新权重（确保结果为Tensor）</span></span><br><span class="line">        W1 = ndl.Tensor(W1.numpy() - (lr * delta_W1).numpy())</span><br><span class="line">        W2 = ndl.Tensor(W2.numpy() - (lr * delta_W2).numpy())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> W1, W2</span><br><span class="line">    <span class="comment">### END YOUR SOLUTION</span></span><br></pre></td></tr></table></figure>
 
       
@@ -703,6 +703,10 @@ mjx-container[display="true"] + br {
   <div class="bar-inner">
   
   <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2025/04/09/CMU-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%85%AD%E7%AB%A0/" title="CMU-深度学习系统-第六章"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
     
     
     <li class="next">
@@ -869,5 +873,20 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
