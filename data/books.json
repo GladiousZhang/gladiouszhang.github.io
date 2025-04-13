@@ -1133,7 +1133,7 @@
                     "skuId": "12061756"
                 },
                 "centPrice": 4800,
-                "readingCount": 522,
+                "readingCount": 516,
                 "copyrightChapterUids": [
                     65,
                     67,
@@ -2717,7 +2717,7 @@
                     "skuId": ""
                 },
                 "centPrice": 6000,
-                "readingCount": 792,
+                "readingCount": 789,
                 "copyrightChapterUids": [
                     82,
                     84,
@@ -21250,7 +21250,7 @@
                     "skuId": "12659312"
                 },
                 "centPrice": 24783,
-                "readingCount": 388,
+                "readingCount": 429,
                 "copyrightChapterUids": [],
                 "blockSaveImg": 0,
                 "language": "zh",
@@ -21562,7 +21562,7 @@
                     "skuId": "12400655"
                 },
                 "centPrice": 2370,
-                "readingCount": 1173,
+                "readingCount": 1019,
                 "copyrightChapterUids": [
                     10
                 ],
@@ -23494,7 +23494,7 @@
                     "skuId": "11757834"
                 },
                 "centPrice": 8999,
-                "readingCount": 10638,
+                "readingCount": 9936,
                 "copyrightChapterUids": [
                     87,
                     91,
@@ -24739,7 +24739,7 @@
                     "skuId": ""
                 },
                 "centPrice": 6990,
-                "readingCount": 5766,
+                "readingCount": 5613,
                 "copyrightChapterUids": [
                     136
                 ],
@@ -25701,7 +25701,7 @@
                     "skuId": ""
                 },
                 "centPrice": 12980,
-                "readingCount": 73,
+                "readingCount": 62,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -27417,7 +27417,7 @@
                     "skuId": "12783863"
                 },
                 "centPrice": 3190,
-                "readingCount": 11,
+                "readingCount": 12,
                 "copyrightChapterUids": [],
                 "blockSaveImg": 1,
                 "language": "zh",
@@ -33559,7 +33559,7 @@
                     "skuId": "10850277"
                 },
                 "centPrice": 18760,
-                "readingCount": 41505,
+                "readingCount": 37212,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -36530,7 +36530,7 @@
                     "skuId": ""
                 },
                 "centPrice": 8999,
-                "readingCount": 5261,
+                "readingCount": 5085,
                 "copyrightChapterUids": [
                     169
                 ],
@@ -41396,7 +41396,7 @@
             "readingReviewId": "R_416024136_35992971",
             "canCancelReadstatus": 0,
             "markedStatus": 2,
-            "readingTime": 9236,
+            "readingTime": 9244,
             "totalReadDay": 4,
             "recordReadingTime": 0,
             "deepestNightReadTime": 1744140081,
@@ -41406,7 +41406,7 @@
             "showSummary": 1,
             "showDetail": 1,
             "readDetail": {
-                "totalReadingTime": 9236,
+                "totalReadingTime": 9244,
                 "totalReadDay": 4,
                 "continueReadDays": 3,
                 "continueBeginDate": 1743782400,
@@ -41415,7 +41415,7 @@
                 "beginReadingDate": 1743780556,
                 "lastReadingDate": 1744128000,
                 "longestReadingDate": 1743782400,
-                "avgReadingTime": 2309,
+                "avgReadingTime": 2311,
                 "longestReadingTime": 4168,
                 "data": [
                     {
@@ -41460,7 +41460,7 @@
                     "skuId": "13163615"
                 },
                 "centPrice": 9800,
-                "readingCount": 601,
+                "readingCount": 653,
                 "copyrightChapterUids": [
                     87
                 ],
@@ -49420,7 +49420,7 @@
                     "skuId": "10008248"
                 },
                 "centPrice": 2900,
-                "readingCount": 4069,
+                "readingCount": 3822,
                 "copyrightChapterUids": [
                     215
                 ],
@@ -50832,7 +50832,7 @@
                     "skuId": ""
                 },
                 "centPrice": 7899,
-                "readingCount": 888,
+                "readingCount": 841,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -51177,7 +51177,7 @@
                     "skuId": "11090643"
                 },
                 "centPrice": 4499,
-                "readingCount": 2462,
+                "readingCount": 2293,
                 "copyrightChapterUids": [
                     13
                 ],
