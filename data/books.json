@@ -1133,7 +1133,7 @@
                     "skuId": "12061756"
                 },
                 "centPrice": 4800,
-                "readingCount": 539,
+                "readingCount": 528,
                 "copyrightChapterUids": [
                     65,
                     67,
@@ -2717,7 +2717,7 @@
                     "skuId": ""
                 },
                 "centPrice": 6000,
-                "readingCount": 838,
+                "readingCount": 880,
                 "copyrightChapterUids": [
                     82,
                     84,
@@ -21250,7 +21250,7 @@
                     "skuId": "12659312"
                 },
                 "centPrice": 24783,
-                "readingCount": 446,
+                "readingCount": 482,
                 "copyrightChapterUids": [],
                 "blockSaveImg": 0,
                 "language": "zh",
@@ -21562,7 +21562,7 @@
                     "skuId": "12400655"
                 },
                 "centPrice": 2370,
-                "readingCount": 1213,
+                "readingCount": 1298,
                 "copyrightChapterUids": [
                     10
                 ],
@@ -23494,7 +23494,7 @@
                     "skuId": "11757834"
                 },
                 "centPrice": 8999,
-                "readingCount": 10113,
+                "readingCount": 10927,
                 "copyrightChapterUids": [
                     87,
                     91,
@@ -24739,7 +24739,7 @@
                     "skuId": ""
                 },
                 "centPrice": 6990,
-                "readingCount": 5367,
+                "readingCount": 5956,
                 "copyrightChapterUids": [
                     136
                 ],
@@ -25701,7 +25701,7 @@
                     "skuId": ""
                 },
                 "centPrice": 12980,
-                "readingCount": 65,
+                "readingCount": 88,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -27417,7 +27417,7 @@
                     "skuId": "12783863"
                 },
                 "centPrice": 3190,
-                "readingCount": 13,
+                "readingCount": 16,
                 "copyrightChapterUids": [],
                 "blockSaveImg": 1,
                 "language": "zh",
@@ -33559,7 +33559,7 @@
                     "skuId": "10850277"
                 },
                 "centPrice": 18760,
-                "readingCount": 37038,
+                "readingCount": 42086,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -36530,7 +36530,7 @@
                     "skuId": ""
                 },
                 "centPrice": 8999,
-                "readingCount": 4900,
+                "readingCount": 5419,
                 "copyrightChapterUids": [
                     169
                 ],
@@ -39681,6 +39681,7 @@
                 "inStoreBookId": "38894783",
                 "blockSaveImg": 0,
                 "language": "zh-wr",
+                "isTraditionalChinese": false,
                 "hideUpdateTime": false,
                 "isEPUBComics": 0,
                 "isVerticalLayout": 0,
@@ -41460,7 +41461,7 @@
                     "skuId": "13163615"
                 },
                 "centPrice": 9800,
-                "readingCount": 658,
+                "readingCount": 716,
                 "copyrightChapterUids": [
                     87
                 ],
@@ -44415,7 +44416,7 @@
                 "book": {
                     "bookId": "CB_3E81xg1wB2WX6qv6pCBVV14S",
                     "format": "epub",
-                    "version": 1341564878,
+                    "version": 1717253518,
                     "soldout": 0,
                     "bookStatus": 1,
                     "type": 0,
@@ -44468,7 +44469,7 @@
                 "title": "Easy RL：强化学习教程",
                 "author": "江季",
                 "cover": "https://res.weread.qq.com/wrepub/CB_ARkCRcCPx0lf6h96gc4EiAQr_parsecover",
-                "version": 1341564878,
+                "version": 1717253518,
                 "format": "epub",
                 "type": 0,
                 "soldout": 0,
@@ -44490,6 +44491,7 @@
                 "limitShareChat": 0,
                 "blockSaveImg": 0,
                 "language": "zh-wr",
+                "isTraditionalChinese": false,
                 "hideUpdateTime": false,
                 "isEPUBComics": 0,
                 "isVerticalLayout": 0,
@@ -44843,6 +44845,7 @@
                 "limitShareChat": 0,
                 "blockSaveImg": 0,
                 "language": "zh-wr",
+                "isTraditionalChinese": false,
                 "hideUpdateTime": false,
                 "isEPUBComics": 0,
                 "isVerticalLayout": 0,
@@ -46294,7 +46297,7 @@
                 "book": {
                     "bookId": "CB_1kgFs2FuS1z76qX6pC5IWAte",
                     "format": "epub",
-                    "version": 1459955139,
+                    "version": 941880706,
                     "soldout": 0,
                     "bookStatus": 1,
                     "type": 0,
@@ -46348,7 +46351,7 @@
                 "title": "Java从入门到精通（第5版）",
                 "author": "明日科技, ePUBw.COM",
                 "cover": "https://res.weread.qq.com/wrepub/CB_7ZZ5Zh5ZbChg6i46g1B7H4Ir_parsecover",
-                "version": 1459955139,
+                "version": 941880706,
                 "format": "epub",
                 "type": 0,
                 "soldout": 0,
@@ -46371,6 +46374,7 @@
                 "inStoreBookId": "3300014031",
                 "blockSaveImg": 0,
                 "language": "zh-wr",
+                "isTraditionalChinese": false,
                 "hideUpdateTime": false,
                 "isEPUBComics": 0,
                 "isVerticalLayout": 0,
@@ -47572,6 +47576,7 @@
                 "inStoreBookId": "30179235",
                 "blockSaveImg": 0,
                 "language": "zh-wr",
+                "isTraditionalChinese": false,
                 "hideUpdateTime": false,
                 "isEPUBComics": 0,
                 "isVerticalLayout": 0,
@@ -49420,7 +49425,7 @@
                     "skuId": "10008248"
                 },
                 "centPrice": 2900,
-                "readingCount": 3772,
+                "readingCount": 4241,
                 "copyrightChapterUids": [
                     215
                 ],
@@ -50832,7 +50837,7 @@
                     "skuId": ""
                 },
                 "centPrice": 7899,
-                "readingCount": 858,
+                "readingCount": 940,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -51177,7 +51182,7 @@
                     "skuId": "11090643"
                 },
                 "centPrice": 4499,
-                "readingCount": 2448,
+                "readingCount": 2664,
                 "copyrightChapterUids": [
                     13
                 ],
