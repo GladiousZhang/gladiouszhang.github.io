@@ -1133,7 +1133,7 @@
                     "skuId": "12061756"
                 },
                 "centPrice": 4800,
-                "readingCount": 527,
+                "readingCount": 542,
                 "copyrightChapterUids": [
                     65,
                     67,
@@ -2717,7 +2717,7 @@
                     "skuId": ""
                 },
                 "centPrice": 6000,
-                "readingCount": 852,
+                "readingCount": 856,
                 "copyrightChapterUids": [
                     82,
                     84,
@@ -21250,7 +21250,7 @@
                     "skuId": "12659312"
                 },
                 "centPrice": 24783,
-                "readingCount": 434,
+                "readingCount": 429,
                 "copyrightChapterUids": [],
                 "blockSaveImg": 0,
                 "language": "zh",
@@ -21562,7 +21562,7 @@
                     "skuId": "12400655"
                 },
                 "centPrice": 2370,
-                "readingCount": 1608,
+                "readingCount": 1627,
                 "copyrightChapterUids": [
                     10
                 ],
@@ -23494,7 +23494,7 @@
                     "skuId": "11757834"
                 },
                 "centPrice": 8999,
-                "readingCount": 11958,
+                "readingCount": 11683,
                 "copyrightChapterUids": [
                     87,
                     91,
@@ -23526,7 +23526,7 @@
             "1": {
                 "chapterUid": 1,
                 "chapterIdx": 1,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_1",
                 "title": "封面",
@@ -23539,10 +23539,10 @@
                     "Text/cover.xhtml"
                 ]
             },
-            "136": {
-                "chapterUid": 136,
+            "206": {
+                "chapterUid": 206,
                 "chapterIdx": 2,
-                "updateTime": 1729151885,
+                "updateTime": 1745476426,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_2",
                 "title": "版权信息",
@@ -23555,10 +23555,10 @@
                     "Text/copyright.xhtml"
                 ]
             },
-            "137": {
-                "chapterUid": 137,
+            "207": {
+                "chapterUid": 207,
                 "chapterIdx": 3,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_3",
                 "title": "莫言先生漫像",
@@ -23571,10 +23571,10 @@
                     "Text/Section0001_0001.xhtml"
                 ]
             },
-            "138": {
-                "chapterUid": 138,
+            "208": {
+                "chapterUid": 208,
                 "chapterIdx": 4,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_4",
                 "title": "打油词",
@@ -23587,10 +23587,10 @@
                     "Text/Section0001_0002.xhtml"
                 ]
             },
-            "139": {
-                "chapterUid": 139,
+            "209": {
+                "chapterUid": 209,
                 "chapterIdx": 5,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_5",
                 "title": "《生死疲劳》主要人物关系图",
@@ -23603,10 +23603,10 @@
                     "Text/Section0001_0003.xhtml"
                 ]
             },
-            "205": {
-                "chapterUid": 205,
+            "210": {
+                "chapterUid": 210,
                 "chapterIdx": 6,
-                "updateTime": 1698944404,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_6",
                 "title": "引言",
@@ -23639,10 +23639,10 @@
                     "Text/Section0001_0009.xhtml"
                 ]
             },
-            "142": {
-                "chapterUid": 142,
+            "211": {
+                "chapterUid": 211,
                 "chapterIdx": 8,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_8",
                 "title": "第一部 驴折腾",
@@ -23832,10 +23832,10 @@
                     "Text/Section0001_0022.xhtml"
                 ]
             },
-            "154": {
-                "chapterUid": 154,
+            "212": {
+                "chapterUid": 212,
                 "chapterIdx": 20,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_20",
                 "title": "第二部 牛犟劲",
@@ -23993,10 +23993,10 @@
                     "Text/Section0001_0033.xhtml"
                 ]
             },
-            "164": {
-                "chapterUid": 164,
+            "213": {
+                "chapterUid": 213,
                 "chapterIdx": 30,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_30",
                 "title": "第三部 猪撒欢",
@@ -24266,10 +24266,10 @@
                     "Text/Section0001_0051.xhtml"
                 ]
             },
-            "181": {
-                "chapterUid": 181,
+            "214": {
+                "chapterUid": 214,
                 "chapterIdx": 47,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_47",
                 "title": "第四部 狗精神",
@@ -24555,10 +24555,10 @@
                     "Text/Section0001_0070.xhtml"
                 ]
             },
-            "199": {
-                "chapterUid": 199,
+            "215": {
+                "chapterUid": 215,
                 "chapterIdx": 65,
-                "updateTime": 1698854408,
+                "updateTime": 1745475609,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_26435427_65",
                 "title": "第五部 结局与开端",
@@ -24721,7 +24721,7 @@
                 "author": "莫言",
                 "intro": "不看不知道，莫言真幽默！在极度痛苦时笑出声来，获得内心深处的解脱。\n不看不知道，欲哭又想笑。活着不容易，幽默无价宝。\n——莫言\n五十年间西门闹经历六次转世，\n一世为驴，二世为牛，三世为猪，四世为狗，五世为猴，最终降生为人。\n在这六世里，他目睹蓝脸一家三代经历人生的生死疲劳，\n他们爱就爱到底，恨就恨到底，犟就犟到底，干就干到底，\n有极致的痛苦与欢乐，更有不灭的热情与希望。\n而他们的故事，要从1950年1月1日讲起……",
                 "cover": "https://cdn.weread.qq.com/weread/cover/79/yuewen_26435427/s_yuewen_264354271701758059.jpg",
-                "version": 603921845,
+                "version": 656827946,
                 "format": "epub",
                 "type": 0,
                 "soldout": 0,
@@ -24739,12 +24739,12 @@
                     "skuId": ""
                 },
                 "centPrice": 6990,
-                "readingCount": 7122,
+                "readingCount": 7054,
                 "copyrightChapterUids": [
-                    136
+                    206
                 ],
                 "blockSaveImg": 0,
-                "language": "zh",
+                "language": "zh-wr",
                 "hideUpdateTime": false,
                 "isEPUBComics": 0,
                 "isVerticalLayout": 0,
@@ -25701,7 +25701,7 @@
                     "skuId": ""
                 },
                 "centPrice": 12980,
-                "readingCount": 92,
+                "readingCount": 97,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -27417,7 +27417,7 @@
                     "skuId": "12783863"
                 },
                 "centPrice": 3190,
-                "readingCount": 13,
+                "readingCount": 16,
                 "copyrightChapterUids": [],
                 "blockSaveImg": 1,
                 "language": "zh",
@@ -33559,7 +33559,7 @@
                     "skuId": "10850277"
                 },
                 "centPrice": 18760,
-                "readingCount": 47267,
+                "readingCount": 46322,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -33588,11 +33588,11 @@
             "1": {
                 "chapterUid": 1,
                 "chapterIdx": 1,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_1",
                 "title": "封面",
-                "wordCount": 2,
+                "wordCount": 1,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33601,14 +33601,14 @@
                     "Text/cover.xhtml"
                 ]
             },
-            "169": {
-                "chapterUid": 169,
+            "343": {
+                "chapterUid": 343,
                 "chapterIdx": 2,
-                "updateTime": 1693405274,
+                "updateTime": 1745476375,
                 "readAhead": 0,
                 "tar": "",
                 "title": "版权信息",
-                "wordCount": 136,
+                "wordCount": 126,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33624,7 +33624,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "献词",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33640,7 +33640,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "平凡的世界.第一部",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33656,7 +33656,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "卷一",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33665,14 +33665,14 @@
                     "Text/Section00003.xhtml"
                 ]
             },
-            "173": {
-                "chapterUid": 173,
+            "344": {
+                "chapterUid": 344,
                 "chapterIdx": 6,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_6",
                 "title": "第一章",
-                "wordCount": 2974,
+                "wordCount": 2931,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33681,14 +33681,14 @@
                     "Text/Section00004.xhtml"
                 ]
             },
-            "174": {
-                "chapterUid": 174,
+            "345": {
+                "chapterUid": 345,
                 "chapterIdx": 7,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_7",
                 "title": "第二章",
-                "wordCount": 5830,
+                "wordCount": 5719,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33704,7 +33704,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三章",
-                "wordCount": 5482,
+                "wordCount": 5293,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33720,7 +33720,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四章",
-                "wordCount": 3645,
+                "wordCount": 3548,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33736,7 +33736,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五章",
-                "wordCount": 4637,
+                "wordCount": 4586,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33745,14 +33745,14 @@
                     "Text/Section00008.xhtml"
                 ]
             },
-            "178": {
-                "chapterUid": 178,
+            "346": {
+                "chapterUid": 346,
                 "chapterIdx": 11,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_11",
                 "title": "第六章",
-                "wordCount": 4963,
+                "wordCount": 4852,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33761,14 +33761,14 @@
                     "Text/Section00009.xhtml"
                 ]
             },
-            "179": {
-                "chapterUid": 179,
+            "347": {
+                "chapterUid": 347,
                 "chapterIdx": 12,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_12",
                 "title": "第七章",
-                "wordCount": 4198,
+                "wordCount": 4121,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33777,14 +33777,14 @@
                     "Text/Section00010.xhtml"
                 ]
             },
-            "180": {
-                "chapterUid": 180,
+            "348": {
+                "chapterUid": 348,
                 "chapterIdx": 13,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_13",
                 "title": "第八章",
-                "wordCount": 7368,
+                "wordCount": 7195,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33793,14 +33793,14 @@
                     "Text/Section00011.xhtml"
                 ]
             },
-            "181": {
-                "chapterUid": 181,
+            "349": {
+                "chapterUid": 349,
                 "chapterIdx": 14,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_14",
                 "title": "第九章",
-                "wordCount": 5809,
+                "wordCount": 5690,
                 "price": 0,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33809,14 +33809,14 @@
                     "Text/Section00012.xhtml"
                 ]
             },
-            "182": {
-                "chapterUid": 182,
+            "350": {
+                "chapterUid": 350,
                 "chapterIdx": 15,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_15",
                 "title": "第十章",
-                "wordCount": 6723,
+                "wordCount": 6522,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33825,14 +33825,14 @@
                     "Text/Section00013.xhtml"
                 ]
             },
-            "183": {
-                "chapterUid": 183,
+            "351": {
+                "chapterUid": 351,
                 "chapterIdx": 16,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_16",
                 "title": "第十一章",
-                "wordCount": 5263,
+                "wordCount": 5172,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33848,7 +33848,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十二章",
-                "wordCount": 4219,
+                "wordCount": 4104,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33864,7 +33864,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十三章",
-                "wordCount": 4554,
+                "wordCount": 4421,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33880,7 +33880,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十四章",
-                "wordCount": 6606,
+                "wordCount": 6317,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33889,14 +33889,14 @@
                     "Text/Section00017.xhtml"
                 ]
             },
-            "187": {
-                "chapterUid": 187,
+            "352": {
+                "chapterUid": 352,
                 "chapterIdx": 20,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_20",
                 "title": "第十五章",
-                "wordCount": 6371,
+                "wordCount": 6138,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33912,7 +33912,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十六章",
-                "wordCount": 4096,
+                "wordCount": 4007,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33928,7 +33928,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十七章",
-                "wordCount": 4329,
+                "wordCount": 4250,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33944,7 +33944,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十八章",
-                "wordCount": 5657,
+                "wordCount": 5518,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33960,7 +33960,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十九章",
-                "wordCount": 4698,
+                "wordCount": 4545,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33969,14 +33969,14 @@
                     "Text/Section00022.xhtml"
                 ]
             },
-            "192": {
-                "chapterUid": 192,
+            "353": {
+                "chapterUid": 353,
                 "chapterIdx": 25,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_25",
                 "title": "第二十章",
-                "wordCount": 4935,
+                "wordCount": 4804,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -33985,14 +33985,14 @@
                     "Text/Section00023.xhtml"
                 ]
             },
-            "193": {
-                "chapterUid": 193,
+            "354": {
+                "chapterUid": 354,
                 "chapterIdx": 26,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_26",
                 "title": "第二十一章",
-                "wordCount": 5328,
+                "wordCount": 5143,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34001,14 +34001,14 @@
                     "Text/Section00024.xhtml"
                 ]
             },
-            "194": {
-                "chapterUid": 194,
+            "355": {
+                "chapterUid": 355,
                 "chapterIdx": 27,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_27",
                 "title": "第二十二章",
-                "wordCount": 5355,
+                "wordCount": 5248,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34024,7 +34024,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十三章",
-                "wordCount": 2421,
+                "wordCount": 2362,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34033,14 +34033,14 @@
                     "Text/Section00026.xhtml"
                 ]
             },
-            "196": {
-                "chapterUid": 196,
+            "356": {
+                "chapterUid": 356,
                 "chapterIdx": 29,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_29",
                 "title": "第二十四章",
-                "wordCount": 3625,
+                "wordCount": 3524,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34049,14 +34049,14 @@
                     "Text/Section00027.xhtml"
                 ]
             },
-            "197": {
-                "chapterUid": 197,
+            "357": {
+                "chapterUid": 357,
                 "chapterIdx": 30,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_30",
                 "title": "第二十五章",
-                "wordCount": 6471,
+                "wordCount": 6306,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34065,14 +34065,14 @@
                     "Text/Section00028.xhtml"
                 ]
             },
-            "198": {
-                "chapterUid": 198,
+            "358": {
+                "chapterUid": 358,
                 "chapterIdx": 31,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_31",
                 "title": "第二十六章",
-                "wordCount": 5658,
+                "wordCount": 5531,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34081,14 +34081,14 @@
                     "Text/Section00029.xhtml"
                 ]
             },
-            "199": {
-                "chapterUid": 199,
+            "359": {
+                "chapterUid": 359,
                 "chapterIdx": 32,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_32",
                 "title": "第二十七章",
-                "wordCount": 4596,
+                "wordCount": 4471,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34097,14 +34097,14 @@
                     "Text/Section00030.xhtml"
                 ]
             },
-            "200": {
-                "chapterUid": 200,
+            "360": {
+                "chapterUid": 360,
                 "chapterIdx": 33,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_33",
                 "title": "第二十八章",
-                "wordCount": 6787,
+                "wordCount": 6624,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34120,7 +34120,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "卷二",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34129,14 +34129,14 @@
                     "Text/Section00032.xhtml"
                 ]
             },
-            "202": {
-                "chapterUid": 202,
+            "361": {
+                "chapterUid": 361,
                 "chapterIdx": 35,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_35",
                 "title": "第二十九章",
-                "wordCount": 5504,
+                "wordCount": 5367,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34145,14 +34145,14 @@
                     "Text/Section00033.xhtml"
                 ]
             },
-            "203": {
-                "chapterUid": 203,
+            "362": {
+                "chapterUid": 362,
                 "chapterIdx": 36,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_36",
                 "title": "第三十章",
-                "wordCount": 4841,
+                "wordCount": 4710,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34161,14 +34161,14 @@
                     "Text/Section00034.xhtml"
                 ]
             },
-            "204": {
-                "chapterUid": 204,
+            "363": {
+                "chapterUid": 363,
                 "chapterIdx": 37,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_37",
                 "title": "第三十一章",
-                "wordCount": 5954,
+                "wordCount": 5783,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34184,7 +34184,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十二章",
-                "wordCount": 5360,
+                "wordCount": 5217,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34200,7 +34200,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十三章",
-                "wordCount": 5306,
+                "wordCount": 5141,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34209,14 +34209,14 @@
                     "Text/Section00037.xhtml"
                 ]
             },
-            "207": {
-                "chapterUid": 207,
+            "364": {
+                "chapterUid": 364,
                 "chapterIdx": 40,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_40",
                 "title": "第三十四章",
-                "wordCount": 6180,
+                "wordCount": 6015,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34232,7 +34232,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十五章",
-                "wordCount": 3290,
+                "wordCount": 3213,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34248,7 +34248,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十六章",
-                "wordCount": 3347,
+                "wordCount": 3188,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34264,7 +34264,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十七章",
-                "wordCount": 5162,
+                "wordCount": 4999,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34273,14 +34273,14 @@
                     "Text/Section00041.xhtml"
                 ]
             },
-            "211": {
-                "chapterUid": 211,
+            "365": {
+                "chapterUid": 365,
                 "chapterIdx": 44,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_44",
                 "title": "第三十八章",
-                "wordCount": 4730,
+                "wordCount": 4607,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34296,7 +34296,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十九章",
-                "wordCount": 4706,
+                "wordCount": 4581,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34312,7 +34312,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十章",
-                "wordCount": 3982,
+                "wordCount": 3865,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34321,14 +34321,14 @@
                     "Text/Section00044.xhtml"
                 ]
             },
-            "214": {
-                "chapterUid": 214,
+            "366": {
+                "chapterUid": 366,
                 "chapterIdx": 47,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_47",
                 "title": "第四十一章",
-                "wordCount": 5444,
+                "wordCount": 5279,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34337,14 +34337,14 @@
                     "Text/Section00045.xhtml"
                 ]
             },
-            "215": {
-                "chapterUid": 215,
+            "367": {
+                "chapterUid": 367,
                 "chapterIdx": 48,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_48",
                 "title": "第四十二章",
-                "wordCount": 4790,
+                "wordCount": 4645,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34360,7 +34360,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十三章",
-                "wordCount": 5249,
+                "wordCount": 5094,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34369,14 +34369,14 @@
                     "Text/Section00047.xhtml"
                 ]
             },
-            "217": {
-                "chapterUid": 217,
+            "368": {
+                "chapterUid": 368,
                 "chapterIdx": 50,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_50",
                 "title": "第四十四章",
-                "wordCount": 5485,
+                "wordCount": 5344,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34392,7 +34392,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十五章",
-                "wordCount": 4795,
+                "wordCount": 4660,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34401,14 +34401,14 @@
                     "Text/Section00049.xhtml"
                 ]
             },
-            "219": {
-                "chapterUid": 219,
+            "369": {
+                "chapterUid": 369,
                 "chapterIdx": 52,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_52",
                 "title": "第四十六章",
-                "wordCount": 5726,
+                "wordCount": 5571,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34424,7 +34424,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十七章",
-                "wordCount": 5649,
+                "wordCount": 5524,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34433,14 +34433,14 @@
                     "Text/Section00051.xhtml"
                 ]
             },
-            "221": {
-                "chapterUid": 221,
+            "370": {
+                "chapterUid": 370,
                 "chapterIdx": 54,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_54",
                 "title": "第四十八章",
-                "wordCount": 5437,
+                "wordCount": 5292,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34449,14 +34449,14 @@
                     "Text/Section00052.xhtml"
                 ]
             },
-            "222": {
-                "chapterUid": 222,
+            "371": {
+                "chapterUid": 371,
                 "chapterIdx": 55,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_55",
                 "title": "第四十九章",
-                "wordCount": 4994,
+                "wordCount": 4837,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34465,14 +34465,14 @@
                     "Text/Section00053.xhtml"
                 ]
             },
-            "223": {
-                "chapterUid": 223,
+            "372": {
+                "chapterUid": 372,
                 "chapterIdx": 56,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_56",
                 "title": "第五十章",
-                "wordCount": 5215,
+                "wordCount": 5080,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34481,14 +34481,14 @@
                     "Text/Section00054.xhtml"
                 ]
             },
-            "224": {
-                "chapterUid": 224,
+            "373": {
+                "chapterUid": 373,
                 "chapterIdx": 57,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_57",
                 "title": "第五十一章",
-                "wordCount": 6198,
+                "wordCount": 6031,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34504,7 +34504,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十二章",
-                "wordCount": 6266,
+                "wordCount": 6109,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34513,14 +34513,14 @@
                     "Text/Section00056.xhtml"
                 ]
             },
-            "226": {
-                "chapterUid": 226,
+            "374": {
+                "chapterUid": 374,
                 "chapterIdx": 59,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_59",
                 "title": "第五十三章",
-                "wordCount": 5743,
+                "wordCount": 5558,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34529,14 +34529,14 @@
                     "Text/Section00057.xhtml"
                 ]
             },
-            "227": {
-                "chapterUid": 227,
+            "375": {
+                "chapterUid": 375,
                 "chapterIdx": 60,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_60",
                 "title": "第五十四章",
-                "wordCount": 4633,
+                "wordCount": 4496,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34552,7 +34552,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "平凡的世界.第二部",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34568,7 +34568,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "卷三",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34584,7 +34584,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第一章",
-                "wordCount": 4999,
+                "wordCount": 4874,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34600,7 +34600,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二章",
-                "wordCount": 5186,
+                "wordCount": 4989,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34616,7 +34616,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三章",
-                "wordCount": 5990,
+                "wordCount": 5841,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34632,7 +34632,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四章",
-                "wordCount": 5712,
+                "wordCount": 5569,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34648,7 +34648,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五章",
-                "wordCount": 4913,
+                "wordCount": 4770,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34657,14 +34657,14 @@
                     "Text/Section00065.xhtml"
                 ]
             },
-            "235": {
-                "chapterUid": 235,
+            "376": {
+                "chapterUid": 376,
                 "chapterIdx": 68,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_68",
                 "title": "第六章",
-                "wordCount": 5576,
+                "wordCount": 5451,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34673,14 +34673,14 @@
                     "Text/Section00066.xhtml"
                 ]
             },
-            "236": {
-                "chapterUid": 236,
+            "377": {
+                "chapterUid": 377,
                 "chapterIdx": 69,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_69",
                 "title": "第七章",
-                "wordCount": 4911,
+                "wordCount": 4790,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34689,14 +34689,14 @@
                     "Text/Section00067.xhtml"
                 ]
             },
-            "237": {
-                "chapterUid": 237,
+            "378": {
+                "chapterUid": 378,
                 "chapterIdx": 70,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_70",
                 "title": "第八章",
-                "wordCount": 3717,
+                "wordCount": 3576,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34712,7 +34712,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第九章",
-                "wordCount": 5000,
+                "wordCount": 4801,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34721,14 +34721,14 @@
                     "Text/Section00069.xhtml"
                 ]
             },
-            "239": {
-                "chapterUid": 239,
+            "379": {
+                "chapterUid": 379,
                 "chapterIdx": 72,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_72",
                 "title": "第十章",
-                "wordCount": 5688,
+                "wordCount": 5553,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34737,14 +34737,14 @@
                     "Text/Section00070.xhtml"
                 ]
             },
-            "240": {
-                "chapterUid": 240,
+            "380": {
+                "chapterUid": 380,
                 "chapterIdx": 73,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_73",
                 "title": "第十一章",
-                "wordCount": 5408,
+                "wordCount": 5261,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34760,7 +34760,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十二章",
-                "wordCount": 5463,
+                "wordCount": 5320,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34776,7 +34776,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十三章",
-                "wordCount": 5105,
+                "wordCount": 4928,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34792,7 +34792,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十四章",
-                "wordCount": 4973,
+                "wordCount": 4782,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34808,7 +34808,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十五章",
-                "wordCount": 4532,
+                "wordCount": 4431,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34817,14 +34817,14 @@
                     "Text/Section00075.xhtml"
                 ]
             },
-            "245": {
-                "chapterUid": 245,
+            "381": {
+                "chapterUid": 381,
                 "chapterIdx": 78,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_78",
                 "title": "第十六章",
-                "wordCount": 5067,
+                "wordCount": 4946,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34840,7 +34840,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十七章",
-                "wordCount": 4357,
+                "wordCount": 4240,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34849,14 +34849,14 @@
                     "Text/Section00077.xhtml"
                 ]
             },
-            "247": {
-                "chapterUid": 247,
+            "382": {
+                "chapterUid": 382,
                 "chapterIdx": 80,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_80",
                 "title": "第十八章",
-                "wordCount": 4705,
+                "wordCount": 4528,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34872,7 +34872,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十九章",
-                "wordCount": 4866,
+                "wordCount": 4735,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34888,7 +34888,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十章",
-                "wordCount": 4952,
+                "wordCount": 4787,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34904,7 +34904,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十一章",
-                "wordCount": 4626,
+                "wordCount": 4427,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34920,7 +34920,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十二章",
-                "wordCount": 4900,
+                "wordCount": 4733,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34936,7 +34936,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十三章",
-                "wordCount": 5013,
+                "wordCount": 4870,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34952,7 +34952,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十四章",
-                "wordCount": 5073,
+                "wordCount": 4962,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34968,7 +34968,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十五章",
-                "wordCount": 4407,
+                "wordCount": 4298,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -34984,7 +34984,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十六章",
-                "wordCount": 4992,
+                "wordCount": 4851,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35000,7 +35000,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十七章",
-                "wordCount": 4507,
+                "wordCount": 4398,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35016,7 +35016,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十八章",
-                "wordCount": 4104,
+                "wordCount": 3995,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35032,7 +35032,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "卷四",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35048,7 +35048,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十九章",
-                "wordCount": 5613,
+                "wordCount": 5446,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35064,7 +35064,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十章",
-                "wordCount": 4330,
+                "wordCount": 4173,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35080,7 +35080,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十一章",
-                "wordCount": 4848,
+                "wordCount": 4639,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35096,7 +35096,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十二章",
-                "wordCount": 4113,
+                "wordCount": 3906,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35112,7 +35112,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十三章",
-                "wordCount": 5004,
+                "wordCount": 4859,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35128,7 +35128,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十四章",
-                "wordCount": 4571,
+                "wordCount": 4338,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35144,7 +35144,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十五章",
-                "wordCount": 5211,
+                "wordCount": 5096,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35153,14 +35153,14 @@
                     "Text/Section00096.xhtml"
                 ]
             },
-            "266": {
-                "chapterUid": 266,
+            "383": {
+                "chapterUid": 383,
                 "chapterIdx": 99,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_99",
                 "title": "第三十六章",
-                "wordCount": 4752,
+                "wordCount": 4619,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35176,7 +35176,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十七章",
-                "wordCount": 4899,
+                "wordCount": 4716,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35192,7 +35192,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十八章",
-                "wordCount": 4796,
+                "wordCount": 4627,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35208,7 +35208,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十九章",
-                "wordCount": 5211,
+                "wordCount": 5022,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35224,7 +35224,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十章",
-                "wordCount": 5411,
+                "wordCount": 5254,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35233,14 +35233,14 @@
                     "Text/Section00101.xhtml"
                 ]
             },
-            "271": {
-                "chapterUid": 271,
+            "384": {
+                "chapterUid": 384,
                 "chapterIdx": 104,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_104",
                 "title": "第四十一章",
-                "wordCount": 5490,
+                "wordCount": 5309,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35249,14 +35249,14 @@
                     "Text/Section00102.xhtml"
                 ]
             },
-            "272": {
-                "chapterUid": 272,
+            "385": {
+                "chapterUid": 385,
                 "chapterIdx": 105,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_105",
                 "title": "第四十二章",
-                "wordCount": 4524,
+                "wordCount": 4399,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35265,14 +35265,14 @@
                     "Text/Section00103.xhtml"
                 ]
             },
-            "273": {
-                "chapterUid": 273,
+            "386": {
+                "chapterUid": 386,
                 "chapterIdx": 106,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_106",
                 "title": "第四十三章",
-                "wordCount": 5769,
+                "wordCount": 5612,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35288,7 +35288,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十四章",
-                "wordCount": 4936,
+                "wordCount": 4763,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35304,7 +35304,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十五章",
-                "wordCount": 5078,
+                "wordCount": 4821,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35320,7 +35320,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十六章",
-                "wordCount": 5681,
+                "wordCount": 5490,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35329,14 +35329,14 @@
                     "Text/Section00107.xhtml"
                 ]
             },
-            "277": {
-                "chapterUid": 277,
+            "387": {
+                "chapterUid": 387,
                 "chapterIdx": 110,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_110",
                 "title": "第四十七章",
-                "wordCount": 4854,
+                "wordCount": 4715,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35352,7 +35352,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十八章",
-                "wordCount": 4942,
+                "wordCount": 4793,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35368,7 +35368,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十九章",
-                "wordCount": 5400,
+                "wordCount": 5215,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35384,7 +35384,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十章",
-                "wordCount": 4777,
+                "wordCount": 4612,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35400,7 +35400,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十一章",
-                "wordCount": 5649,
+                "wordCount": 5506,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35409,14 +35409,14 @@
                     "Text/Section00112.xhtml"
                 ]
             },
-            "282": {
-                "chapterUid": 282,
+            "388": {
+                "chapterUid": 388,
                 "chapterIdx": 115,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_115",
                 "title": "第五十二章",
-                "wordCount": 5035,
+                "wordCount": 4882,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35425,14 +35425,14 @@
                     "Text/Section00113.xhtml"
                 ]
             },
-            "283": {
-                "chapterUid": 283,
+            "389": {
+                "chapterUid": 389,
                 "chapterIdx": 116,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_116",
                 "title": "第五十三章",
-                "wordCount": 4754,
+                "wordCount": 4575,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35448,7 +35448,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十四章",
-                "wordCount": 4616,
+                "wordCount": 4475,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35464,7 +35464,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十五章",
-                "wordCount": 3173,
+                "wordCount": 3062,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35480,7 +35480,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "平凡的世界.第三部",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35496,7 +35496,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "卷五",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35512,7 +35512,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第一章",
-                "wordCount": 2990,
+                "wordCount": 2935,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35528,7 +35528,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二章",
-                "wordCount": 5518,
+                "wordCount": 5355,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35544,7 +35544,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三章",
-                "wordCount": 5330,
+                "wordCount": 5101,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35560,7 +35560,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四章",
-                "wordCount": 5232,
+                "wordCount": 5091,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35569,14 +35569,14 @@
                     "Text/Section00122.xhtml"
                 ]
             },
-            "292": {
-                "chapterUid": 292,
+            "390": {
+                "chapterUid": 390,
                 "chapterIdx": 125,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_125",
                 "title": "第五章",
-                "wordCount": 4939,
+                "wordCount": 4784,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35592,7 +35592,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第六章",
-                "wordCount": 5033,
+                "wordCount": 4904,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35608,7 +35608,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第七章",
-                "wordCount": 4698,
+                "wordCount": 4563,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35624,7 +35624,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第八章",
-                "wordCount": 4951,
+                "wordCount": 4784,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35640,7 +35640,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第九章",
-                "wordCount": 4536,
+                "wordCount": 4321,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35656,7 +35656,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十章",
-                "wordCount": 4880,
+                "wordCount": 4717,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35672,7 +35672,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十一章",
-                "wordCount": 4773,
+                "wordCount": 4604,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35681,14 +35681,14 @@
                     "Text/Section00129.xhtml"
                 ]
             },
-            "299": {
-                "chapterUid": 299,
+            "391": {
+                "chapterUid": 391,
                 "chapterIdx": 132,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_132",
                 "title": "第十二章",
-                "wordCount": 5049,
+                "wordCount": 4914,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35697,14 +35697,14 @@
                     "Text/Section00130.xhtml"
                 ]
             },
-            "300": {
-                "chapterUid": 300,
+            "392": {
+                "chapterUid": 392,
                 "chapterIdx": 133,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_133",
                 "title": "第十三章",
-                "wordCount": 4501,
+                "wordCount": 4364,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35713,14 +35713,14 @@
                     "Text/Section00131.xhtml"
                 ]
             },
-            "301": {
-                "chapterUid": 301,
+            "393": {
+                "chapterUid": 393,
                 "chapterIdx": 134,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_134",
                 "title": "第十四章",
-                "wordCount": 5539,
+                "wordCount": 5416,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35729,14 +35729,14 @@
                     "Text/Section00132.xhtml"
                 ]
             },
-            "302": {
-                "chapterUid": 302,
+            "394": {
+                "chapterUid": 394,
                 "chapterIdx": 135,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_135",
                 "title": "第十五章",
-                "wordCount": 4694,
+                "wordCount": 4577,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35745,14 +35745,14 @@
                     "Text/Section00133.xhtml"
                 ]
             },
-            "303": {
-                "chapterUid": 303,
+            "395": {
+                "chapterUid": 395,
                 "chapterIdx": 136,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_136",
                 "title": "第十六章",
-                "wordCount": 5123,
+                "wordCount": 4948,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35768,7 +35768,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十七章",
-                "wordCount": 5357,
+                "wordCount": 5208,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35784,7 +35784,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十八章",
-                "wordCount": 5297,
+                "wordCount": 5120,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35800,7 +35800,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第十九章",
-                "wordCount": 5306,
+                "wordCount": 5085,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35809,14 +35809,14 @@
                     "Text/Section00137.xhtml"
                 ]
             },
-            "307": {
-                "chapterUid": 307,
+            "396": {
+                "chapterUid": 396,
                 "chapterIdx": 140,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_140",
                 "title": "第二十章",
-                "wordCount": 4715,
+                "wordCount": 4564,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35825,14 +35825,14 @@
                     "Text/Section00138.xhtml"
                 ]
             },
-            "308": {
-                "chapterUid": 308,
+            "397": {
+                "chapterUid": 397,
                 "chapterIdx": 141,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_141",
                 "title": "第二十一章",
-                "wordCount": 5079,
+                "wordCount": 4954,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35841,14 +35841,14 @@
                     "Text/Section00139.xhtml"
                 ]
             },
-            "309": {
-                "chapterUid": 309,
+            "398": {
+                "chapterUid": 398,
                 "chapterIdx": 142,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_142",
                 "title": "第二十二章",
-                "wordCount": 5391,
+                "wordCount": 5228,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35857,14 +35857,14 @@
                     "Text/Section00140.xhtml"
                 ]
             },
-            "310": {
-                "chapterUid": 310,
+            "399": {
+                "chapterUid": 399,
                 "chapterIdx": 143,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_143",
                 "title": "第二十三章",
-                "wordCount": 5244,
+                "wordCount": 5083,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35880,7 +35880,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十四章",
-                "wordCount": 4791,
+                "wordCount": 4618,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35896,7 +35896,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十五章",
-                "wordCount": 4886,
+                "wordCount": 4693,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35912,7 +35912,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十六章",
-                "wordCount": 4920,
+                "wordCount": 4749,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35928,7 +35928,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十七章",
-                "wordCount": 4804,
+                "wordCount": 4655,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35944,7 +35944,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "卷六",
-                "wordCount": 3,
+                "wordCount": 2,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35960,7 +35960,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十八章",
-                "wordCount": 5014,
+                "wordCount": 4899,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35976,7 +35976,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第二十九章",
-                "wordCount": 5212,
+                "wordCount": 5111,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -35992,7 +35992,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十章",
-                "wordCount": 5044,
+                "wordCount": 4945,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36008,7 +36008,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十一章",
-                "wordCount": 5078,
+                "wordCount": 4931,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36024,7 +36024,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十二章",
-                "wordCount": 4959,
+                "wordCount": 4818,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36040,7 +36040,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十三章",
-                "wordCount": 4647,
+                "wordCount": 4506,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36056,7 +36056,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十四章",
-                "wordCount": 4880,
+                "wordCount": 4745,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36072,7 +36072,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十五章",
-                "wordCount": 5239,
+                "wordCount": 5082,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36088,7 +36088,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十六章",
-                "wordCount": 4956,
+                "wordCount": 4823,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36104,7 +36104,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十七章",
-                "wordCount": 5427,
+                "wordCount": 5302,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36120,7 +36120,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十八章",
-                "wordCount": 4872,
+                "wordCount": 4753,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36136,7 +36136,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第三十九章",
-                "wordCount": 5026,
+                "wordCount": 4865,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36152,7 +36152,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十章",
-                "wordCount": 5490,
+                "wordCount": 5299,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36161,14 +36161,14 @@
                     "Text/Section00159.xhtml"
                 ]
             },
-            "329": {
-                "chapterUid": 329,
+            "400": {
+                "chapterUid": 400,
                 "chapterIdx": 162,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_162",
                 "title": "第四十一章",
-                "wordCount": 5283,
+                "wordCount": 5124,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36177,14 +36177,14 @@
                     "Text/Section00160.xhtml"
                 ]
             },
-            "330": {
-                "chapterUid": 330,
+            "401": {
+                "chapterUid": 401,
                 "chapterIdx": 163,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_163",
                 "title": "第四十二章",
-                "wordCount": 5992,
+                "wordCount": 5843,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36200,7 +36200,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十三章",
-                "wordCount": 5571,
+                "wordCount": 5412,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36216,7 +36216,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十四章",
-                "wordCount": 5630,
+                "wordCount": 5497,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36232,7 +36232,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十五章",
-                "wordCount": 5110,
+                "wordCount": 4957,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36248,7 +36248,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十六章",
-                "wordCount": 4153,
+                "wordCount": 3988,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36264,7 +36264,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十七章",
-                "wordCount": 4698,
+                "wordCount": 4507,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36280,7 +36280,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十八章",
-                "wordCount": 5174,
+                "wordCount": 5005,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36296,7 +36296,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第四十九章",
-                "wordCount": 5344,
+                "wordCount": 5201,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36305,14 +36305,14 @@
                     "Text/Section00168.xhtml"
                 ]
             },
-            "338": {
-                "chapterUid": 338,
+            "402": {
+                "chapterUid": 402,
                 "chapterIdx": 171,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_171",
                 "title": "第五十章",
-                "wordCount": 5939,
+                "wordCount": 5780,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36328,7 +36328,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十一章",
-                "wordCount": 4789,
+                "wordCount": 4582,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36344,7 +36344,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十二章",
-                "wordCount": 5808,
+                "wordCount": 5631,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36353,14 +36353,14 @@
                     "Text/Section00171.xhtml"
                 ]
             },
-            "341": {
-                "chapterUid": 341,
+            "403": {
+                "chapterUid": 403,
                 "chapterIdx": 174,
-                "updateTime": 1682441410,
+                "updateTime": 1745475549,
                 "readAhead": 0,
                 "tar": "https://res.weread.qq.com/wrco/tar_CB_24965201_174",
                 "title": "第五十三章",
-                "wordCount": 6839,
+                "wordCount": 6736,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36376,7 +36376,7 @@
                 "readAhead": 0,
                 "tar": "",
                 "title": "第五十四章",
-                "wordCount": 3948,
+                "wordCount": 3843,
                 "price": -1,
                 "paid": 0,
                 "isMPChapter": 0,
@@ -36389,13 +36389,13 @@
         "bookmark_list": [
             {
                 "bookId": "24965201",
-                "bookVersion": 1272358881,
+                "bookVersion": 1105925723,
                 "chapterName": "第二章",
-                "chapterUid": 174,
+                "chapterUid": 345,
                 "colorStyle": 5,
                 "contextAbstract": "",
                 "markText": "孙少平发现，郝红梅实际上是班里最漂亮的女生。只是因为她穿戴破烂，再加上一脸菜色，才使得所有的人都没有发现这一点。这种年龄的男青年，又刚刚有了一点文化，往往爱给一些“洋女生”献殷勤。",
-                "range": "6148-6238",
+                "range": "6239-6329",
                 "style": 1,
                 "type": 1,
                 "createTime": 1716421716,
@@ -36410,14 +36410,14 @@
                 "bookId": "24965201",
                 "bookVersion": 1272358881,
                 "chapterName": "第二章",
-                "chapterUid": 174,
+                "chapterUid": 345,
                 "content": "亲不亲阶级分，比如讨厌顾养民和喜欢郝红梅",
                 "contextAbstract": "",
                 "friendship": 0,
                 "htmlContent": "",
                 "isPrivate": 0,
                 "notVisibleToFriends": 0,
-                "range": "6148-6238",
+                "range": "6239-6329",
                 "createTime": 1716421767,
                 "title": "",
                 "type": 1,
@@ -36429,7 +36429,7 @@
                 "book": {
                     "bookId": "24965201",
                     "format": "epub",
-                    "version": 1272358881,
+                    "version": 1105925723,
                     "soldout": 0,
                     "bookStatus": 1,
                     "type": 0,
@@ -36512,7 +36512,7 @@
                 "author": "路遥",
                 "intro": "茅盾文学奖皇冠上的明珠。激励亿万读者的不朽经典。深受老师和学生喜爱的新课标必读书。路遥获得了这个世界里数以亿计的普通人的尊敬和崇拜，他沟通了这个世界的人们和地球人类的情感。",
                 "cover": "https://cdn.weread.qq.com/weread/cover/61/yuewen_24965201/s_yuewen_249652011682413401.jpg",
-                "version": 1272358881,
+                "version": 1105925723,
                 "format": "epub",
                 "type": 0,
                 "soldout": 0,
@@ -36530,12 +36530,12 @@
                     "skuId": ""
                 },
                 "centPrice": 8999,
-                "readingCount": 6336,
+                "readingCount": 6193,
                 "copyrightChapterUids": [
-                    169
+                    343
                 ],
                 "blockSaveImg": 0,
-                "language": "zh-CN",
+                "language": "zh-wr",
                 "hideUpdateTime": false,
                 "isEPUBComics": 0,
                 "isVerticalLayout": 0,
@@ -41461,7 +41461,7 @@
                     "skuId": "13163615"
                 },
                 "centPrice": 9800,
-                "readingCount": 790,
+                "readingCount": 839,
                 "copyrightChapterUids": [
                     87
                 ],
@@ -49425,7 +49425,7 @@
                     "skuId": "10008248"
                 },
                 "centPrice": 2900,
-                "readingCount": 4550,
+                "readingCount": 4407,
                 "copyrightChapterUids": [
                     215
                 ],
@@ -50837,7 +50837,7 @@
                     "skuId": ""
                 },
                 "centPrice": 7899,
-                "readingCount": 1024,
+                "readingCount": 1066,
                 "copyrightChapterUids": [
                     2
                 ],
@@ -51182,7 +51182,7 @@
                     "skuId": "11090643"
                 },
                 "centPrice": 4499,
-                "readingCount": 3367,
+                "readingCount": 3195,
                 "copyrightChapterUids": [
                     13
                 ],
